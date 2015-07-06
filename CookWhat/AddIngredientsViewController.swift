@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class AddIngredientsViewController: UIViewController {
 
     
+    @IBOutlet weak var isSavedLbl: UILabel!
     
+    @IBOutlet weak var ingredientName: UITextField!
     @IBOutlet weak var stpQuantity: UIStepper!
     @IBOutlet weak var txtQuantity: UITextField!
+    @IBOutlet weak var ingredientUnit: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        isSavedLbl.hidden = true;
         // Do any additional setup after loading the view.
     }
 
@@ -26,18 +30,49 @@ class AddIngredientsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func onValueChange(sender: UIStepper, forEvent event: UIEvent) {
         txtQuantity.text = Int(stpQuantity.value).description
         
     }
 
+  
+    @IBAction func saveTapped(sender: AnyObject) {
+        
+        //Reference to AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        
+        //Reference to Context
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let ingredient = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: context)
+        
+        
+        //Create instance of data model
+        var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
+        
+        
+        //map properties
+        newIngredient.name = ingredientName.text
+        newIngredient.quantity = txtQuantity.text
+        newIngredient.unit = ingredientUnit.text
+        
+        println(newIngredient)
+        
+
+        //save context
+        context.save(nil)
+        
+        ingredientName.text = ""
+        ingredientUnit.text = ""
+        txtQuantity.text = ""
+        stpQuantity.value = 0
+        
+        isSavedLbl.text = "Ingredient Saved"
+        isSavedLbl.hidden = false;
+        //navigate back to root Vc
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        
+        
+    }
 }

@@ -12,6 +12,8 @@ import CoreData
 class FavouriteRecipesTableViewController: UITableViewController {
 
     var myList: Array<AnyObject> = []
+    var myIngrList: Array<AnyObject> = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +24,12 @@ class FavouriteRecipesTableViewController: UITableViewController {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "Recipes")
+        let fetchIngr = NSFetchRequest(entityName: "Ingredients")
         myList =   context.executeFetchRequest(freq, error: nil)!
+        myIngrList =   context.executeFetchRequest(fetchIngr, error: nil)!
+        
         println(myList)
+        println(myIngrList)
         tableView.reloadData()
     }
 
@@ -61,16 +67,31 @@ class FavouriteRecipesTableViewController: UITableViewController {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellId as String) as! UITableViewCell
         
         var data: NSManagedObject = myList[indexPath.row] as! NSManagedObject
-        if let ip = indexPath as NSIndexPath? {
-            var data: NSManagedObject = myList[ip.row] as! NSManagedObject
-            cell.textLabel?.text = (data.valueForKey("title") as! String)
+        
+        var dataIngr: NSManagedObject = myIngrList[indexPath.row] as! NSManagedObject
+        
+      //  if let ip = indexPath as NSIndexPath? {
+       //     var data: NSManagedObject = myList[ip.row] as! NSManagedObject
+        
+          //  cell.textLabel?.text = (data.valueForKey("title") as! String)
             
             var serv = data.valueForKey("servings") as! String
-            
-            //var info = data.valueForKey("info") as! String
-            
-            cell.detailTextLabel?.text = "\(serv)" //items - \(info)"
-        }
+           
+            var ingr = dataIngr.valueForKey("name") as! String
+        
+           // cell.detailTextLabel?.text = "\(serv)" //items - \(info)"
+        //}
+        
+        
+        cell.detailTextLabel?.text = (data.valueForKey("title") as! String)
+        
+        cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
+        
+        println(" ....")
+        println(data.valueForKey("ingredients") as! NSSet)
+        println(ingr)
+        println(" ....")
+        //var info = data.valueForKey("info") as! String
 
         return cell
     }

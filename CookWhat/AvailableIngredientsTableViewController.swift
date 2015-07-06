@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class AvailableIngredientsTableViewController: UITableViewController {
 
-       var ingredientList: [AvailableIngredients] = [AvailableIngredients]()
+    var myList: Array<AnyObject> = []
+    
+    var ingredientList: [AvailableIngredients] = [AvailableIngredients]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,19 +28,33 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
     func dummyData(){
         var avIng: AvailableIngredients = AvailableIngredients();
-        avIng.title = "Egg"
-        avIng.quantity = "10"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Potato"
-        avIng.quantity = "1"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Rice"
-        avIng.quantity = "4"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
+//        avIng.title = "Egg"
+//        avIng.quantity = "10"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Potato"
+//        avIng.quantity = "1"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Rice"
+//        avIng.quantity = "4"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "AvailIngredients")
+        myList =   context.executeFetchRequest(freq, error: nil)!
+        println(myList.count)
+        
+//        for item in myList
+//        {
+//            avIng.title = item.name
+//            avIng.quantity = item.quantity
+//            avIng.unit = item.unit
+//            ingredientList.append(avIng)
+//        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,20 +76,36 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return ingredientList.count
+        return myList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("availableIngredientCell", forIndexPath: indexPath) as! UITableViewCell
 
+        
+        var data: NSManagedObject = myList[indexPath.row] as! NSManagedObject
+        
+      
+        
+        cell.textLabel?.text = (data.valueForKey("name") as! String)
+        
+        var quantity = data.valueForKey("quantity") as! String
+        
+        var unit = data.valueForKey("unit") as! String
+        
+        cell.detailTextLabel?.text = "\(quantity) \(unit)"
+        
+        
+        
+        
         // Configure the cell...
-        let row = indexPath.row
+       // let row = indexPath.row
         
         
-        cell.detailTextLabel?.text = ingredientList[row].quantity + ingredientList[row].unit
+        //cell.detailTextLabel?.text = quantity + ingredientList[row].unit
         
-        cell.textLabel?.text = ingredientList[row].title
+        //cell.textLabel?.text = ingredientList[row].title
 
         return cell
     }
@@ -89,22 +122,44 @@ class AvailableIngredientsTableViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-      //      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            let _indexPath = tableView.indexPathForSelectedRow();
-            
-            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-            
-            ingredientList.removeAtIndex(indexPath.row)
-            
-            
-            tableView.reloadData()
+//        if editingStyle == .Delete {
+//            // Delete the row from the data source
+//      //      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            let _indexPath = tableView.indexPathForSelectedRow();
+//            
+//            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
+//            
+//            myList.removeAtIndex(indexPath.row)
+//            
+//            
+//            tableView.reloadData()
+//
+//            
+//        } else if editingStyle == .Insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
+//        
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            if let tv = tableView as UITableView?{
+                context.deleteObject(myList[indexPath.row] as! NSManagedObject)
+                myList.removeAtIndex(indexPath.row)
+                tv.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+        }
+        
+        var error: NSError? = nil
+        if !context.save(&error)
+        {
+            abort()
+        }
 
-            
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        
+        
+        
     }
 
     /*
