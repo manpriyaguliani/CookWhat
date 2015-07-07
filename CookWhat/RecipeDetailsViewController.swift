@@ -16,10 +16,14 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     
     @IBOutlet weak var txtViewDirections: UITextView!
     @IBOutlet weak var tblViewIngredients: UITableView!
+    @IBOutlet weak var durationText: UILabel!
     var ingredientList: [AvailableIngredients] = [AvailableIngredients]()
     var recipeTitle: String = ""
     var numberOfServings: String = ""
     var recipeDirection: String = ""
+    var recipeIngredients: NSSet = []
+    var recipeDuration: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,39 +36,60 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
 
     func dummyData(){
         var avIng: AvailableIngredients = AvailableIngredients();
-        avIng.title = "Egg"
-        avIng.quantity = "10"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Potato"
-        avIng.quantity = "1"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Rice"
-        avIng.quantity = "4"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Apple"
-        avIng.quantity = "4"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Orange"
-        avIng.quantity = "4"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Flour"
-        avIng.quantity = "4"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
+        
+        let listOfIngredients = recipeIngredients.allObjects as! [Ingredients]
+        
+        for item in listOfIngredients as NSArray
+        {
+            avIng.title = item.valueForKey("name") as! String
+            avIng.quantity = item.valueForKey("quantity") as! String
+            avIng.unit = item.valueForKey("unit") as! String
+            ingredientList.append(avIng)
+            avIng = AvailableIngredients();
+            println(item.valueForKey("name"))
+            println(item.valueForKey("quantity"))
+            println(item.valueForKey("unit"))
+
+            
+        }
+        
+//        
+//        avIng.title = "Egg"
+//        avIng.quantity = "10"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Potato"
+//        avIng.quantity = "1"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Rice"
+//        avIng.quantity = "4"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Apple"
+//        avIng.quantity = "4"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Orange"
+//        avIng.quantity = "4"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Flour"
+//        avIng.quantity = "4"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
     }
     func initializeControls(){
      lblRecipeTitle.text = recipeTitle
      lblNumberOfServings.text = numberOfServings
      txtViewDirections.text = recipeDirection
+        
+        var mins: String = "Minutes"
+     durationText.text = recipeDuration +  "\(mins)"
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

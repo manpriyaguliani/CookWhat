@@ -64,7 +64,9 @@ class AddRecipeViewController: UIViewController {
         //Create instance of data model
             var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
             var newIngredient = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
+
         
             //map properties
             
@@ -79,13 +81,19 @@ class AddRecipeViewController: UIViewController {
            newIngredient.unit = unit1.text
            newIngredient.recipe = newRecipe
         
+        newIngredient2.name = "some ingredient"
+        newIngredient2.priority = "high"
+        newIngredient2.quantity = "10"
+        newIngredient2.unit = "ml"
+        newIngredient2.recipe = newRecipe
         
         
        
             println(newRecipe)
             println(newIngredient)
-        
-        
+        println("..........")
+        println(newIngredient.recipe)
+        println("..........")
         
         
         //save context

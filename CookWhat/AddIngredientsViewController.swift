@@ -9,15 +9,18 @@
 import UIKit
 import CoreData
 
-class AddIngredientsViewController: UIViewController {
+class AddIngredientsViewController: UIViewController, UIPickerViewDelegate {
 
-    
+    var units = [ "Kilogram", "Gram" ,"Litre"]
     @IBOutlet weak var isSavedLbl: UILabel!
     
     @IBOutlet weak var ingredientName: UITextField!
     @IBOutlet weak var stpQuantity: UIStepper!
     @IBOutlet weak var txtQuantity: UITextField!
     @IBOutlet weak var ingredientUnit: UITextField!
+    
+    @IBOutlet weak var ingredientUnitLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         isSavedLbl.hidden = true;
@@ -70,9 +73,32 @@ class AddIngredientsViewController: UIViewController {
         
         isSavedLbl.text = "Ingredient Saved"
         isSavedLbl.hidden = false;
+        
+        
         //navigate back to root Vc
         self.navigationController?.popToRootViewControllerAnimated(true)
         
         
     }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return units.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
+    {
+        return units[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+// code needs to be added here for selection
+    }
+    
 }
