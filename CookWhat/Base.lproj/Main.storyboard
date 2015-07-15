@@ -17,23 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-iI-Ld6">
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-iI-Ld6">
                                 <rect key="frame" x="23" y="220" width="274" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="455643263.85307097">
                                     <!--2015-06-10 15:34:23 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7R-yF-QYC">
-                                <rect key="frame" x="258" y="390" width="30" height="30"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="whp-vs-qXn" kind="push" id="58Z-Pz-U8W"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cook What??" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1f-al-vXS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Cook What??" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1f-al-vXS">
                                 <rect key="frame" x="6" y="62" width="308" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="WOC-pf-VOD"/>
@@ -42,7 +33,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol5-43-NTt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Available Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol5-43-NTt">
                                 <rect key="frame" x="43" y="171" width="235" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="unt-ch-Al3"/>
@@ -57,27 +48,24 @@
                         <constraints>
                             <constraint firstItem="kLa-iI-Ld6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="Acg-da-kaF"/>
                             <constraint firstItem="kLa-iI-Ld6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DQR-aU-rwa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e7R-yF-QYC" secondAttribute="trailing" constant="16" id="JX2-AK-Aev"/>
                             <constraint firstItem="o1f-al-vXS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-10" id="KZI-ky-oQ9"/>
                             <constraint firstItem="ol5-43-NTt" firstAttribute="centerX" secondItem="kLa-iI-Ld6" secondAttribute="centerX" id="KmV-BR-1Pe"/>
                             <constraint firstItem="ol5-43-NTt" firstAttribute="top" secondItem="o1f-al-vXS" secondAttribute="bottom" constant="45" id="PsD-9u-Ewn"/>
-                            <constraint firstItem="FNT-X8-mj6" firstAttribute="top" secondItem="e7R-yF-QYC" secondAttribute="bottom" constant="99" id="SLm-hh-Qk0"/>
                             <constraint firstItem="ol5-43-NTt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="27" id="ajA-Bu-Oa6"/>
                             <constraint firstItem="kLa-iI-Ld6" firstAttribute="top" secondItem="ol5-43-NTt" secondAttribute="bottom" constant="28" id="dXn-Vq-Tap"/>
-                            <constraint firstItem="e7R-yF-QYC" firstAttribute="top" secondItem="kLa-iI-Ld6" secondAttribute="bottom" constant="8" symbolic="YES" id="mcK-my-i2v"/>
                             <constraint firstItem="ol5-43-NTt" firstAttribute="centerX" secondItem="o1f-al-vXS" secondAttribute="centerX" id="rqi-M4-4yd"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="WAq-uj-mw6" appends="YES" id="KT7-rC-tAQ"/>
+                            <outletCollection property="gestureRecognizers" destination="sQw-U3-S0b" appends="YES" id="Oz5-x4-Fw7"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Time" id="fIL-G2-hiL"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="WAq-uj-mw6">
+                <swipeGestureRecognizer direction="left" id="sQw-U3-S0b">
                     <connections>
-                        <segue destination="whp-vs-qXn" kind="push" id="L8r-bW-3eW"/>
+                        <segue destination="whp-vs-qXn" kind="push" id="5zP-z1-dvI"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -107,15 +95,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj5-h2-uKf">
-                                <rect key="frame" x="250" y="498" width="30" height="30"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="XAo-c3-Bce" kind="push" id="9Ay-TZ-DRh"/>
-                                </connections>
-                            </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4sD-uk-nqU">
                                 <rect key="frame" x="150" y="354" width="94" height="29"/>
                                 <connections>
@@ -132,7 +111,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="uDn-St-Y6W" appends="YES" id="7ih-Zz-tFi"/>
+                            <outletCollection property="gestureRecognizers" destination="TAh-eb-IEx" appends="YES" id="Ygr-xs-wQz"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Servings" id="nwa-cs-7wW"/>
@@ -142,9 +121,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UI-pr-cGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="uDn-St-Y6W">
+                <swipeGestureRecognizer direction="left" id="TAh-eb-IEx">
                     <connections>
-                        <segue destination="XAo-c3-Bce" kind="push" id="t1B-0I-dyQ"/>
+                        <segue destination="XAo-c3-Bce" kind="push" id="A2U-Eh-Rbf"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -647,20 +626,11 @@
                                     <segment title="Expert"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLh-8K-AVD">
-                                <rect key="frame" x="217" y="485" width="30" height="30"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="JVO-FK-LP8" kind="push" id="VYN-Hs-9Dt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="LCc-CF-Zno" appends="YES" id="UXd-0a-gaI"/>
+                            <outletCollection property="gestureRecognizers" destination="Nqt-8Q-G0a" appends="YES" id="trn-6n-kcO"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Level Of Expertise" id="Ygd-wK-x4q"/>
@@ -669,9 +639,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5h-b6-Nui" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="LCc-CF-Zno">
+                <swipeGestureRecognizer direction="left" id="Nqt-8Q-G0a">
                     <connections>
-                        <segue destination="JVO-FK-LP8" kind="modal" id="xWg-Vt-bMj"/>
+                        <segue destination="JVO-FK-LP8" kind="push" id="rHy-8T-LuH"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -708,7 +678,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ARz-Kv-NJ2" kind="push" id="a0C-No-D42"/>
+                                    <segue destination="ARz-Kv-NJ2" kind="push" identifier="suggestedRecipeDetail" id="a0C-No-D42"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -825,7 +795,7 @@
         <scene sceneID="zMb-Ui-qaI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s4T-9O-XTz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cook What?" id="DtC-VH-Q01"/>
+                    <tabBarItem key="tabBarItem" title="Cook What?" image="pizza bar icon" selectedImage="pizza bar icon" id="DtC-VH-Q01"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Kj-UA-9f4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -849,25 +819,26 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GOk-ic-D8K">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="s4T-9O-XTz" kind="relationship" relationship="viewControllers" id="WOq-c4-2hX"/>
                         <segue destination="b82-XK-LRA" kind="relationship" relationship="viewControllers" id="pw8-xq-xb7"/>
-                        <segue destination="fsd-JM-OyO" kind="relationship" relationship="viewControllers" id="6ah-n2-9fB"/>
-                        <segue destination="z3Q-FD-i93" kind="relationship" relationship="viewControllers" id="b7q-wK-C7d"/>
-                        <segue destination="djW-bn-rKn" kind="relationship" relationship="viewControllers" id="bdE-2f-QT6"/>
                         <segue destination="FEy-34-dde" kind="relationship" relationship="viewControllers" id="TCj-Lo-A0M"/>
+                        <segue destination="z3Q-FD-i93" kind="relationship" relationship="viewControllers" id="b7q-wK-C7d"/>
+                        <segue destination="fsd-JM-OyO" kind="relationship" relationship="viewControllers" id="6ah-n2-9fB"/>
+                        <segue destination="djW-bn-rKn" kind="relationship" relationship="viewControllers" id="bdE-2f-QT6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzt-uv-bNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="240" y="488"/>
         </scene>
-        <!--Favourite Recipes-->
+        <!--Navigation Controller-->
         <scene sceneID="BYU-aV-Ayt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b82-XK-LRA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourite Recipes" id="r2N-6w-MzZ"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="r2N-6w-MzZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mVe-SP-eg7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -882,11 +853,11 @@
             </objects>
             <point key="canvasLocation" x="930" y="-1258"/>
         </scene>
-        <!--Add Ingredient-->
+        <!--Add Ingredients-->
         <scene sceneID="E5P-bf-yOP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fsd-JM-OyO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Ingredient" id="nn1-H3-xfO"/>
+                    <tabBarItem key="tabBarItem" title="Add Ingredients" id="nn1-H3-xfO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YaO-nJ-SeV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -924,7 +895,7 @@
         <scene sceneID="eBb-ep-Wvv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djW-bn-rKn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Recipe" id="IZL-ef-ORn"/>
+                    <tabBarItem key="tabBarItem" title="Add Recipe" image="pie bar icon" selectedImage="pie bar icon" id="IZL-ef-ORn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IoP-RM-Sdo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -959,15 +930,16 @@
             <point key="canvasLocation" x="2106" y="2140"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pie bar icon" width="29" height="29"/>
+        <image name="pizza bar icon" width="29" height="29"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xWg-Vt-bMj"/>
-        <segue reference="t1B-0I-dyQ"/>
-        <segue reference="L8r-bW-3eW"/>
         <segue reference="a0C-No-D42"/>
     </inferredMetricsTieBreakers>
 </document>

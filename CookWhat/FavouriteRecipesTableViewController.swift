@@ -185,14 +185,14 @@ class FavouriteRecipesTableViewController: UITableViewController {
 
     
     
-    func testFetch()
-    {
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let freq = NSFetchRequest(entityName: "Recipes")
-        myList =   context.executeFetchRequest(freq, error: nil)!
-        
-
-    }
+//    func testFetch()
+//    {
+//        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let context:NSManagedObjectContext = appDel.managedObjectContext!
+//        let freq = NSFetchRequest(entityName: "Recipes")
+//        myList =   context.executeFetchRequest(freq, error: nil)!
+//        
+//
+//    }
 
 }
