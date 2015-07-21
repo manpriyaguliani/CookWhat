@@ -22,39 +22,45 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        dummyData();
+        
+        
+        
+       
+      //  dummyData()
         tableView.reloadData()
+        
+        
     }
 
     func dummyData(){
         var avIng: AvailableIngredients = AvailableIngredients();
-//        avIng.title = "Egg"
-//        avIng.quantity = "10"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Potato"
-//        avIng.quantity = "1"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Rice"
-//        avIng.quantity = "4"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
+        avIng.title = "Egg"
+        avIng.quantity = "10"
+        ingredientList.append(avIng)
+        avIng = AvailableIngredients();
+        avIng.title = "Potato"
+        avIng.quantity = "1"
+        avIng.unit = "kg"
+        ingredientList.append(avIng)
+        avIng = AvailableIngredients();
+        avIng.title = "Rice"
+        avIng.quantity = "4"
+        avIng.unit = "kg"
+        ingredientList.append(avIng)
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "AvailIngredients")
         myList =   context.executeFetchRequest(freq, error: nil)!
         println(myList.count)
-        
-//        for item in myList
-//        {
+        tableView.reloadData()
+        for item in myList
+        {
 //            avIng.title = item.name
 //            avIng.quantity = item.quantity
 //            avIng.unit = item.unit
 //            ingredientList.append(avIng)
-//        }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,6 +68,15 @@ class AvailableIngredientsTableViewController: UITableViewController {
     }
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "AvailIngredients")
+        myList =   context.executeFetchRequest(freq, error: nil)!
+        println(myList.count)
+        
+        
+        
         tableView.reloadData()
         
     }
@@ -76,11 +91,18 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
+        
+        println("test");
+        println(myList.count);
+        println("test");
         return myList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+       // dummyData()
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("availableIngredientCell", forIndexPath: indexPath) as! UITableViewCell
 
         
