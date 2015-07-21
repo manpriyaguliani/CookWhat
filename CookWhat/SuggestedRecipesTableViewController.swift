@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class SuggestedRecipesTableViewController: UITableViewController, UITableViewDataSource {
 
+    
+    var myList: Array<AnyObject> = []
+    var myIngrList: Array<AnyObject> = []
+    var _fetchedResultsController: NSFetchedResultsController!
+    
+    
     var recipeList: [RecipeToSuggest] = [RecipeToSuggest]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +55,15 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "Recipes")
+        let fetchIngr = NSFetchRequest(entityName: "Ingredients")
+        myList =   context.executeFetchRequest(freq, error: nil)!
+        myIngrList =   context.executeFetchRequest(fetchIngr, error: nil)!
+
+        
         tableView.reloadData()
         
     }
@@ -61,22 +77,41 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return recipeList.count
+        return myList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("suggestedRecipeCell", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-        let row = indexPath.row
-       
+//        let cell = tableView.dequeueReusableCellWithIdentifier("suggestedRecipeCell", forIndexPath: indexPath) as! UITableViewCell
+//
+//        // Configure the cell...
+//        let row = indexPath.row
+//       
+//        
+//        cell.detailTextLabel?.text = recipeList[row].title
+//        
+//        cell.textLabel?.text = recipeList[row].time + "min"
+//
+        let CellId: NSString = "suggestedRecipeCell"
         
-        cell.detailTextLabel?.text = recipeList[row].title
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellId as String) as! UITableViewCell
         
-        cell.textLabel?.text = recipeList[row].time + "min"
+        var data: NSManagedObject = myList[indexPath.row] as! NSManagedObject
+        
+        var dataIngr: NSManagedObject = myIngrList[indexPath.row] as! NSManagedObject
 
+        
+        
+        
+        var serv = data.valueForKey("servings") as! String
+        
+        var ingr = dataIngr.valueForKey("name") as! String
 
+        cell.detailTextLabel?.text = (data.valueForKey("title") as! String)
+        
+        cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
+
+        
         return cell
     }
     
@@ -90,24 +125,24 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     
 
     
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-           // tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            let _indexPath = tableView.indexPathForSelectedRow();
-            
-            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-            
-            recipeList.removeAtIndex(indexPath.row)
-            
-            
-            tableView.reloadData()
-
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+//    // Override to support editing the table view.
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == .Delete {
+//            // Delete the row from the data source
+//           // tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            let _indexPath = tableView.indexPathForSelectedRow();
+//            
+//            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
+//            
+//            recipeList.removeAtIndex(indexPath.row)
+//            
+//            
+//            tableView.reloadData()
+//
+//        } else if editingStyle == .Insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }    
+//    }
     
 
     /*
@@ -133,12 +168,30 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         
-        let vc: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
-        vc.recipeTitle = "My Recipe"
-        vc.numberOfServings = "1"
-        vc.recipeDirection = "recipe direction"
+//        let vc: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
+//        vc.recipeTitle = "My Recipe"
+//        vc.numberOfServings = "1"
+//        vc.recipeDirection = "recipe direction"
         
+        if segue.identifier == "suggestedRecipeDetail"
+        {
+            var selectedItem: NSManagedObject = myList[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
+            let IVC: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
+            
+            IVC.recipeTitle = selectedItem.valueForKey("title") as! String
+            IVC.numberOfServings = selectedItem.valueForKey("servings") as! String
+            IVC.recipeDirection = selectedItem.valueForKey("method") as! String
+            
+            IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
+            
+            // IVC.info = selectedItem.valueForKey("info") as! String
+            //   IVC.existingItem =  selectedItem
+            
+            IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
+        
+        }
     }
+    
     
 
 }

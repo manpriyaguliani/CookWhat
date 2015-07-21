@@ -14,9 +14,24 @@ class AddRecipeViewController: UIViewController {
     @IBOutlet weak var recipeTitleText: UITextField!
     @IBOutlet weak var recipeServingText: UITextField!
     
+    @IBOutlet weak var recipeDuration: UITextField!
     
-   // var recipeTitle: String = ""
-   // var recipeServing: String = "1"
+    @IBOutlet weak var recipeIngredient1: UITextField!
+    @IBOutlet weak var recipeIngredient2: UITextField!
+    
+    @IBOutlet weak var quantity1: UITextField!
+    @IBOutlet weak var quantity2: UITextField!
+    
+    @IBOutlet weak var unit1: UITextField!
+    @IBOutlet weak var unit2: UITextField!
+    
+    @IBOutlet weak var ingredientPriority1: UITextField!
+    @IBOutlet weak var ingredientPriority2: UITextField!
+    
+    @IBOutlet weak var recipeMethod: UITextView!
+    
+    var recipeTitle: String = ""
+    var recipeServing: String = ""
     
     
     
@@ -26,10 +41,11 @@ class AddRecipeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func addIngredients(sender: AnyObject) {
+        
+       // var my:UITextField = UITextField(frame: CGRectMake(0, 0, 10, 10))
     }
+    
     
     //***** saving recipe
     @IBAction func saveTapped(sender: AnyObject) {
@@ -41,19 +57,43 @@ class AddRecipeViewController: UIViewController {
         //Reference to Context
         let contxt:NSManagedObjectContext = appDel.managedObjectContext!
         
-        let en = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
+        let rec = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
+        let ingr = NSEntityDescription.entityForName("Ingredients" , inManagedObjectContext: contxt)
         
         
         //Create instance of data model
-            var newItem = Model(entity:en!, insertIntoManagedObjectContext: contxt)
-            
-            
+            var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+            var newIngredient = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        
+
+        
             //map properties
             
-            newItem.title = recipeTitleText.text
-            newItem.servings = recipeServingText.text
+            newRecipe.title = recipeTitleText.text
+            newRecipe.servings = recipeServingText.text
+            newRecipe.method = recipeMethod.text
+            newRecipe.duration = recipeDuration.text
         
-            println(newItem)
+           newIngredient.name = recipeIngredient1.text
+           newIngredient.priority = ingredientPriority1.text
+           newIngredient.quantity = quantity1.text
+           newIngredient.unit = unit1.text
+           newIngredient.recipe = newRecipe
+        
+        newIngredient2.name = "some ingredient"
+        newIngredient2.priority = "high"
+        newIngredient2.quantity = "10"
+        newIngredient2.unit = "ml"
+        newIngredient2.recipe = newRecipe
+        
+        
+       
+            println(newRecipe)
+            println(newIngredient)
+        println("..........")
+        println(newIngredient.recipe)
+        println("..........")
         
         
         //save context
@@ -66,16 +106,16 @@ class AddRecipeViewController: UIViewController {
         
     }
 
-    @IBAction func cancelTapped(sender: AnyObject) {
+//    @IBAction func cancelTapped(sender: AnyObject) {
+//        
+//        self.navigationController?.popToRootViewControllerAnimated(true)
+//        
+//
+//    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

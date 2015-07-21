@@ -12,6 +12,8 @@ import CoreData
 class FavouriteRecipesTableViewController: UITableViewController {
 
     var myList: Array<AnyObject> = []
+    var myIngrList: Array<AnyObject> = []
+    var _fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +24,14 @@ class FavouriteRecipesTableViewController: UITableViewController {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "Recipes")
+        let fetchIngr = NSFetchRequest(entityName: "Ingredients")
         myList =   context.executeFetchRequest(freq, error: nil)!
-        println(myList)
+        myIngrList =   context.executeFetchRequest(fetchIngr, error: nil)!
+        
+      //  println(myList)
+      //  println(myIngrList)
         tableView.reloadData()
+    
     }
 
     
@@ -61,16 +68,38 @@ class FavouriteRecipesTableViewController: UITableViewController {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellId as String) as! UITableViewCell
         
         var data: NSManagedObject = myList[indexPath.row] as! NSManagedObject
-        if let ip = indexPath as NSIndexPath? {
-            var data: NSManagedObject = myList[ip.row] as! NSManagedObject
-            cell.textLabel?.text = (data.valueForKey("title") as! String)
+        
+        var dataIngr: NSManagedObject = myIngrList[indexPath.row] as! NSManagedObject
+        
+      //  if let ip = indexPath as NSIndexPath? {
+       //     var data: NSManagedObject = myList[ip.row] as! NSManagedObject
+        
+          //  cell.textLabel?.text = (data.valueForKey("title") as! String)
             
             var serv = data.valueForKey("servings") as! String
-            
-            //var info = data.valueForKey("info") as! String
-            
-            cell.detailTextLabel?.text = "\(serv)" //items - \(info)"
-        }
+           
+            var ingr = dataIngr.valueForKey("name") as! String
+        
+           // cell.detailTextLabel?.text = "\(serv)" //items - \(info)"
+        //}
+        
+        
+        
+        
+        //let events = data.recipes.allObjects as [Recipes]
+        
+        
+        
+        
+        cell.detailTextLabel?.text = (data.valueForKey("title") as! String)
+        
+        cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
+        
+      //  println(" ....")
+      //  println(data.valueForKey("ingredients") as! NSSet)
+        //println(ingr)
+      //  println(" ....")
+        //var info = data.valueForKey("info") as! String
 
         return cell
     }
@@ -132,12 +161,38 @@ class FavouriteRecipesTableViewController: UITableViewController {
             
             IVC.recipeTitle = selectedItem.valueForKey("title") as! String
             IVC.numberOfServings = selectedItem.valueForKey("servings") as! String
-            IVC.recipeDirection = "Directions of the recipe"
+            IVC.recipeDirection = selectedItem.valueForKey("method") as! String
+            
+            IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
+            
             // IVC.info = selectedItem.valueForKey("info") as! String
             //   IVC.existingItem =  selectedItem
+            
+            IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
+            
+//            var ingredien = selectedItem.valueForKey("ingredients") as! NSSet
+//            
+//            let ingo = ingredien.allObjects as! [Ingredients]
+//            
+//            for item in ingo as NSArray
+//            {
+//                println(item.valueForKey("name"))
+//                println(item.valueForKey("quantity"))
+//                println(item.valueForKey("unit"))
+//            }
         }
     }
 
     
+    
+//    func testFetch()
+//    {
+//        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let context:NSManagedObjectContext = appDel.managedObjectContext!
+//        let freq = NSFetchRequest(entityName: "Recipes")
+//        myList =   context.executeFetchRequest(freq, error: nil)!
+//        
+//
+//    }
 
 }
