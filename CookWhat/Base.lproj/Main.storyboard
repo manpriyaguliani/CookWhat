@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.39999999999999963" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gzm-eh-v2i">
-                                <rect key="frame" x="0.0" y="64" width="320" height="484"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gzm-eh-v2i">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
                             </imageView>
                             <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-iI-Ld6">
                                 <rect key="frame" x="23" y="220" width="274" height="162"/>
@@ -198,7 +198,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xg-K2-44a">
-                                <rect key="frame" x="96" y="415" width="103" height="54"/>
+                                <rect key="frame" x="118" y="204" width="103" height="54"/>
                                 <state key="normal" title="Capture Bill">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -786,7 +786,11 @@
         <scene sceneID="zMb-Ui-qaI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s4T-9O-XTz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cook What?" image="pizza bar icon" selectedImage="pizza bar icon" id="DtC-VH-Q01"/>
+                    <tabBarItem key="tabBarItem" title="Cook What?" image="recipe" selectedImage="recipe" id="DtC-VH-Q01">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="recipe"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Kj-UA-9f4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -814,9 +818,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="s4T-9O-XTz" kind="relationship" relationship="viewControllers" id="WOq-c4-2hX"/>
-                        <segue destination="b82-XK-LRA" kind="relationship" relationship="viewControllers" id="pw8-xq-xb7"/>
-                        <segue destination="FEy-34-dde" kind="relationship" relationship="viewControllers" id="TCj-Lo-A0M"/>
                         <segue destination="z3Q-FD-i93" kind="relationship" relationship="viewControllers" id="b7q-wK-C7d"/>
+                        <segue destination="FEy-34-dde" kind="relationship" relationship="viewControllers" id="TCj-Lo-A0M"/>
+                        <segue destination="b82-XK-LRA" kind="relationship" relationship="viewControllers" id="pw8-xq-xb7"/>
                         <segue destination="fsd-JM-OyO" kind="relationship" relationship="viewControllers" id="6ah-n2-9fB"/>
                         <segue destination="djW-bn-rKn" kind="relationship" relationship="viewControllers" id="bdE-2f-QT6"/>
                     </connections>
@@ -848,7 +852,7 @@
         <scene sceneID="E5P-bf-yOP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fsd-JM-OyO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Ingredients" id="nn1-H3-xfO"/>
+                    <tabBarItem key="tabBarItem" title="Add Ingredients" image="addIngredient" selectedImage="addIngredient" id="nn1-H3-xfO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YaO-nJ-SeV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -867,7 +871,11 @@
         <scene sceneID="uxd-a4-YOz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z3Q-FD-i93" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Capture Bill" id="Oml-6v-QN6"/>
+                    <tabBarItem key="tabBarItem" title="Capture Bill" image="bill" selectedImage="bill" id="Oml-6v-QN6">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="bill"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jnb-hH-Dft">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -886,7 +894,7 @@
         <scene sceneID="eBb-ep-Wvv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djW-bn-rKn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Recipe" image="pie bar icon" selectedImage="pie bar icon" id="IZL-ef-ORn"/>
+                    <tabBarItem key="tabBarItem" title="Add Recipe" image="addRecipe" selectedImage="addRecipe" id="IZL-ef-ORn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IoP-RM-Sdo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -901,11 +909,15 @@
             </objects>
             <point key="canvasLocation" x="2074" y="1250"/>
         </scene>
-        <!--Available Ingredients-->
+        <!--Ingredients-->
         <scene sceneID="bLj-ZU-6ne">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FEy-34-dde" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Available Ingredients" id="E6b-Zj-kxe"/>
+                    <tabBarItem key="tabBarItem" title="Ingredients" image="ingredients" selectedImage="ingredients" id="E6b-Zj-kxe">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="ingredients"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8kZ-jM-nIy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -922,9 +934,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pie bar icon" width="29" height="29"/>
-        <image name="pizza bar icon" width="29" height="29"/>
-        <image name="stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg" width="300" height="470"/>
+        <image name="Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg" width="640" height="960"/>
+        <image name="addIngredient" width="50" height="50"/>
+        <image name="addRecipe" width="50" height="50"/>
+        <image name="bill" width="50" height="50"/>
+        <image name="ingredients" width="50" height="50"/>
+        <image name="recipe" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
