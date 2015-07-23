@@ -34,9 +34,6 @@
 		6E0D70D61B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D51B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
 		6E0D70D81B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D71B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
 		6E0D70DA1B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D91B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
-		6E0D70DC1B60FC3100B2812A /* Cocktail-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70DB1B60FC3100B2812A /* Cocktail-50.png */; };
-		6E0D70DE1B60FC6600B2812A /* Cocktail-50-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70DD1B60FC6600B2812A /* Cocktail-50-1.png */; };
-		6E0D70E21B60FCA800B2812A /* Cocktail-50-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70E11B60FCA800B2812A /* Cocktail-50-2.png */; };
 		6E0D70E41B61032700B2812A /* Literature-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70E31B61032700B2812A /* Literature-50.png */; };
 		6E2AE0751B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE0741B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg */; };
 		6E2AE0771B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE0761B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg */; };
@@ -94,9 +91,6 @@
 		6E0D70D51B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
 		6E0D70D71B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
 		6E0D70D91B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
-		6E0D70DB1B60FC3100B2812A /* Cocktail-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cocktail-50.png"; sourceTree = "<group>"; };
-		6E0D70DD1B60FC6600B2812A /* Cocktail-50-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cocktail-50-1.png"; sourceTree = "<group>"; };
-		6E0D70E11B60FCA800B2812A /* Cocktail-50-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cocktail-50-2.png"; sourceTree = "<group>"; };
 		6E0D70E31B61032700B2812A /* Literature-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Literature-50.png"; sourceTree = "<group>"; };
 		6E2AE0741B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg"; sourceTree = "<group>"; };
 		6E2AE0761B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg"; sourceTree = "<group>"; };
@@ -185,9 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				6E0D70E31B61032700B2812A /* Literature-50.png */,
-				6E0D70DB1B60FC3100B2812A /* Cocktail-50.png */,
-				6E0D70DD1B60FC6600B2812A /* Cocktail-50-1.png */,
-				6E0D70E11B60FCA800B2812A /* Cocktail-50-2.png */,
 				6E0D70D71B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
 				6E0D70D91B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
 				6E0D70D51B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
@@ -314,7 +305,6 @@
 				6E2AE07D1B5EA89B0024CC86 /* Icon-Small@3x.png in Resources */,
 				6E2AE07B1B5EA89B0024CC86 /* Icon-76.png in Resources */,
 				6E0D70D21B60F21B00B2812A /* Purchase Order-50.png in Resources */,
-				6E0D70DC1B60FC3100B2812A /* Cocktail-50.png in Resources */,
 				6E0D70DA1B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */,
 				6E0D70CC1B60EFA600B2812A /* Bill-50.png in Resources */,
 				6E0D70D41B60F68500B2812A /* Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */,
@@ -323,8 +313,6 @@
 				6E2AE07C1B5EA89B0024CC86 /* Icon-Small@2x.png in Resources */,
 				6E2AE0771B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg in Resources */,
 				264F2D861B288F9100BD476F /* Images.xcassets in Resources */,
-				6E0D70E21B60FCA800B2812A /* Cocktail-50-2.png in Resources */,
-				6E0D70DE1B60FC6600B2812A /* Cocktail-50-1.png in Resources */,
 				6E0D70D01B60F10100B2812A /* Ingredients-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
