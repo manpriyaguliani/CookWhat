@@ -32,7 +32,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
+        recipeList.removeAll(keepCapacity: true)
         loadDataFromDB()
         filterDBList()
         tableView.reloadData()
@@ -40,7 +40,8 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
-        
+        recipeList.removeAll(keepCapacity: true)
+
         loadDataFromDB()
         filterDBList()
         tableView.reloadData()

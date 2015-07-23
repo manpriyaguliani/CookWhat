@@ -67,6 +67,11 @@ class AddRecipeViewController: UIViewController {
         var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
 
+       // UIImage recipeImage = "sampleImage.jpg" as UIImage;
+        
+      //  NSData dataImage = UIImageJPEGRepresentation(recipeImage, 0.0);
+        
+        
         
             //map properties
             
