@@ -126,7 +126,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         
         cell.detailTextLabel?.text = recipeList[row].title
         
-        cell.textLabel?.text = recipeList[row].time + "min"
+        cell.textLabel?.text = recipeList[row].time + "mins"
 
       
 
