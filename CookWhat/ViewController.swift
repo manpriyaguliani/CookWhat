@@ -38,6 +38,8 @@ class ViewController: UIViewController {
             servingsText.text = recipeServings
             //textFieldQuantity.text = quantity
         }*/
+        loadData()
+        
         
         if(lblServings != nil){
             lblServings.text = "1"
@@ -46,6 +48,61 @@ class ViewController: UIViewController {
             stpServings.minimumValue = 1
         }
     }
+    
+    func loadData()
+    {
+        //Reference to AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        
+        //Reference to Context
+        let contxt:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let rec = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
+        let ingr = NSEntityDescription.entityForName("Ingredients" , inManagedObjectContext: contxt)
+        
+        
+        //Create instance of data model
+        var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var newIngredient = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        
+        
+        
+        //map properties
+        
+        newRecipe.title = "Test Recipe"
+        newRecipe.servings = "Some serving"
+        newRecipe.method = "Some method"
+        newRecipe.duration = "Some duration"
+        
+        newIngredient.name = "Some ingredient 1"
+        newIngredient.priority = "priority 1"
+        newIngredient.quantity = "quantity"
+        newIngredient.unit = "unit"
+        newIngredient.recipe = newRecipe
+        
+        newIngredient2.name = "some ingredient 2"
+        newIngredient2.priority = "high"
+        newIngredient2.quantity = "10"
+        newIngredient2.unit = "ml"
+        newIngredient2.recipe = newRecipe
+        
+        
+        
+        println(newRecipe)
+        println(newIngredient)
+        println("..........")
+        println(newIngredient.recipe)
+        println("..........")
+        
+        
+        //save context
+        contxt.save(nil)
+        
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
