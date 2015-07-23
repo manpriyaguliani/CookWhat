@@ -894,7 +894,7 @@
         <scene sceneID="eBb-ep-Wvv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djW-bn-rKn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Recipe" image="addRecipe" selectedImage="addRecipe" id="IZL-ef-ORn"/>
+                    <tabBarItem key="tabBarItem" title="Add Recipe" image="book" selectedImage="book" id="IZL-ef-ORn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IoP-RM-Sdo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -936,8 +936,8 @@
     <resources>
         <image name="Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg" width="640" height="960"/>
         <image name="addIngredient" width="50" height="50"/>
-        <image name="addRecipe" width="50" height="50"/>
         <image name="bill" width="50" height="50"/>
+        <image name="book" width="50" height="50"/>
         <image name="ingredients" width="50" height="50"/>
         <image name="recipe" width="29" height="29"/>
     </resources>
