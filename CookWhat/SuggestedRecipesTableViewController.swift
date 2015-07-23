@@ -97,6 +97,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
             
                 recipeList.append(recipeListObj)
             }
+          i++
         }
         
         recipeList = recipeList.sorted { $0.time < $1.time }
