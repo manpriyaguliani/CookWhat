@@ -172,7 +172,13 @@
                             <outlet property="delegate" destination="wYT-8M-kKd" id="FoN-dY-b0c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favourite Recipes" id="sW5-BM-51q"/>
+                    <navigationItem key="navigationItem" title="Favourite Recipes" id="sW5-BM-51q">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="45T-XK-o1C">
+                            <connections>
+                                <segue destination="tQ5-Xl-08x" kind="push" id="ubp-Fs-m3C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmX-HT-1Ml" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,7 +273,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euP-S6-saO">
                                 <rect key="frame" x="108" y="325" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0i-1f-4Fn">
@@ -278,7 +284,7 @@
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-Lw-gTX">
                                 <rect key="frame" x="48" y="260" width="320" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -341,7 +347,9 @@
                             <outlet property="delegate" destination="gU5-7w-S04" id="3nD-s2-6Dw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Available Ingredients" id="Xhc-u3-p7I"/>
+                    <navigationItem key="navigationItem" title="Available Ingredients" id="Xhc-u3-p7I">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="FPl-yV-qPL"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1X-UK-zli" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -430,7 +438,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBk-x3-lWd">
                                 <rect key="frame" x="10" y="165" width="66" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(in minutes)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ar-hZ-z1j">
@@ -439,13 +447,13 @@
                                     <constraint firstAttribute="width" constant="65" id="tJd-j7-5yG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWU-GO-u3u">
                                 <rect key="frame" x="203" y="197" width="32" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kH4-3R-IX4">
@@ -481,7 +489,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoz-l6-vGy">
                                 <rect key="frame" x="250" y="197" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mI4-l7-mmy">
@@ -559,6 +567,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Recipe" id="dWw-dV-1E0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="B6D-sw-3JV">
+                            <connections>
+                                <action selector="cancelTapped:" destination="tQ5-Xl-08x" id="zgH-8R-Low"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Hnj-Es-aQs">
                             <connections>
                                 <action selector="saveTapped:" destination="tQ5-Xl-08x" id="Iwx-eu-sUS"/>
@@ -583,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e62-YE-wVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="1250"/>
+            <point key="canvasLocation" x="1960" y="-1241"/>
         </scene>
         <!--Level Of Expertise-->
         <scene sceneID="4d7-JK-Ck3">
@@ -814,7 +827,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GOk-ic-D8K">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="selectedImageTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="selectedImageTintColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="s4T-9O-XTz" kind="relationship" relationship="viewControllers" id="WOq-c4-2hX"/>
@@ -947,6 +960,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="a0C-No-D42"/>
+        <segue reference="D4Z-Vv-6dO"/>
+        <segue reference="ubp-Fs-m3C"/>
     </inferredMetricsTieBreakers>
 </document>

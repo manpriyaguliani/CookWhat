@@ -63,10 +63,10 @@ class AddIngredientsViewController: UIViewController {
         //save context
         context.save(nil)
         
-        ingredientName.text = ""
-        ingredientUnit.text = ""
-        txtQuantity.text = ""
-        stpQuantity.value = 0
+//        ingredientName.text = ""
+//        ingredientUnit.text = ""
+//        txtQuantity.text = ""
+//        stpQuantity.value = 0
         
         isSavedLbl.text = "Ingredient Saved"
         isSavedLbl.hidden = false;

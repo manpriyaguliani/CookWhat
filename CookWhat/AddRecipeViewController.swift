@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddRecipeViewController: UIViewController {
+class AddRecipeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var recipeTitleText: UITextField!
     @IBOutlet weak var recipeServingText: UITextField!
@@ -37,9 +37,25 @@ class AddRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //recipeTitleText.text = ""
+        
+        recipeTitleText.delegate = self
+        
         // Do any additional setup after loading the view.
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    //to hide keyboard on screen
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
 
     @IBAction func addIngredients(sender: AnyObject) {
         
@@ -111,12 +127,12 @@ class AddRecipeViewController: UIViewController {
         
     }
 
-//    @IBAction func cancelTapped(sender: AnyObject) {
-//        
-//        self.navigationController?.popToRootViewControllerAnimated(true)
-//        
-//
-//    }
+    @IBAction func cancelTapped(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        
+
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
