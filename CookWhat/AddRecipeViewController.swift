@@ -39,8 +39,8 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         //recipeTitleText.text = ""
         
-        recipeTitleText.delegate = self
-        
+     //   recipeTitleText.delegate = self
+        quantity1.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -54,9 +54,30 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate {
     //to hide keyboard on screen
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
-    }
+        
+    }   
     
 
+//move text field up when keyboard shows up
+    func textFieldDidBeginEditing(textField: UITextField) {
+        animateViewMoving(true, moveValue: 100)
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        animateViewMoving(false, moveValue: 100)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        var movementDuration:NSTimeInterval = 0.3
+        var movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
+    }
+    
+    
+    
     @IBAction func addIngredients(sender: AnyObject) {
         
        // var my:UITextField = UITextField(frame: CGRectMake(0, 0, 10, 10))
