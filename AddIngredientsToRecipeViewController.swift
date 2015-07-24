@@ -20,8 +20,7 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     @IBOutlet weak var ingredientName: UITextField!
     
     @IBOutlet weak var ingreditentQuantity: UITextField!
-    
-    
+        
     @IBOutlet weak var photoPreview: UIImageView!
     
     @IBAction func addPhoto(sender: AnyObject) {

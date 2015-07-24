@@ -348,7 +348,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Available Ingredients" id="Xhc-u3-p7I">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="FPl-yV-qPL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FPl-yV-qPL"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
@@ -643,8 +643,8 @@
                                     <action selector="onAddBtnClick:" destination="mSx-4D-zna" eventType="touchUpInside" id="lfg-dT-puC"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-ab-P5Q">
-                                <rect key="frame" x="36" y="203" width="122" height="88"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no-recipe-image.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-ab-P5Q">
+                                <rect key="frame" x="36" y="203" width="101" height="88"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gud-tX-OpD">
                                 <rect key="frame" x="195" y="232" width="80" height="30"/>
@@ -1033,6 +1033,7 @@
         <image name="bill" width="50" height="50"/>
         <image name="book" width="50" height="50"/>
         <image name="ingredients" width="50" height="50"/>
+        <image name="no-recipe-image.jpg" width="270" height="270"/>
         <image name="recipe" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

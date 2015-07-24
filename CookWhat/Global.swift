@@ -22,4 +22,4 @@ class AvailableIngredients{
     var unit: String = ""
 }
 
-var isDataLoaded : Bool = false
+//var isDataLoaded : Bool = false

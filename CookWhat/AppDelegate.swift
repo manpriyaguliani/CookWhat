@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(existingRecipeList.count == 0)
         {
-  //
-            preloadData()
+              preloadData()
         }
             return true
     }
@@ -75,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let ingredients = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: contxt)
         
-        
+        //pre-loaded data for available ingredients table
         var ingredient1 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
         
         ingredient1.name = "Milk"
@@ -92,56 +91,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        //Create instance of data model
-        var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-        var newIngredient = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var newIngredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        //pre-loaded data for recipe and ingredient table
+        var Recipe1 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe1Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe1Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe1Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
         var Recipe2 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-        var nRecipe2Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe2Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe2Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe2Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe2Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe2Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
         var Recipe3 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
         
         
         let path : NSString = NSURL(fileURLWithPath: "Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg")!.absoluteString!
         let path1 : NSString = NSURL(fileURLWithPath: "Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg")!.absoluteString!
-        newRecipe.photoPath = path as String
+        Recipe1.photoPath = path as String
         Recipe2.photoPath = path1 as String
         Recipe3.photoPath = path as String
 
         
         //map properties
         
-        newRecipe.title = "Easy Dinner Rolls"
-        newRecipe.servings = "2"
-        newRecipe.method = "Combine water and yeast in lg bowl; let stand for 5 minutes.        With wooden spoon, stir  butter, sugar, eggs and salt.         Add flour, 1 cup at a time and beat  much  you can.      (you will probably be able to use all the flour) Cover and refrigerate  at least 2 hours, or up to 3 days.         Grease a 13x9 baking pan.         Turn dough out onto floured surface.         Divide into 24 equal pieces.         Roll each piece into a smooth round ball.         Place  rows  prepared pan.         Cover and  rise  1 hour; until doubled."
-        newRecipe.duration = "20"
+        Recipe1.title = "Easy Dinner Rolls"
+        Recipe1.servings = "2"
+        Recipe1.method = "Combine water and yeast in lg bowl; let stand for 5 minutes.        With wooden spoon, stir  butter, sugar, eggs and salt.         Add flour, 1 cup at a time and beat  much  you can.      (you will probably be able to use all the flour) Cover and refrigerate  at least 2 hours, or up to 3 days.         Grease a 13x9 baking pan.         Turn dough out onto floured surface.         Divide into 24 equal pieces.         Roll each piece into a smooth round ball.         Place  rows  prepared pan.         Cover and  rise  1 hour; until doubled."
+        Recipe1.duration = "20"
         
-        newIngredient.name = "Butter"
-        newIngredient.priority = "high"
-        newIngredient.quantity = "1/2"
-        newIngredient.unit = "cup"
-        newIngredient.recipe = newRecipe
+        Recipe1Ingredient1.name = "Butter"
+        Recipe1Ingredient1.priority = "high"
+        Recipe1Ingredient1.quantity = "1/2"
+        Recipe1Ingredient1.unit = "cup"
+        Recipe1Ingredient1.recipe = Recipe1
         
-        newIngredient2.name = "eggs"
-        newIngredient2.priority = "high"
-        newIngredient2.quantity = "3"
-        newIngredient2.unit = " "
-        newIngredient2.recipe = newRecipe
+        Recipe1Ingredient2.name = "eggs"
+        Recipe1Ingredient2.priority = "high"
+        Recipe1Ingredient2.quantity = "3"
+        Recipe1Ingredient2.unit = " "
+        Recipe1Ingredient2.recipe = Recipe1
         
-        newIngredient3.name = "salt"
-        newIngredient3.priority = "medium"
-        newIngredient3.quantity = "1"
-        newIngredient3.unit = "tsp"
-        newIngredient3.recipe = newRecipe
+        Recipe1Ingredient3.name = "salt"
+        Recipe1Ingredient3.priority = "medium"
+        Recipe1Ingredient3.quantity = "1"
+        Recipe1Ingredient3.unit = "tsp"
+        Recipe1Ingredient3.recipe = Recipe1
         
         
         
@@ -153,23 +152,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe2.duration = "20"
         
-        nRecipe2Ingredient1.name = "Pasta"
-        nRecipe2Ingredient1.priority = "high"
-        nRecipe2Ingredient1.quantity = "3/4"
-        nRecipe2Ingredient1.unit = "pound"
-        nRecipe2Ingredient1.recipe = Recipe2
+        Recipe2Ingredient1.name = "Pasta"
+        Recipe2Ingredient1.priority = "high"
+        Recipe2Ingredient1.quantity = "3/4"
+        Recipe2Ingredient1.unit = "pound"
+        Recipe2Ingredient1.recipe = Recipe2
         
-        nRecipe2Ingredient2.name = "Spinach"
-        nRecipe2Ingredient2.priority = "high"
-        nRecipe2Ingredient2.quantity = "10"
-        nRecipe2Ingredient2.unit = "ounces"
-        nRecipe2Ingredient2.recipe = Recipe2
+        Recipe2Ingredient2.name = "Spinach"
+        Recipe2Ingredient2.priority = "high"
+        Recipe2Ingredient2.quantity = "10"
+        Recipe2Ingredient2.unit = "ounces"
+        Recipe2Ingredient2.recipe = Recipe2
         
-        nRecipe2Ingredient3.name = "lemon"
-        nRecipe2Ingredient3.priority = "low"
-        nRecipe2Ingredient3.quantity = "1"
-        nRecipe2Ingredient3.unit = " "
-        nRecipe2Ingredient3.recipe = Recipe2
+        Recipe2Ingredient3.name = "lemon"
+        Recipe2Ingredient3.priority = "low"
+        Recipe2Ingredient3.quantity = "1"
+        Recipe2Ingredient3.unit = " "
+        Recipe2Ingredient3.recipe = Recipe2
         
         
         
@@ -182,40 +181,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe3.duration = "15"
         
-        nRecipe3Ingredient1.name = "Eggplant"
-        nRecipe3Ingredient1.priority = "high"
-        nRecipe3Ingredient1.quantity = "1"
-        nRecipe3Ingredient1.unit = ""
-        nRecipe3Ingredient1.recipe = Recipe3
+        Recipe3Ingredient1.name = "Eggplant"
+        Recipe3Ingredient1.priority = "high"
+        Recipe3Ingredient1.quantity = "1"
+        Recipe3Ingredient1.unit = ""
+        Recipe3Ingredient1.recipe = Recipe3
         
-        nRecipe3Ingredient2.name = "olive oil"
-        nRecipe3Ingredient2.priority = "high"
-        nRecipe3Ingredient2.quantity = "1/2"
-        nRecipe3Ingredient2.unit = "Cup"
-        nRecipe3Ingredient2.recipe = Recipe3
+        Recipe3Ingredient2.name = "olive oil"
+        Recipe3Ingredient2.priority = "high"
+        Recipe3Ingredient2.quantity = "1/2"
+        Recipe3Ingredient2.unit = "Cup"
+        Recipe3Ingredient2.recipe = Recipe3
         
-        nRecipe3Ingredient3.name = "foccacia"
-        nRecipe3Ingredient3.priority = "high"
-        nRecipe3Ingredient3.quantity = "8"
-        nRecipe3Ingredient3.unit = "slices"
-        nRecipe3Ingredient3.recipe = Recipe3
+        Recipe3Ingredient3.name = "foccacia"
+        Recipe3Ingredient3.priority = "high"
+        Recipe3Ingredient3.quantity = "8"
+        Recipe3Ingredient3.unit = "slices"
+        Recipe3Ingredient3.recipe = Recipe3
         
-        nRecipe3Ingredient4.name = "Tahini"
-        nRecipe3Ingredient4.priority = "medium"
-        nRecipe3Ingredient4.quantity = "1"
-        nRecipe3Ingredient4.unit = "tbsp"
-        nRecipe3Ingredient4.recipe = Recipe3
+        Recipe3Ingredient4.name = "Tahini"
+        Recipe3Ingredient4.priority = "medium"
+        Recipe3Ingredient4.quantity = "1"
+        Recipe3Ingredient4.unit = "tbsp"
+        Recipe3Ingredient4.recipe = Recipe3
         
-        
-        
-        
-        
-        println(newRecipe)
-        println(newIngredient)
-        println("..........")
-        println(newIngredient.recipe)
-        println("..........")
-        
+     
         
         //save context
         contxt.save(nil)

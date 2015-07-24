@@ -11,8 +11,8 @@ import CoreData
 
 class FavouriteRecipesTableViewController: UITableViewController {
 
-    var myList: Array<AnyObject> = []
-    var myIngrList: Array<AnyObject> = []
+    var listRecipesDB: Array<AnyObject> = []
+    var listRecipeIngredientsDB: Array<AnyObject> = []
     var _fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
@@ -25,11 +25,11 @@ class FavouriteRecipesTableViewController: UITableViewController {
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "Recipes")
         let fetchIngr = NSFetchRequest(entityName: "Ingredients")
-        myList =   context.executeFetchRequest(freq, error: nil)!
-        myIngrList =   context.executeFetchRequest(fetchIngr, error: nil)!
+        listRecipesDB =   context.executeFetchRequest(freq, error: nil)!
+        listRecipeIngredientsDB =   context.executeFetchRequest(fetchIngr, error: nil)!
         
-      //  println(myList)
-      //  println(myIngrList)
+      //  println(listRecipesDB)
+      //  println(listRecipeIngredientsDB)
         tableView.reloadData()
     
     }
@@ -54,7 +54,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return myList.count
+        return listRecipesDB.count
     }
 
     //***** loading code into table cells
@@ -67,12 +67,12 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellId as String) as! UITableViewCell
         
-        var data: NSManagedObject = myList[indexPath.row] as! NSManagedObject
+        var data: NSManagedObject = listRecipesDB[indexPath.row] as! NSManagedObject
         
-        var dataIngr: NSManagedObject = myIngrList[indexPath.row] as! NSManagedObject
+        var dataIngr: NSManagedObject = listRecipeIngredientsDB[indexPath.row] as! NSManagedObject
         
       //  if let ip = indexPath as NSIndexPath? {
-       //     var data: NSManagedObject = myList[ip.row] as! NSManagedObject
+       //     var data: NSManagedObject = listRecipesDB[ip.row] as! NSManagedObject
         
           //  cell.textLabel?.text = (data.valueForKey("title") as! String)
             
@@ -120,8 +120,8 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if let tv = tableView as UITableView?{
-                context.deleteObject(myList[indexPath.row] as! NSManagedObject)
-                myList.removeAtIndex(indexPath.row)
+                context.deleteObject(listRecipesDB[indexPath.row] as! NSManagedObject)
+                listRecipesDB.removeAtIndex(indexPath.row)
                 tv.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             }
         }
@@ -156,7 +156,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
        if segue.identifier == "recipeDetail"
         {
-            var selectedItem: NSManagedObject = myList[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
+            var selectedItem: NSManagedObject = listRecipesDB[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
             let IVC: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
             
             IVC.recipeTitle = selectedItem.valueForKey("title") as! String
@@ -165,34 +165,15 @@ class FavouriteRecipesTableViewController: UITableViewController {
             
             IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
             
-            // IVC.info = selectedItem.valueForKey("info") as! String
-            //   IVC.existingItem =  selectedItem
+
             
             IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
             IVC.photo = selectedItem.valueForKey("photoPath") as! String
-//            var ingredien = selectedItem.valueForKey("ingredients") as! NSSet
-//            
-//            let ingo = ingredien.allObjects as! [Ingredients]
-//            
-//            for item in ingo as NSArray
-//            {
-//                println(item.valueForKey("name"))
-//                println(item.valueForKey("quantity"))
-//                println(item.valueForKey("unit"))
-//            }
+
         }
     }
 
     
-    
-//    func testFetch()
-//    {
-//        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let context:NSManagedObjectContext = appDel.managedObjectContext!
-//        let freq = NSFetchRequest(entityName: "Recipes")
-//        myList =   context.executeFetchRequest(freq, error: nil)!
-//        
-//
-//    }
+
 
 }
