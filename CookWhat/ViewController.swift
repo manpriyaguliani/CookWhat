@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblServings: UILabel!
     @IBOutlet weak var stpServings: UIStepper!
     
+    
     @IBOutlet weak var segmentExpertise: UISegmentedControl!
     @IBOutlet weak var titleText: UITextField!
     
@@ -28,7 +29,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-             
+        
+        
         if(lblServings != nil){
             lblServings.text = "1"
         }

@@ -25,6 +25,14 @@ class FavouriteRecipesTableViewController: UITableViewController {
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "Recipes")
         let fetchIngr = NSFetchRequest(entityName: "Ingredients")
+        
+        
+//        var predicate: NSPredicate = NSPredicate(format: "duration == %@", "20")
+//        freq.predicate = predicate
+//        
+//        WE CAN USE THIS FOR FETCHING FAVOURITE RECIPES DIRECTLY
+        
+        
         listRecipesDB =   context.executeFetchRequest(freq, error: nil)!
         listRecipeIngredientsDB =   context.executeFetchRequest(fetchIngr, error: nil)!
         

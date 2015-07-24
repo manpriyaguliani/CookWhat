@@ -6,6 +6,28 @@
 //  Copyright (c) 2015 Sarah Suleri. All rights reserved.
 //
 
+
+
+
+
+
+
+
+
+
+
+
+//SADLY ENOUGH
+
+//Limitations: You cannot necessarily translate “arbitrary” SQL queries into predicates or fetch requests. There is no way, for example, to convert a SQL statement such as
+//SELECT t1.name, V1, V2
+//FROM table1 t1 JOIN (SELECT t2.name AS V1, count(*) AS V2
+//FROM table2 t2 GROUP BY t2.name as V) on t1.name = V.V1
+//into a fetch request. You must fetch the objects of interest, then either perform a calculation directly using the results, or use an array operator.
+
+
+
+
 import UIKit
 import CoreData
 
