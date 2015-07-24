@@ -169,7 +169,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
             //   IVC.existingItem =  selectedItem
             
             IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
-            
+            IVC.photo = selectedItem.valueForKey("photoPath") as! String
 //            var ingredien = selectedItem.valueForKey("ingredients") as! NSSet
 //            
 //            let ingo = ingredien.allObjects as! [Ingredients]

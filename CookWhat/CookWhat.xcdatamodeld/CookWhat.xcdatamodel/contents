@@ -18,13 +18,14 @@
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="servings" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredients" inverseName="recipe" inverseEntity="Ingredients" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ingredients" positionX="-54" positionY="-9" width="128" height="133"/>
-        <element name="Recipes" positionX="-299" positionY="-234" width="128" height="28"/>
         <element name="AvailIngredients" positionX="-180" positionY="-81" width="128" height="105"/>
+        <element name="Ingredients" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Recipes" positionX="-299" positionY="-234" width="128" height="150"/>
     </elements>
 </model>

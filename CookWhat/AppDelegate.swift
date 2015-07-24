@@ -109,6 +109,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var nRecipe3Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         var nRecipe3Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
+        
+        
+        let path : NSString = NSURL(fileURLWithPath: "Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg")!.absoluteString!
+        let path1 : NSString = NSURL(fileURLWithPath: "Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg")!.absoluteString!
+        newRecipe.photoPath = path as String
+        Recipe2.photoPath = path1 as String
+        Recipe3.photoPath = path as String
+
+        
         //map properties
         
         newRecipe.title = "Easy Dinner Rolls"
