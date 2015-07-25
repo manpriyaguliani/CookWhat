@@ -30,21 +30,22 @@
 		6E0D70CC1B60EFA600B2812A /* Bill-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70CB1B60EFA600B2812A /* Bill-50.png */; };
 		6E0D70D01B60F10100B2812A /* Ingredients-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70CE1B60F10100B2812A /* Ingredients-50.png */; };
 		6E0D70D21B60F21B00B2812A /* Purchase Order-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D11B60F21B00B2812A /* Purchase Order-50.png */; };
-		6E0D70D41B60F68500B2812A /* Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D31B60F68500B2812A /* Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
-		6E0D70D61B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D51B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
-		6E0D70D81B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D71B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
-		6E0D70DA1B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70D91B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg */; };
 		6E0D70E41B61032700B2812A /* Literature-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D70E31B61032700B2812A /* Literature-50.png */; };
-		6E2AE0751B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE0741B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg */; };
-		6E2AE0771B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE0761B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg */; };
 		6E2AE07B1B5EA89B0024CC86 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE0781B5EA89B0024CC86 /* Icon-76.png */; };
 		6E2AE07C1B5EA89B0024CC86 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE0791B5EA89B0024CC86 /* Icon-Small@2x.png */; };
 		6E2AE07D1B5EA89B0024CC86 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2AE07A1B5EA89B0024CC86 /* Icon-Small@3x.png */; };
-		6E530B161B60EBAD000CDFB4 /* food-fight-simple-background-53195-480x320.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E530B141B60EBAD000CDFB4 /* food-fight-simple-background-53195-480x320.jpg */; };
 		6E530B171B60EBAD000CDFB4 /* Vegetarian Food-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E530B151B60EBAD000CDFB4 /* Vegetarian Food-50.png */; };
 		6EDB0AE31B4A94F6008FEAD2 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDB0AE21B4A94F6008FEAD2 /* Ingredients.swift */; };
 		6EDB0AE51B4A94F6008FEAD2 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDB0AE41B4A94F6008FEAD2 /* Recipes.swift */; };
 		6EDB0AEB1B4AC0F9008FEAD2 /* AvailIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDB0AEA1B4AC0F9008FEAD2 /* AvailIngredients.swift */; };
+		6EE22CB81B623E910096EA36 /* AddIngredientsToRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE22CB71B623E910096EA36 /* AddIngredientsToRecipeViewController.swift */; };
+		6EE22CBA1B625CC50096EA36 /* no-recipe-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CB91B625CC50096EA36 /* no-recipe-image.jpg */; };
+		6EE22CBE1B62963D0096EA36 /* bean_sandwich.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CBB1B62963D0096EA36 /* bean_sandwich.jpg */; };
+		6EE22CBF1B62963D0096EA36 /* dinner_rolls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CBC1B62963D0096EA36 /* dinner_rolls.jpg */; };
+		6EE22CC01B62963D0096EA36 /* shrimp-leek-pasta_300.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CBD1B62963D0096EA36 /* shrimp-leek-pasta_300.jpg */; };
+		6EE22CC21B629A980096EA36 /* chicken_dumplings.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CC11B629A980096EA36 /* chicken_dumplings.jpg */; };
+		6EE22CC51B629E2B0096EA36 /* cheese_wrap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CC31B629E2B0096EA36 /* cheese_wrap.jpg */; };
+		6EE22CC61B629E2B0096EA36 /* green-smoothie-picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EE22CC41B629E2B0096EA36 /* green-smoothie-picture.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,21 +88,22 @@
 		6E0D70CB1B60EFA600B2812A /* Bill-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bill-50.png"; sourceTree = "<group>"; };
 		6E0D70CE1B60F10100B2812A /* Ingredients-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ingredients-50.png"; sourceTree = "<group>"; };
 		6E0D70D11B60F21B00B2812A /* Purchase Order-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Purchase Order-50.png"; sourceTree = "<group>"; };
-		6E0D70D31B60F68500B2812A /* Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
-		6E0D70D51B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
-		6E0D70D71B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
-		6E0D70D91B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg"; sourceTree = "<group>"; };
 		6E0D70E31B61032700B2812A /* Literature-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Literature-50.png"; sourceTree = "<group>"; };
-		6E2AE0741B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg"; sourceTree = "<group>"; };
-		6E2AE0761B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg"; sourceTree = "<group>"; };
 		6E2AE0781B5EA89B0024CC86 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		6E2AE0791B5EA89B0024CC86 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		6E2AE07A1B5EA89B0024CC86 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
-		6E530B141B60EBAD000CDFB4 /* food-fight-simple-background-53195-480x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "food-fight-simple-background-53195-480x320.jpg"; sourceTree = "<group>"; };
 		6E530B151B60EBAD000CDFB4 /* Vegetarian Food-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vegetarian Food-50.png"; sourceTree = "<group>"; };
 		6EDB0AE21B4A94F6008FEAD2 /* Ingredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		6EDB0AE41B4A94F6008FEAD2 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		6EDB0AEA1B4AC0F9008FEAD2 /* AvailIngredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailIngredients.swift; sourceTree = "<group>"; };
+		6EE22CB71B623E910096EA36 /* AddIngredientsToRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddIngredientsToRecipeViewController.swift; path = ../AddIngredientsToRecipeViewController.swift; sourceTree = "<group>"; };
+		6EE22CB91B625CC50096EA36 /* no-recipe-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "no-recipe-image.jpg"; sourceTree = "<group>"; };
+		6EE22CBB1B62963D0096EA36 /* bean_sandwich.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bean_sandwich.jpg; sourceTree = "<group>"; };
+		6EE22CBC1B62963D0096EA36 /* dinner_rolls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dinner_rolls.jpg; sourceTree = "<group>"; };
+		6EE22CBD1B62963D0096EA36 /* shrimp-leek-pasta_300.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shrimp-leek-pasta_300.jpg"; sourceTree = "<group>"; };
+		6EE22CC11B629A980096EA36 /* chicken_dumplings.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chicken_dumplings.jpg; sourceTree = "<group>"; };
+		6EE22CC31B629E2B0096EA36 /* cheese_wrap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cheese_wrap.jpg; sourceTree = "<group>"; };
+		6EE22CC41B629E2B0096EA36 /* green-smoothie-picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "green-smoothie-picture.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +156,7 @@
 		264F2D781B288F9100BD476F /* CookWhat */ = {
 			isa = PBXGroup;
 			children = (
-				6E2AE0761B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg */,
-				6E2AE0741B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg */,
+				6EE22CB71B623E910096EA36 /* AddIngredientsToRecipeViewController.swift */,
 				264F2D7B1B288F9100BD476F /* AppDelegate.swift */,
 				264F2D801B288F9100BD476F /* ViewController.swift */,
 				264F2D821B288F9100BD476F /* Main.storyboard */,
@@ -178,15 +179,17 @@
 		264F2D791B288F9100BD476F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6EE22CC31B629E2B0096EA36 /* cheese_wrap.jpg */,
+				6EE22CC41B629E2B0096EA36 /* green-smoothie-picture.jpg */,
+				6EE22CC11B629A980096EA36 /* chicken_dumplings.jpg */,
+				6EE22CBB1B62963D0096EA36 /* bean_sandwich.jpg */,
+				6EE22CBC1B62963D0096EA36 /* dinner_rolls.jpg */,
+				6EE22CBD1B62963D0096EA36 /* shrimp-leek-pasta_300.jpg */,
+				6EE22CB91B625CC50096EA36 /* no-recipe-image.jpg */,
 				6E0D70E31B61032700B2812A /* Literature-50.png */,
-				6E0D70D71B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
-				6E0D70D91B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
-				6E0D70D51B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
-				6E0D70D31B60F68500B2812A /* Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg */,
 				6E0D70D11B60F21B00B2812A /* Purchase Order-50.png */,
 				6E0D70CE1B60F10100B2812A /* Ingredients-50.png */,
 				6E0D70CB1B60EFA600B2812A /* Bill-50.png */,
-				6E530B141B60EBAD000CDFB4 /* food-fight-simple-background-53195-480x320.jpg */,
 				6E530B151B60EBAD000CDFB4 /* Vegetarian Food-50.png */,
 				6E2AE0781B5EA89B0024CC86 /* Icon-76.png */,
 				6E2AE0791B5EA89B0024CC86 /* Icon-Small@2x.png */,
@@ -295,24 +298,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE22CC21B629A980096EA36 /* chicken_dumplings.jpg in Resources */,
 				264F2D841B288F9100BD476F /* Main.storyboard in Resources */,
+				6EE22CC01B62963D0096EA36 /* shrimp-leek-pasta_300.jpg in Resources */,
 				6E530B171B60EBAD000CDFB4 /* Vegetarian Food-50.png in Resources */,
-				6E0D70D61B60F6D600B2812A /* Fruits-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */,
+				6EE22CBF1B62963D0096EA36 /* dinner_rolls.jpg in Resources */,
+				6EE22CBE1B62963D0096EA36 /* bean_sandwich.jpg in Resources */,
 				2685029F1B456C9C006D628B /* tessdata in Resources */,
-				6E0D70D81B60F6DB00B2812A /* Cherry-And-Ice-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */,
-				6E530B161B60EBAD000CDFB4 /* food-fight-simple-background-53195-480x320.jpg in Resources */,
-				6E2AE0751B5E96840024CC86 /* Baking-cake-in-rural-kitchen-dough-recipe-ingredients-eggs-flour-milk-butter-sugar-on-vintage-wooden-table-from-above.-Background-layout-with-free-text-space..jpg in Resources */,
+				6EE22CC51B629E2B0096EA36 /* cheese_wrap.jpg in Resources */,
 				6E2AE07D1B5EA89B0024CC86 /* Icon-Small@3x.png in Resources */,
 				6E2AE07B1B5EA89B0024CC86 /* Icon-76.png in Resources */,
 				6E0D70D21B60F21B00B2812A /* Purchase Order-50.png in Resources */,
-				6E0D70DA1B60F76700B2812A /* Orange-Slices-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */,
 				6E0D70CC1B60EFA600B2812A /* Bill-50.png in Resources */,
-				6E0D70D41B60F68500B2812A /* Lemon-Water-iphone-4s-wallpaper-ilikewallpaper_com.jpg in Resources */,
 				264F2D891B288F9100BD476F /* LaunchScreen.xib in Resources */,
 				6E0D70E41B61032700B2812A /* Literature-50.png in Resources */,
 				6E2AE07C1B5EA89B0024CC86 /* Icon-Small@2x.png in Resources */,
-				6E2AE0771B5E987A0024CC86 /* stock-photo-food-ingredients-and-spices-on-aged-background-129044282.jpg in Resources */,
 				264F2D861B288F9100BD476F /* Images.xcassets in Resources */,
+				6EE22CC61B629E2B0096EA36 /* green-smoothie-picture.jpg in Resources */,
+				6EE22CBA1B625CC50096EA36 /* no-recipe-image.jpg in Resources */,
 				6E0D70D01B60F10100B2812A /* Ingredients-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +338,7 @@
 				264F2DA71B29DBE200BD476F /* AddRecipeViewController.swift in Sources */,
 				264F2DA31B29DB6800BD476F /* CaptureBillViewController.swift in Sources */,
 				6EDB0AEB1B4AC0F9008FEAD2 /* AvailIngredients.swift in Sources */,
+				6EE22CB81B623E910096EA36 /* AddIngredientsToRecipeViewController.swift in Sources */,
 				264F2D811B288F9100BD476F /* ViewController.swift in Sources */,
 				264F2D7C1B288F9100BD476F /* AppDelegate.swift in Sources */,
 				264F2DA51B29DB9B00BD476F /* AvailableIngredientsTableViewController.swift in Sources */,

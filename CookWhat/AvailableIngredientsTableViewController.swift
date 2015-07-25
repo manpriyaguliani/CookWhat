@@ -11,7 +11,7 @@ import CoreData
 
 class AvailableIngredientsTableViewController: UITableViewController {
 
-    var myList: Array<AnyObject> = []
+    var listIngredientsDB: Array<AnyObject> = []
     
     var ingredientList: [AvailableIngredients] = [AvailableIngredients]()
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class AvailableIngredientsTableViewController: UITableViewController {
          self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       //  self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         
         
@@ -34,27 +34,27 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
     func dummyData(){
         var avIng: AvailableIngredients = AvailableIngredients();
-        avIng.title = "Egg"
-        avIng.quantity = "10"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Potato"
-        avIng.quantity = "1"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
-        avIng = AvailableIngredients();
-        avIng.title = "Rice"
-        avIng.quantity = "4"
-        avIng.unit = "kg"
-        ingredientList.append(avIng)
+//        avIng.title = "Egg"
+//        avIng.quantity = "10"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Potato"
+//        avIng.quantity = "1"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
+//        avIng = AvailableIngredients();
+//        avIng.title = "Rice"
+//        avIng.quantity = "4"
+//        avIng.unit = "kg"
+//        ingredientList.append(avIng)
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "AvailIngredients")
-        myList =   context.executeFetchRequest(freq, error: nil)!
-        println(myList.count)
+        listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
+        println(listIngredientsDB.count)
         tableView.reloadData()
-        for item in myList
+        for item in listIngredientsDB
         {
 //            avIng.title = item.name
 //            avIng.quantity = item.quantity
@@ -72,8 +72,8 @@ class AvailableIngredientsTableViewController: UITableViewController {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "AvailIngredients")
-        myList =   context.executeFetchRequest(freq, error: nil)!
-        println(myList.count)
+        listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
+        println(listIngredientsDB.count)
         
         
         
@@ -92,10 +92,8 @@ class AvailableIngredientsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         
-        println("test");
-        println(myList.count);
-        println("test");
-        return myList.count
+      
+        return listIngredientsDB.count
     }
 
     
@@ -106,7 +104,7 @@ class AvailableIngredientsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("availableIngredientCell", forIndexPath: indexPath) as! UITableViewCell
 
         
-        var data: NSManagedObject = myList[indexPath.row] as! NSManagedObject
+        var data: NSManagedObject = listIngredientsDB[indexPath.row] as! NSManagedObject
         
       
         
@@ -151,7 +149,7 @@ class AvailableIngredientsTableViewController: UITableViewController {
 //            
 //            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
 //            
-//            myList.removeAtIndex(indexPath.row)
+//            listIngredientsDB.removeAtIndex(indexPath.row)
 //            
 //            
 //            tableView.reloadData()
@@ -167,8 +165,8 @@ class AvailableIngredientsTableViewController: UITableViewController {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if let tv = tableView as UITableView?{
-                context.deleteObject(myList[indexPath.row] as! NSManagedObject)
-                myList.removeAtIndex(indexPath.row)
+                context.deleteObject(listIngredientsDB[indexPath.row] as! NSManagedObject)
+                listIngredientsDB.removeAtIndex(indexPath.row)
                 tv.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             }
         }

@@ -23,7 +23,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     var recipeDirection: String = ""
     var recipeIngredients: NSSet = []
     var recipeDuration: String = ""
-    
+    var photo: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +90,26 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         var mins: String = "Minutes"
      durationText.text = recipeDuration +  "\(mins)"
+        
+        let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDir: NSString = paths.objectAtIndex(0) as! String
+        let path: NSString = documentsDir.stringByAppendingString(photo)
+        
+        var imageView = UIImageView(frame: CGRectMake(200, 70, 100, 100));
+           var image : UIImage
+        
+        if photo.rangeOfString("file:///") != nil {
+            photo = photo.substringFromIndex(advance(photo.startIndex, 8))
+            image = UIImage(named: photo)!
+        }
+        else{
+            image = UIImage(contentsOfFile: path as String)!
+        }
+        imageView.image = image;
+        
+        self.view.addSubview(imageView);
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

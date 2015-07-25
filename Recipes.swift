@@ -16,8 +16,14 @@ class Recipes: NSManagedObject {
     @NSManaged var servings: String
     @NSManaged var title: String
     @NSManaged var method: String
+    
+    @NSManaged var photoPath: String
+    
+    @NSManaged var isFavourite: Bool
+    @NSManaged var difficultyLevel: String
+    
     @NSManaged var ingredients: Ingredients
-
+    
  
 
 }

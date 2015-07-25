@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(existingRecipeList.count == 0)
         {
-  //
-            preloadData()
+              preloadData()
         }
             return true
     }
@@ -75,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let ingredients = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: contxt)
         
-        
+        //pre-loaded data for available ingredients table
         var ingredient1 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
         
         ingredient1.name = "Milk"
@@ -92,75 +91,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        //Create instance of data model
-        var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-        var newIngredient = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var newIngredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        //pre-loaded data for recipe and ingredient table
+        var Recipe1 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe1Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe1Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe1Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
         var Recipe2 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-        var nRecipe2Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe2Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe2Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe2Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe2Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe2Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
         var Recipe3 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var nRecipe3Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe3Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
-        //map properties
+        var Recipe4 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe4Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe4Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe4Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe4Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
-        newRecipe.title = "Easy Dinner Rolls"
-        newRecipe.servings = "2"
-        newRecipe.method = "Combine water and yeast in lg bowl; let stand for 5 minutes.        With wooden spoon, stir  butter, sugar, eggs and salt.         Add flour, 1 cup at a time and beat  much  you can.      (you will probably be able to use all the flour) Cover and refrigerate  at least 2 hours, or up to 3 days.         Grease a 13x9 baking pan.         Turn dough out onto floured surface.         Divide into 24 equal pieces.         Roll each piece into a smooth round ball.         Place  rows  prepared pan.         Cover and  rise  1 hour; until doubled."
-        newRecipe.duration = "20"
+        var Recipe5 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe5Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe5Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe5Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe5Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
-        newIngredient.name = "Butter"
-        newIngredient.priority = "high"
-        newIngredient.quantity = "1/2"
-        newIngredient.unit = "cup"
-        newIngredient.recipe = newRecipe
-        
-        newIngredient2.name = "eggs"
-        newIngredient2.priority = "high"
-        newIngredient2.quantity = "3"
-        newIngredient2.unit = " "
-        newIngredient2.recipe = newRecipe
-        
-        newIngredient3.name = "salt"
-        newIngredient3.priority = "medium"
-        newIngredient3.quantity = "1"
-        newIngredient3.unit = "tsp"
-        newIngredient3.recipe = newRecipe
+        var Recipe6 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe6Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe6Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe6Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe6Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
         
         
+        
+        
+        
+        //Easy Dinner Rolls
+        
+        Recipe1.title = "Easy Dinner Rolls"
+        Recipe1.servings = "2"
+        Recipe1.method = "Combine water and yeast in lg bowl; let stand for 5 minutes.        With wooden spoon, stir  butter, sugar, eggs and salt.         Add flour, 1 cup at a time and beat  much  you can.      (you will probably be able to use all the flour) Cover and refrigerate  at least 2 hours, or up to 3 days.         Grease a 13x9 baking pan.         Turn dough out onto floured surface.         Divide into 24 equal pieces.         Roll each piece into a smooth round ball.         Place  rows  prepared pan.         Cover and  rise  1 hour; until doubled."
+        Recipe1.duration = "20"
+        let path : NSString = NSURL(fileURLWithPath: "dinner_rolls.jpg")!.absoluteString!
+        Recipe1.photoPath = path as String
+
+        
+        Recipe1Ingredient1.name = "Butter"
+        Recipe1Ingredient1.priority = "high"
+        Recipe1Ingredient1.quantity = "1/2"
+        Recipe1Ingredient1.unit = "cup"
+        Recipe1Ingredient1.recipe = Recipe1
+        
+        Recipe1Ingredient2.name = "eggs"
+        Recipe1Ingredient2.priority = "high"
+        Recipe1Ingredient2.quantity = "3"
+        Recipe1Ingredient2.unit = " "
+        Recipe1Ingredient2.recipe = Recipe1
+        
+        Recipe1Ingredient3.name = "salt"
+        Recipe1Ingredient3.priority = "medium"
+        Recipe1Ingredient3.quantity = "1"
+        Recipe1Ingredient3.unit = "tsp"
+        Recipe1Ingredient3.recipe = Recipe1
+        
+        
+        //Shrimp, Leek, and Spinach Pasta
         
         Recipe2.title = "Shrimp, Leek, and Spinach Pasta"
         Recipe2.servings = "4"
         Recipe2.method = " Cook the pasta according to the package directions; drain and return it to the pot.    Meanwhile, heat the butter in a large skillet over medium heat. Add the leeks, ½ teaspoon salt, and ¼ teaspoon pepper and cook, stirring occasionally, until the leeks have softened, 3 to 5 minutes.         Add the shrimp and lemon zest and cook, tossing frequently, until the shrimp  opaque throughout, 4 to 5 minutes more.         Add the cream and ½ teaspoon salt to the pasta the pot and cook over medium heat, stirring, until slightly thickened, 1 to 2 minutes. Add the shrimp mixture and the spinach and toss to combine."
+        let path1 : NSString = NSURL(fileURLWithPath: "shrimp-leek-pasta_300.jpg")!.absoluteString!
+        Recipe2.photoPath = path1 as String
         
+
         
         Recipe2.duration = "20"
         
-        nRecipe2Ingredient1.name = "Pasta"
-        nRecipe2Ingredient1.priority = "high"
-        nRecipe2Ingredient1.quantity = "3/4"
-        nRecipe2Ingredient1.unit = "pound"
-        nRecipe2Ingredient1.recipe = Recipe2
+        Recipe2Ingredient1.name = "Pasta"
+        Recipe2Ingredient1.priority = "high"
+        Recipe2Ingredient1.quantity = "3/4"
+        Recipe2Ingredient1.unit = "pound"
+        Recipe2Ingredient1.recipe = Recipe2
         
-        nRecipe2Ingredient2.name = "Spinach"
-        nRecipe2Ingredient2.priority = "high"
-        nRecipe2Ingredient2.quantity = "10"
-        nRecipe2Ingredient2.unit = "ounces"
-        nRecipe2Ingredient2.recipe = Recipe2
+        Recipe2Ingredient2.name = "Spinach"
+        Recipe2Ingredient2.priority = "high"
+        Recipe2Ingredient2.quantity = "10"
+        Recipe2Ingredient2.unit = "ounces"
+        Recipe2Ingredient2.recipe = Recipe2
         
-        nRecipe2Ingredient3.name = "lemon"
-        nRecipe2Ingredient3.priority = "low"
-        nRecipe2Ingredient3.quantity = "1"
-        nRecipe2Ingredient3.unit = " "
-        nRecipe2Ingredient3.recipe = Recipe2
+        Recipe2Ingredient3.name = "lemon"
+        Recipe2Ingredient3.priority = "low"
+        Recipe2Ingredient3.quantity = "1"
+        Recipe2Ingredient3.unit = " "
+        Recipe2Ingredient3.recipe = Recipe2
         
         
         
@@ -169,43 +197,146 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe3.title = "Eggplant With Peppers and Beans Sandwich"
         Recipe3.servings = "4"
         Recipe3.method = "Heat oven to 400° F. Place the eggplant on 2 rimmed baking sheets and brush with ¼ cup of the oil. Season with the cayenne and ¼ teaspoon salt and bake, turning once,  until tender, 20 to 25 minutes. Let cool.  Meanwhile, mash the beans, garlic, tahini, lemon juice, the remaining tablespoon of oil, ¼ teaspoon salt, and ¼ teaspoon black pepper in a small bowl.         Divide the mashed beans, eggplant, red peppers, and romaine leaves among the bread."
-        
+        let path2 : NSString = NSURL(fileURLWithPath: "bean_sandwich.jpg")!.absoluteString!
+        Recipe3.photoPath = path2 as String
+
         
         Recipe3.duration = "15"
         
-        nRecipe3Ingredient1.name = "Eggplant"
-        nRecipe3Ingredient1.priority = "high"
-        nRecipe3Ingredient1.quantity = "1"
-        nRecipe3Ingredient1.unit = ""
-        nRecipe3Ingredient1.recipe = Recipe3
+        Recipe3Ingredient1.name = "Eggplant"
+        Recipe3Ingredient1.priority = "high"
+        Recipe3Ingredient1.quantity = "1"
+        Recipe3Ingredient1.unit = ""
+        Recipe3Ingredient1.recipe = Recipe3
         
-        nRecipe3Ingredient2.name = "olive oil"
-        nRecipe3Ingredient2.priority = "high"
-        nRecipe3Ingredient2.quantity = "1/2"
-        nRecipe3Ingredient2.unit = "Cup"
-        nRecipe3Ingredient2.recipe = Recipe3
+        Recipe3Ingredient2.name = "olive oil"
+        Recipe3Ingredient2.priority = "high"
+        Recipe3Ingredient2.quantity = "1/2"
+        Recipe3Ingredient2.unit = "Cup"
+        Recipe3Ingredient2.recipe = Recipe3
         
-        nRecipe3Ingredient3.name = "foccacia"
-        nRecipe3Ingredient3.priority = "high"
-        nRecipe3Ingredient3.quantity = "8"
-        nRecipe3Ingredient3.unit = "slices"
-        nRecipe3Ingredient3.recipe = Recipe3
+        Recipe3Ingredient3.name = "foccacia"
+        Recipe3Ingredient3.priority = "high"
+        Recipe3Ingredient3.quantity = "8"
+        Recipe3Ingredient3.unit = "slices"
+        Recipe3Ingredient3.recipe = Recipe3
         
-        nRecipe3Ingredient4.name = "Tahini"
-        nRecipe3Ingredient4.priority = "medium"
-        nRecipe3Ingredient4.quantity = "1"
-        nRecipe3Ingredient4.unit = "tbsp"
-        nRecipe3Ingredient4.recipe = Recipe3
+        Recipe3Ingredient4.name = "Tahini"
+        Recipe3Ingredient4.priority = "medium"
+        Recipe3Ingredient4.quantity = "1"
+        Recipe3Ingredient4.unit = "tbsp"
+        Recipe3Ingredient4.recipe = Recipe3
+        
+     
+        
+        
+        //Easy Chicken and Dumplings
+        
+        Recipe4.title = "Easy Chicken and Dumplings"
+        Recipe4.servings = "4"
+        Recipe4.method = "In 4- to 5-quart Dutch oven, heat broth, chicken, soup and poultry seasoning to boiling over medium-high heat; reduce heat to low. Cover; simmer 5 minutes, stirring occasionally. Increase heat to medium-high; return to a low boil.        On lightly floured surface, roll or pat each biscuit to 1/8-inch thickness; cut into 1/2-inch-wide strips         Drop strips, one at a time, into boiling chicken mixture.Add carrots and celery. Reduce heat to low Cover; simmer 15 to 20 minutes, stirring occasionally to prevent dumplings from sticking."
+        let path3 : NSString = NSURL(fileURLWithPath: "chicken_dumplings.jpg")!.absoluteString!
+        Recipe4.photoPath = path3 as String
+        
+        
+        Recipe4.duration = "40"
+        
+        Recipe4Ingredient1.name = "Chicken"
+        Recipe4Ingredient1.priority = "high"
+        Recipe4Ingredient1.quantity = "3"
+        Recipe4Ingredient1.unit = "cups"
+        Recipe4Ingredient1.recipe = Recipe4
+        
+        Recipe4Ingredient2.name = "Biscuits"
+        Recipe4Ingredient2.priority = "high"
+        Recipe4Ingredient2.quantity = "15"
+        Recipe4Ingredient2.unit = " "
+        Recipe4Ingredient2.recipe = Recipe4
+        
+        Recipe4Ingredient3.name = "Carrots"
+        Recipe4Ingredient3.priority = "medium"
+        Recipe4Ingredient3.quantity = "2"
+        Recipe4Ingredient3.unit = " "
+        Recipe4Ingredient3.recipe = Recipe4
+        
+        Recipe4Ingredient4.name = "Condensed Milk"
+        Recipe4Ingredient4.priority = "low"
+        Recipe4Ingredient4.quantity = "1"
+        Recipe4Ingredient4.unit = " "
+        Recipe4Ingredient4.recipe = Recipe4
         
         
         
+        //Mint Green Smoothie
+        
+        Recipe5.title = "Mint Green Smoothie"
+        Recipe5.servings = "1"
+        Recipe5.method = "Place all the ingredients into a blender and blend until smooth and combined. Pour into glasses and serve."
+        let path4 : NSString = NSURL(fileURLWithPath: "green-smoothie-picture.jpg")!.absoluteString!
+        Recipe5.photoPath = path4 as String
         
         
-        println(newRecipe)
-        println(newIngredient)
-        println("..........")
-        println(newIngredient.recipe)
-        println("..........")
+        Recipe5.duration = "5"
+        
+        Recipe5Ingredient1.name = "Milk"
+        Recipe5Ingredient1.priority = "high"
+        Recipe5Ingredient1.quantity = "1"
+        Recipe5Ingredient1.unit = "cup"
+        Recipe5Ingredient1.recipe = Recipe5
+        
+        Recipe5Ingredient2.name = "Avacado"
+        Recipe5Ingredient2.priority = "high"
+        Recipe5Ingredient2.quantity = "1/2"
+        Recipe5Ingredient2.unit = " "
+        Recipe5Ingredient2.recipe = Recipe5
+        
+        Recipe5Ingredient3.name = "Banana"
+        Recipe5Ingredient3.priority = "medium"
+        Recipe5Ingredient3.quantity = "1"
+        Recipe5Ingredient3.unit = " "
+        Recipe5Ingredient3.recipe = Recipe5
+        
+        Recipe5Ingredient4.name = "Honey"
+        Recipe5Ingredient4.priority = "medium"
+        Recipe5Ingredient4.quantity = "2"
+        Recipe5Ingredient4.unit = "tsp"
+        Recipe5Ingredient4.recipe = Recipe5
+        
+        
+        //Cheese, carrot & Ham Wrap
+        
+        Recipe6.title = "Cheese, Cream & Ham Wrap"
+        Recipe6.servings = "1"
+        Recipe6.method = "Spread the wrap with the cream cheese. Arrange the ham on top. Place the avocado slices in a straight line across the middle. Season with salt and pepper. Top with the carrot. Roll up the wrap tightly to enclose. Cut in half."
+        let path5 : NSString = NSURL(fileURLWithPath: "cheese_wrap.jpg")!.absoluteString!
+        Recipe6.photoPath = path5 as String
+                
+        Recipe6.duration = "5"
+        
+        Recipe6Ingredient1.name = "Bread Wrap"
+        Recipe6Ingredient1.priority = "high"
+        Recipe6Ingredient1.quantity = "1"
+        Recipe6Ingredient1.unit = " "
+        Recipe6Ingredient1.recipe = Recipe6
+        
+        Recipe6Ingredient2.name = "Cheese"
+        Recipe6Ingredient2.priority = "high"
+        Recipe6Ingredient2.quantity = "1"
+        Recipe6Ingredient2.unit = "tbsp"
+        Recipe6Ingredient2.recipe = Recipe6
+        
+        Recipe6Ingredient3.name = "Ham"
+        Recipe6Ingredient3.priority = "High"
+        Recipe6Ingredient3.quantity = "30"
+        Recipe6Ingredient3.unit = "g"
+        Recipe6Ingredient3.recipe = Recipe6
+        
+        Recipe6Ingredient4.name = "Carrot"
+        Recipe6Ingredient4.priority = "High"
+        Recipe6Ingredient4.quantity = "1/2"
+        Recipe6Ingredient4.unit = "cup"
+        Recipe6Ingredient4.recipe = Recipe6
+        
         
         
         //save context

@@ -14,14 +14,10 @@ class ViewController: UIViewController {
 
     var recipeTitle: String = ""
     var recipeServings: String = ""
-    //var info: String = ""
-    
-    //test test
-    //test test
-
     
     @IBOutlet weak var lblServings: UILabel!
     @IBOutlet weak var stpServings: UIStepper!
+    
     
     @IBOutlet weak var segmentExpertise: UISegmentedControl!
     @IBOutlet weak var titleText: UITextField!
@@ -33,16 +29,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   /*     if (existingItem != nil){
-            titleText.text = recipeTitle
-            servingsText.text = recipeServings
-            //textFieldQuantity.text = quantity
-        }*/
-        
-        if !isDataLoaded {
-        //loadData()
-            isDataLoaded = true
-        }
         
         
         if(lblServings != nil){
