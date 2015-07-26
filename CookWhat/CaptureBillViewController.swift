@@ -7,21 +7,81 @@
 //
 
 import UIKit
+import CoreData
 
 class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate  {
 
+    var doShowMenu: Bool = true
     @IBOutlet weak var textView: UITextView!
      var activityIndicator:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+       // textView.hidden = true
+        textView.text = ""
+        doShowMenu = true
+        showMenu()
+    }
+    
+    override func viewDidAppear(didAppear: Bool) {
+        super.viewDidAppear(didAppear)
+        
+        if doShowMenu {
+            doShowMenu = false
+            showMenu()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showMenu(){
+        // 1
+        view.endEditing(true)
+        
+        
+        // 2
+        let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
+            message: nil, preferredStyle: .ActionSheet)
+        
+        // 3
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            let cameraButton = UIAlertAction(title: "Take Photo",
+                style: .Default) { (alert) -> Void in
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = .Camera
+                    self.presentViewController(imagePicker,
+                        animated: true,
+                        completion: nil)
+            }
+            imagePickerActionSheet.addAction(cameraButton)
+        }
+        
+        // 4
+        let libraryButton = UIAlertAction(title: "Choose Existing",
+            style: .Default) { (alert) -> Void in
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .PhotoLibrary
+                self.presentViewController(imagePicker,
+                    animated: true,
+                    completion: nil)
+        }
+        imagePickerActionSheet.addAction(libraryButton)
+        
+        // 5
+        let cancelButton = UIAlertAction(title: "Cancel",
+            style: .Cancel) { (alert) -> Void in
+        }
+        imagePickerActionSheet.addAction(cancelButton)
+        
+        // 6
+        presentViewController(imagePickerActionSheet, animated: true,
+            completion: nil)
     }
     
     @IBAction func takePhoto(sender: AnyObject) {
@@ -139,6 +199,7 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
             })
     }
     
+    
     func performImageRecognition(image: UIImage) {
         // 1
         let tesseract = G8Tesseract()
@@ -163,8 +224,90 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
         textView.text = tesseract.recognizedText
         textView.editable = true
         
+        addIngredientsToDB()
+        
         // 8
         removeActivityIndicator()
+    }
+    
+    func addIngredientsToDB(){
+        
+        //Reference to AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        
+       //Reference to Context
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let ingredient = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: context)
+        
+        //String to Array
+        var bill : String = textView.text
+        var space : Int = 0
+        var char = bill.subString(0, length: 1)
+        var quantity : Int = -1
+        var ingredientName : String = ""
+        
+        
+        var i: Int = 0
+        while i < bill.length && bill.subString(i, length: 5) != "Total" {
+             char = bill.subString(i, length: 1)
+            var num = bill.subString(i, length: 1).toInt()
+            if num != nil{
+                // Found First Digit
+                bill = bill.subString(i, length: bill.length - i)
+                space = bill.indexOf(" ")
+                num = bill.subString(0, length: space).toInt()
+                quantity = num!
+                println(num)
+                i = space
+            }
+            else{
+                //Quantity already stored
+                if quantity != -1{
+                    //Store Ingredient name
+                    bill = bill.subString(i, length: bill.length - i)
+                    space = bill.indexOf(" ")
+                    ingredientName = bill.subString(0, length: space)
+                    i = bill.indexOf("\n") + 1
+                    bill = bill.subString(i, length: bill.length - i)
+                    i = -1
+                    
+                    
+                    
+                    // Add ingredient in DB
+                    //Create instance of data model
+                    var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
+                    
+                    
+                    //map properties
+                    newIngredient.name = ingredientName
+                    newIngredient.quantity = quantity.description
+                    newIngredient.unit = ""
+                    
+                    println(newIngredient)
+                    
+                    //Post DB Insertion
+                    quantity = -1
+                    ingredientName = ""
+                }
+            }
+            i++
+        }
+       
+        
+        
+        //save context
+        context.save(nil)
+        
+        let alert = UIAlertView()
+        alert.title = "Bill Captured"
+        alert.message = "Items have been added to your Available Ingredients list."
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+        
+        doShowMenu = true
+
     }
     
 }

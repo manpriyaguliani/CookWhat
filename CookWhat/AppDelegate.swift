@@ -83,11 +83,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var ingredient2 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
         
-        ingredient2.name = "Eggs"
+        ingredient2.name = "Apples"
         ingredient2.quantity = "6"
         ingredient2.unit = ""
-        
-        
+
+
         
         
         
@@ -143,17 +143,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe1Ingredient1.name = "Butter"
         Recipe1Ingredient1.priority = "high"
-        Recipe1Ingredient1.quantity = "1/2"
+        Recipe1Ingredient1.quantity = "0.5"
         Recipe1Ingredient1.unit = "cup"
         Recipe1Ingredient1.recipe = Recipe1
         
-        Recipe1Ingredient2.name = "eggs"
+        Recipe1Ingredient2.name = "Eggs"
         Recipe1Ingredient2.priority = "high"
         Recipe1Ingredient2.quantity = "3"
         Recipe1Ingredient2.unit = " "
         Recipe1Ingredient2.recipe = Recipe1
         
-        Recipe1Ingredient3.name = "salt"
+        Recipe1Ingredient3.name = "Salt"
         Recipe1Ingredient3.priority = "medium"
         Recipe1Ingredient3.quantity = "1"
         Recipe1Ingredient3.unit = "tsp"
@@ -174,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe2Ingredient1.name = "Pasta"
         Recipe2Ingredient1.priority = "high"
-        Recipe2Ingredient1.quantity = "3/4"
+        Recipe2Ingredient1.quantity = "0.75"
         Recipe2Ingredient1.unit = "pound"
         Recipe2Ingredient1.recipe = Recipe2
         
@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe2Ingredient2.unit = "ounces"
         Recipe2Ingredient2.recipe = Recipe2
         
-        Recipe2Ingredient3.name = "lemon"
+        Recipe2Ingredient3.name = "Lemon"
         Recipe2Ingredient3.priority = "low"
         Recipe2Ingredient3.quantity = "1"
         Recipe2Ingredient3.unit = " "
@@ -209,13 +209,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe3Ingredient1.unit = ""
         Recipe3Ingredient1.recipe = Recipe3
         
-        Recipe3Ingredient2.name = "olive oil"
+        Recipe3Ingredient2.name = "Olive oil"
         Recipe3Ingredient2.priority = "high"
-        Recipe3Ingredient2.quantity = "1/2"
+        Recipe3Ingredient2.quantity = "0.5"
         Recipe3Ingredient2.unit = "Cup"
         Recipe3Ingredient2.recipe = Recipe3
         
-        Recipe3Ingredient3.name = "foccacia"
+        Recipe3Ingredient3.name = "Foccacia"
         Recipe3Ingredient3.priority = "high"
         Recipe3Ingredient3.quantity = "8"
         Recipe3Ingredient3.unit = "slices"
@@ -286,7 +286,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe5Ingredient2.name = "Avacado"
         Recipe5Ingredient2.priority = "high"
-        Recipe5Ingredient2.quantity = "1/2"
+        Recipe5Ingredient2.quantity = "0.5"
         Recipe5Ingredient2.unit = " "
         Recipe5Ingredient2.recipe = Recipe5
         
@@ -333,7 +333,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe6Ingredient4.name = "Carrot"
         Recipe6Ingredient4.priority = "High"
-        Recipe6Ingredient4.quantity = "1/2"
+        Recipe6Ingredient4.quantity = "0.5"
         Recipe6Ingredient4.unit = "cup"
         Recipe6Ingredient4.recipe = Recipe6
         

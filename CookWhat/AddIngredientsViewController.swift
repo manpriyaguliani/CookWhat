@@ -21,12 +21,23 @@ class AddIngredientsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isSavedLbl.hidden = true;
-        // Do any additional setup after loading the view.
+        ingredientName.text = ""
+        txtQuantity.text = ""
+        stpQuantity.value = 1
+        ingredientUnit.text = ""
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewDidAppear(didAppear: Bool) {
+        super.viewDidAppear(didAppear)
+        isSavedLbl.hidden = true;
+        ingredientName.text = ""
+        txtQuantity.text = ""
+        stpQuantity.value = 1
+        ingredientUnit.text = ""
     }
     
     

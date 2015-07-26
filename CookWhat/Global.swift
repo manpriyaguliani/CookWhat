@@ -10,16 +10,42 @@ import Foundation
 
 class RecipeToSuggest{
     
-    var time: String = "";
+    var time: Int = 0;
     var title: String = "";
     
 }
 
 class AvailableIngredients{
     
-    var title: String = ""
+    var name: String = ""
     var quantity: String = ""
     var unit: String = ""
 }
 
 //var isDataLoaded : Bool = false
+
+
+extension String
+{
+    var length: Int {
+        get {
+            return count(self)
+        }
+    }
+    func indexOf(target: String) -> Int
+    {
+        var range = self.rangeOfString(target)
+        if let range = range {
+            return distance(self.startIndex, range.startIndex)
+        } else {
+            return -1
+        }
+    }
+    func subString(startIndex: Int, length: Int) -> String
+    {
+        var start = advance(self.startIndex, startIndex)
+        var end = advance(self.startIndex, startIndex + length)
+        return self.substringWithRange(Range<String.Index>(start: start, end: end))
+    }
+    
+}
