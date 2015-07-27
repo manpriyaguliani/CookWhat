@@ -141,10 +141,9 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         }
         var count = recipeIngredientList.count
         if allIngredientsAvailable == recipeIngredientList.count {
-           updateIngredientsInDB()
             return true
             
-            //MG : Update Available Ingredients
+           
         }
         else {
             return false
@@ -152,43 +151,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     }
     
     
-    func updateIngredientsInDB()
-    {
-        var i : Int = 0
-        var allIngredientsAvailable : Int = 0
-
-        while i < recipeIngredientList.count {
-            println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
-            for ing in listIngredientsDB {
-                var item = ing as! NSManagedObject
-                println(item.valueForKey("name") as! String)
-                println(item.valueForKey("quantity") as! String)
-                if recipeIngredientList[i].name == item.valueForKey("name") as! String {
-//                    var a: Double = Double((item.valueForKey("quantity") as! String).toInt()!)
-//                    //var b: Double = Double(recipeIngredientList[i].quantity.toInt()!)
-//                    var str = "0.5" //recipeIngredientList[i].quantity
-//                    var b: Double! = Double(str.toInt()!)
-//                    
-//                        println("recipeIngredientList[i].quantity")
-//                            println(recipeIngredientList[i].quantity)
-//                    var c: Double = a - b
-                    
-                    //NEED SUBTRACTION LOGIC HERE 
-                    //UPDATION WORKS FINE
-                    
-                    
-               ing.setValue("new" , forKey: "quantity")
-                }
-                
-                
-            }
-            i++
-
-        }
-        
-        
-    }
-    
+       
     
     
     func filterDBList(){

@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookWhat/RecipeDetailsViewController.swift"
-            timestampString = "459679448.140857"
+            timestampString = "459693233.127613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "RecipeDetailsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookWhat/SuggestedRecipesTableViewController.swift"
-            timestampString = "459687192.098036"
+            timestampString = "459693439.926737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "SuggestedRecipesTableViewController"
             landmarkType = "3">
             <Locations>
