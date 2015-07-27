@@ -175,7 +175,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
                     recipeListObj.title = recipeDBObj.valueForKey("title") as! String
         
                     recipeListObj.time = dbRecipeDuration
-            
+                    recipeListObj.photo = recipeDBObj.valueForKey("photoPath") as! String
                     recipeList.append(recipeListObj)
                 }
             }
@@ -211,6 +211,41 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         cell.detailTextLabel?.text = recipeList[row].title
         
         cell.textLabel?.text = recipeList[row].time.description + "mins"
+        
+        
+        var photo = recipeList[row].photo  //valueForKey("photoPath") as! String
+        
+        println(photo)
+        let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDir: NSString = paths.objectAtIndex(0) as! String
+        let path: NSString = documentsDir.stringByAppendingString(photo)
+        
+        
+        if photo.rangeOfString("file:///") != nil {
+            photo = photo.substringFromIndex(advance(photo.startIndex, 8))
+            cell.imageView?.image = UIImage(named: photo)
+        }
+        else{
+            cell.imageView?.image = UIImage(contentsOfFile: path as String)!
+            photo = path as String
+        }
+        
+        
+        
+        // var photo: String = "cheese_wrap.jpg"
+        //cell.imageView?.image = UIImage(named: photo)
+        
+        
+        let xOffset: CGFloat = 10
+        let contentViewFrame = cell.contentView.frame
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: photo)
+        imageView.frame = CGRectMake(xOffset, CGFloat(5), CGFloat(35), CGFloat(35))
+        cell.contentView.addSubview(imageView)
+        
+
+        
+        
         
         return cell
     }
