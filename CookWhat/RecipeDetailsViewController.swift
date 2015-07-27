@@ -153,9 +153,20 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
                     
                     //NEED SUBTRACTION LOGIC HERE
                     //UPDATION WORKS FINE
+                    var remainingQuantity: Int
+                    
+                    var recipeQ = recipeIngredientList[i].quantity.toInt()!
+                    
+                    remainingQuantity = (item.valueForKey("Quantity") as! String).toInt()! - recipeQ
+                    
+                    ing.setValue(remainingQuantity.description, forKey: "quantity")
                     
                     
-                    ing.setValue("100" , forKey: "quantity")
+                    if((ing.valueForKey("quantity")as! String).toInt() == 0)
+                    {
+                        //Delete if ZERO
+                    }
+                    
                 }
                 
                 

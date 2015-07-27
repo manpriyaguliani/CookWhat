@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var ingredient3 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
         
         ingredient3.name = "Butter"
-        ingredient3.quantity = "1"
+        ingredient3.quantity = "2"
         ingredient3.unit = "Cup"
         
         var ingredient4 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe1Ingredient1.name = "Butter"
         Recipe1Ingredient1.priority = "high"
-        Recipe1Ingredient1.quantity = "0.5"
+        Recipe1Ingredient1.quantity = "1"
         Recipe1Ingredient1.unit = "cup"
         Recipe1Ingredient1.recipe = Recipe1
         
