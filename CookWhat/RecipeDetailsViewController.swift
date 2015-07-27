@@ -134,7 +134,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     @IBAction func updateIngredients(sender: AnyObject) {
         var i : Int = 0
         var allIngredientsAvailable : Int = 0
-        
+        var remainingQuantity: Int
         while i < recipeIngredientList.count {
             println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
             for ing in listIngredientsDB {
@@ -153,7 +153,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
                     
                     //NEED SUBTRACTION LOGIC HERE
                     //UPDATION WORKS FINE
-                    var remainingQuantity: Int
+                    
                     
                     var recipeQ = recipeIngredientList[i].quantity.toInt()!
                     
