@@ -21,7 +21,9 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var tblViewIngredients: UITableView!
     @IBOutlet weak var durationText: UILabel!
     
-    var ingredientList: [AvailableIngredients] = [AvailableIngredients]()
+    var listIngredientsDB: Array<AnyObject> = []
+    
+    var recipeIngredientList: [AvailableIngredients] = [AvailableIngredients]()
     var recipeTitle: String = ""
     var numberOfServings: String = ""
     var recipeDirection: String = ""
@@ -73,7 +75,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             avIng.name = item.valueForKey("name") as! String
             avIng.quantity = item.valueForKey("quantity") as! String
             avIng.unit = item.valueForKey("unit") as! String
-            ingredientList.append(avIng)
+            recipeIngredientList.append(avIng)
             avIng = AvailableIngredients();
             println(item.valueForKey("name"))
             println(item.valueForKey("quantity"))
@@ -88,6 +90,18 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
      lblRecipeTitle.text = recipeTitle
    //  lblNumberOfServings.text = numberOfServings
      txtViewDirections.text = recipeDirection
+     
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "AvailIngredients")
+        listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
+
+        
+        
+        
+        
+        
+        
         
         var mins: String = "Minutes"
      durationText.text = recipeDuration +  "\(mins)"
@@ -116,6 +130,44 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         
     }
+    
+    @IBAction func updateIngredients(sender: AnyObject) {
+        var i : Int = 0
+        var allIngredientsAvailable : Int = 0
+        
+        while i < recipeIngredientList.count {
+            println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
+            for ing in listIngredientsDB {
+                var item = ing as! NSManagedObject
+                println(item.valueForKey("name") as! String)
+                println(item.valueForKey("quantity") as! String)
+                if recipeIngredientList[i].name == item.valueForKey("name") as! String {
+                    //                    var a: Double = Double((item.valueForKey("quantity") as! String).toInt()!)
+                    //                    //var b: Double = Double(recipeIngredientList[i].quantity.toInt()!)
+                    //                    var str = "0.5" //recipeIngredientList[i].quantity
+                    //                    var b: Double! = Double(str.toInt()!)
+                    //
+                    //                        println("recipeIngredientList[i].quantity")
+                    //                            println(recipeIngredientList[i].quantity)
+                    //                    var c: Double = a - b
+                    
+                    //NEED SUBTRACTION LOGIC HERE
+                    //UPDATION WORKS FINE
+                    
+                    
+                    ing.setValue("100" , forKey: "quantity")
+                }
+                
+                
+            }
+            i++
+            
+        }
+    }
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -132,7 +184,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return ingredientList.count
+        return recipeIngredientList.count
     }
     
     
@@ -143,9 +195,9 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         let row = indexPath.row
         
         
-        cell.textLabel?.text = ingredientList[row].quantity + " " + ingredientList[row].unit
+        cell.textLabel?.text = recipeIngredientList[row].quantity + " " + recipeIngredientList[row].unit
         
-        cell.detailTextLabel?.text = ingredientList[row].name
+        cell.detailTextLabel?.text = recipeIngredientList[row].name
         
         return cell
     }
@@ -213,7 +265,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
 //            
 //            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
 //            
-//            ingredientList.removeAtIndex(indexPath.row)
+//            recipeIngredientList.removeAtIndex(indexPath.row)
 //            
 //            
 //            tableView.reloadData()
