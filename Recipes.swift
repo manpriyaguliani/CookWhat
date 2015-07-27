@@ -19,7 +19,7 @@ class Recipes: NSManagedObject {
     
     @NSManaged var photoPath: String
     
-    @NSManaged var isFavourite: Bool
+    @NSManaged var isFavourite: String //Bool
     @NSManaged var difficultyLevel: String
     
     @NSManaged var ingredients: Ingredients

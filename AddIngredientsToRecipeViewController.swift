@@ -59,11 +59,11 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         
         //map properties
         
-        newRecipe.title = "ImageRecipe"
-        newRecipe.servings = "ImageRecipe"
-        newRecipe.method = "ImageRecipe"
-        newRecipe.duration = "ImageRecipe"
-        
+        newRecipe.title = "Recipe"
+        newRecipe.servings = "3"
+        newRecipe.method = "Some Method"
+        newRecipe.duration = "10"
+        newRecipe.isFavourite = "true"
         
         if(self.photoPath != nil)
         {

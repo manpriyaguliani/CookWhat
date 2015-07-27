@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
 
@@ -28,6 +29,9 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     var recipeDuration: String = ""
     var photo: String = ""
     var isFavourite: Bool = false
+    var isFavouriteDB: String = ""
+    
+    var existingItem: NSManagedObject!
     
     
     override func viewDidLoad() {
@@ -41,17 +45,22 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
-    
-//        if !isFavourite {
-//    
-//        favouritesButton.imageView?.image = UIImage(named: "favStarUnFilled")!
-//        }
-//        else
-//        {
-//    
-//        favouritesButton.imageView?.image = UIImage(named: "favStarFilled")!
-//        }
-         tblViewIngredients.reloadData()
+        println(isFavouriteDB)
+        
+        
+        if isFavouriteDB == "true"
+        {
+            favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)           // favouritesButton.imageView?.image = UIImage(named: "favStarUnFilled")!
+        }
+        else
+        {
+            favouritesButton.setBackgroundImage(UIImage(named: "favStarUnfilled")!, forState: UIControlState.Normal)
+            
+           // favouritesButton.imageView?.image = UIImage(named: "favStarFilled")!
+        }
+
+        
+        tblViewIngredients.reloadData()
     }
 
     func dummyData(){
@@ -90,6 +99,8 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
 //        var imageView = UIImageView(frame: CGRectMake(200, 70, 100, 100));
          var imageView = UIImageView(frame: CGRectMake(0, 0, 500, 500));
            var image : UIImage
+        
+        println(photo)
         
         if photo.rangeOfString("file:///") != nil {
             photo = photo.substringFromIndex(advance(photo.startIndex, 8))
@@ -148,22 +159,50 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     }
     
     
-    //MG: Update DB 
+    //MG: Update DB  - done
     @IBAction func onClickFavStar(sender: AnyObject) {
+        
+        //Reference to AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        
+        //Reference to Context
+        
+        let contxt:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let en = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
+        
         
         if isFavourite {
             isFavourite = false
             favouritesButton.setBackgroundImage(UIImage(named: "favStarUnfilled")!, forState: UIControlState.Normal)
+            
+            
+            if (existingItem != nil){
+                existingItem.setValue("false", forKey: "isFavourite")
+              
+            }
+          
+            
         }
         else
         {
             isFavourite = true
             favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)
+            
+            
+            if (existingItem != nil){
+                existingItem.setValue("true", forKey: "isFavourite")
+                
+
         }
+        
+        //save context
+        contxt.save(nil)
         
     }
     
-    
+    }
     
     // Override to support editing the table view.
 //     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
