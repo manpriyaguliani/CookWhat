@@ -239,7 +239,20 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
        //Reference to Context
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         
+        //to add
         let ingredient = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: context)
+        
+        
+        var listIngredientsDB: Array<AnyObject> = []
+
+        let readIngredients = NSFetchRequest(entityName: "AvailIngredients")
+        listIngredientsDB =   context.executeFetchRequest(readIngredients, error: nil)!
+        println(listIngredientsDB.count)
+        
+        
+        
+        var alreadyPresent : Bool = false
+        var alreadyPresentIngredient: NSManagedObject!
         
         //String to Array
         var bill : String = textView.text
@@ -247,7 +260,7 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
         var char = bill.subString(0, length: 1)
         var quantity : Int = -1
         var ingredientName : String = ""
-        
+        var newQuantity = ""
         
         var i: Int = 0
         while i < bill.length && bill.subString(i, length: 5) != "Total" {
@@ -273,9 +286,38 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
                     bill = bill.subString(i, length: bill.length - i)
                     i = -1
                     
+                    for item in listIngredientsDB
+                    {
+                        if(item.name == ingredientName)
+                        {
+                            //alreadyPresent = true
+                            alreadyPresentIngredient = item as! NSManagedObject
+                            //oldQuantity = item.valueForKey("quantity") as! String
+                        }
+                    }
                     
-                    
-                    // Add ingredient in DB
+                    if (alreadyPresentIngredient != nil)
+                    {
+                        //update existing ingredient
+                        alreadyPresentIngredient.setValue(ingredientName, forKey: "name")
+                        alreadyPresentIngredient.setValue(alreadyPresentIngredient.valueForKey("unit"), forKey: "unit")
+                        
+                        
+                        var newValue = quantity.description.toInt()
+                        var oldValue = (alreadyPresentIngredient.valueForKey("quantity") as! String).toInt()
+                        
+                        
+                        println(newValue)
+                        println(oldValue)
+                        
+                        var finalValue = newValue! + oldValue!
+                        println(finalValue)
+                        alreadyPresentIngredient.setValue(String(finalValue), forKey: "quantity")
+                        alreadyPresentIngredient = nil
+                    }
+                    else
+                    {
+                    // Add new ingredient in DB
                     //Create instance of data model
                     var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
                     
@@ -286,19 +328,21 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
                     newIngredient.unit = ""
                     
                     println(newIngredient)
+                    }
                     
                     //Post DB Insertion
                     quantity = -1
                     ingredientName = ""
                 }
+                
+                //save context
+                context.save(nil)
             }
             i++
         }
        
         
         
-        //save context
-        context.save(nil)
         
         let alert = UIAlertView()
         alert.title = "Bill Captured"
