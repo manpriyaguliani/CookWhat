@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0F230150-C119-4E24-BD6D-646B4B636A7E</string>
+	<string>4950B3BB-65A1-4469-89D9-B58436CA62A8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CookWhat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>5719559B260570031796E342EBCF39AB51A3DA55</key>
-		<string>https://github.com/manpriyaguliani/CookWhat.git</string>
+		<string>https://github.com/sarahsuleri/CookWhat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CookWhat.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/manpriyaguliani/CookWhat.git</string>
+	<string>https://github.com/sarahsuleri/CookWhat.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>5719559B260570031796E342EBCF39AB51A3DA55</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CookWhat_Working</string>
+			<string>CookWhat</string>
 		</dict>
 	</array>
 </dict>

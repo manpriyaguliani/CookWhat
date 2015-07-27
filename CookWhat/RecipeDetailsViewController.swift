@@ -10,6 +10,8 @@ import UIKit
 
 class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
 
+    @IBOutlet weak var favouritesButton: UIButton!
+    
     @IBOutlet weak var lblRecipeTitle: UILabel!
     
     @IBOutlet weak var lblNumberOfServings: UILabel!
@@ -17,6 +19,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var txtViewDirections: UITextView!
     @IBOutlet weak var tblViewIngredients: UITableView!
     @IBOutlet weak var durationText: UILabel!
+    
     var ingredientList: [AvailableIngredients] = [AvailableIngredients]()
     var recipeTitle: String = ""
     var numberOfServings: String = ""
@@ -24,6 +27,8 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     var recipeIngredients: NSSet = []
     var recipeDuration: String = ""
     var photo: String = ""
+    var isFavourite: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,21 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         tblViewIngredients.dataSource = self;
      //    tblViewIngredients.reloadData()
     }
+    
+    override func viewDidAppear(didAppear: Bool) {
+        super.viewDidAppear(didAppear)
+    
+//        if !isFavourite {
+//    
+//        favouritesButton.imageView?.image = UIImage(named: "favStarUnFilled")!
+//        }
+//        else
+//        {
+//    
+//        favouritesButton.imageView?.image = UIImage(named: "favStarFilled")!
+//        }
+         tblViewIngredients.reloadData()
+    }
 
     func dummyData(){
         var avIng: AvailableIngredients = AvailableIngredients();
@@ -41,7 +61,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         for item in listOfIngredients as NSArray
         {
-            avIng.title = item.valueForKey("name") as! String
+            avIng.name = item.valueForKey("name") as! String
             avIng.quantity = item.valueForKey("quantity") as! String
             avIng.unit = item.valueForKey("unit") as! String
             ingredientList.append(avIng)
@@ -53,39 +73,11 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             
         }
         
-//        
-//        avIng.title = "Egg"
-//        avIng.quantity = "10"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Potato"
-//        avIng.quantity = "1"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Rice"
-//        avIng.quantity = "4"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Apple"
-//        avIng.quantity = "4"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Orange"
-//        avIng.quantity = "4"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Flour"
-//        avIng.quantity = "4"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
+
     }
     func initializeControls(){
      lblRecipeTitle.text = recipeTitle
-     lblNumberOfServings.text = numberOfServings
+   //  lblNumberOfServings.text = numberOfServings
      txtViewDirections.text = recipeDirection
         
         var mins: String = "Minutes"
@@ -95,7 +87,8 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         let documentsDir: NSString = paths.objectAtIndex(0) as! String
         let path: NSString = documentsDir.stringByAppendingString(photo)
         
-        var imageView = UIImageView(frame: CGRectMake(200, 70, 100, 100));
+//        var imageView = UIImageView(frame: CGRectMake(200, 70, 100, 100));
+         var imageView = UIImageView(frame: CGRectMake(0, 0, 500, 500));
            var image : UIImage
         
         if photo.rangeOfString("file:///") != nil {
@@ -106,6 +99,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             image = UIImage(contentsOfFile: path as String)!
         }
         imageView.image = image;
+        imageView.alpha = 0.3
         
         self.view.addSubview(imageView);
         
@@ -115,11 +109,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewDidAppear(didAppear: Bool) {
-        super.viewDidAppear(didAppear)
-        tblViewIngredients.reloadData()
-        
-    }
+   
 
     // MARK: - Table view data source
     
@@ -142,9 +132,9 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         let row = indexPath.row
         
         
-        cell.detailTextLabel?.text = ingredientList[row].quantity + ingredientList[row].unit
+        cell.textLabel?.text = ingredientList[row].quantity + " " + ingredientList[row].unit
         
-        cell.textLabel?.text = ingredientList[row].title
+        cell.detailTextLabel?.text = ingredientList[row].name
         
         return cell
     }
@@ -155,6 +145,22 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
      func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
+    }
+    
+    
+    //MG: Update DB 
+    @IBAction func onClickFavStar(sender: AnyObject) {
+        
+        if isFavourite {
+            isFavourite = false
+            favouritesButton.setBackgroundImage(UIImage(named: "favStarUnfilled")!, forState: UIControlState.Normal)
+        }
+        else
+        {
+            isFavourite = true
+            favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)
+        }
+        
     }
     
     

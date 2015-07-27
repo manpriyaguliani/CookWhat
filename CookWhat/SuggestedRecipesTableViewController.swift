@@ -42,7 +42,9 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     var recipeListDB: Array<AnyObject> = []
     var myIngrList: Array<AnyObject> = []
     var _fetchedResultsController: NSFetchedResultsController!
-    
+    var recipeIngredientList: [AvailableIngredients] = [AvailableIngredients]()
+   
+    var listIngredientsDB: Array<AnyObject> = []
     
     var recipeList: [RecipeToSuggest] = [RecipeToSuggest]()
     
@@ -56,37 +58,17 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         recipeList.removeAll(keepCapacity: true)
         loadDataFromDB()
+        loadAvailableIngredientsList()
         filterDBList()
         tableView.reloadData()
     }
     
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
-        recipeList.removeAll(keepCapacity: true)
-
-        loadDataFromDB()
-        filterDBList()
-        tableView.reloadData()
-        
-    }
-
-    func dummyData(){
-        var sugRec: RecipeToSuggest = RecipeToSuggest();
-       
-        sugRec.title = "Potato wedges"
-        sugRec.time = "15"
-        recipeList.append(sugRec)
-        sugRec = RecipeToSuggest();
-        sugRec.title = "Boiled Rice"
-        sugRec.time = "20"
-        recipeList.append(sugRec)
-        sugRec = RecipeToSuggest();
-        sugRec.title = "Biryani"
-        sugRec.time = "60"
-        recipeList.append(sugRec)
 
         
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -105,6 +87,69 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
 
     }
     
+    func loadAvailableIngredientsList(){
+    
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "AvailIngredients")
+        listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
+        
+    }
+    
+    func loadRecipeIngredients(dbRecipeIngredients : NSSet){
+        var avIng: AvailableIngredients = AvailableIngredients();
+        
+        let listOfIngredients = dbRecipeIngredients.allObjects as! [Ingredients]
+        recipeIngredientList.removeAll(keepCapacity: true)
+        for item in listOfIngredients as NSArray
+        {
+            avIng.name = item.valueForKey("name") as! String
+            avIng.quantity = item.valueForKey("quantity") as! String
+            avIng.unit = item.valueForKey("unit") as! String
+            recipeIngredientList.append(avIng)
+            avIng = AvailableIngredients();
+            
+        }
+    }
+    
+    func areAllIngredientsAvailable() -> Bool
+    {
+        // compare recipeIngredientList and listIngredientsDB
+        var allIngredientsAvailable : Int = 0
+        var i : Int = 0
+     
+        while i < recipeIngredientList.count {
+              println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
+            for ing in listIngredientsDB {
+                var item = ing as! NSManagedObject
+              println(item.valueForKey("name") as! String)
+                println(item.valueForKey("quantity") as! String)
+                if recipeIngredientList[i].name == item.valueForKey("name") as! String {
+                    if  recipeIngredientList[i].quantity.toInt() > (item.valueForKey("quantity") as! String).toInt() {
+                        return false
+                    }
+                    else{
+                     allIngredientsAvailable++
+                        break
+                    }
+                }
+               
+                
+            }
+            i++
+        }
+        var count = recipeIngredientList.count
+        if allIngredientsAvailable == recipeIngredientList.count {
+            return true
+            
+            //MG : Update Available Ingredients
+        }
+        else {
+            return false
+        }
+    }
+    
     func filterDBList(){
       
         var recipeListObj : RecipeToSuggest = RecipeToSuggest()
@@ -113,17 +158,28 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         while i < recipeListDB.count{
             var recipeDBObj: NSManagedObject = recipeListDB[i] as! NSManagedObject
  
-            if (recipeDBObj.valueForKey("duration") as! String).toInt() <= duration.toInt() {
-                recipeListObj.title = recipeDBObj.valueForKey("title") as! String
+            var dbRecipeDuration: Int = (recipeDBObj.valueForKey("duration") as! String).toInt()!
+            var dbRecipeIngredients = recipeDBObj.valueForKey("ingredients") as! NSSet
+            if  dbRecipeDuration <= duration.toInt() {
+                println(recipeDBObj.valueForKey("title") as! String)
+                loadRecipeIngredients(dbRecipeIngredients) //Loaded in Recipe Ingredient List
+                loadAvailableIngredientsList()
+                
+                //if match then..
+                if areAllIngredientsAvailable() {
+                    recipeListObj = RecipeToSuggest()
+                    recipeListObj.title = recipeDBObj.valueForKey("title") as! String
         
-                recipeListObj.time = recipeDBObj.valueForKey("duration") as! String
+                    recipeListObj.time = dbRecipeDuration
             
-                recipeList.append(recipeListObj)
+                    recipeList.append(recipeListObj)
+                }
             }
           i++
         }
-        
+       
         recipeList = recipeList.sorted { $0.time < $1.time }
+        
     }
     
    
@@ -150,10 +206,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         
         cell.detailTextLabel?.text = recipeList[row].title
         
-        cell.textLabel?.text = recipeList[row].time + "mins"
-
-      
-
+        cell.textLabel?.text = recipeList[row].time.description + "mins"
         
         return cell
     }
@@ -178,8 +231,6 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
             let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
             
             recipeList.removeAtIndex(indexPath.row)
-            
-            
             tableView.reloadData()
 
         } else if editingStyle == .Insert {
@@ -204,33 +255,43 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     */
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+   
+    func getDBIndexforRecipe(index : Int) -> Int {
         
-//        let vc: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
-//        vc.recipeTitle = "My Recipe"
-//        vc.numberOfServings = "1"
-//        vc.recipeDirection = "recipe direction"
+        var i: Int = 0
+        
+        while i < recipeListDB.count{
+            var selectedItem: NSManagedObject = recipeListDB[i] as! NSManagedObject
+            var recipeTitle = selectedItem.valueForKey("title") as! String
+            if recipeTitle == recipeList[index].title
+            {
+                return i
+            }
+            i++
+        }
+        return -1
+    }
+
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
         
         if segue.identifier == "suggestedRecipeDetail"
         {
-//            var selectedItem: NSManagedObject = myList[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
-//            let IVC: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
-//            
-//            IVC.recipeTitle = selectedItem.valueForKey("title") as! String
-//            IVC.numberOfServings = selectedItem.valueForKey("servings") as! String
-//            IVC.recipeDirection = selectedItem.valueForKey("method") as! String
-//            
-//            IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
-//            
-//            // IVC.info = selectedItem.valueForKey("info") as! String
-//            //   IVC.existingItem =  selectedItem
-//            
-//            IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
+            var index: Int = getDBIndexforRecipe(self.tableView.indexPathForSelectedRow()!.row)
+            if index != -1{
+                var selectedItem: NSManagedObject = recipeListDB[index] as! NSManagedObject
+                let IVC: RecipeDetailsViewController = segue.destinationViewController as! RecipeDetailsViewController
+                
+                IVC.recipeTitle = selectedItem.valueForKey("title") as! String
+                IVC.numberOfServings = selectedItem.valueForKey("servings") as! String
+                IVC.recipeDirection = selectedItem.valueForKey("method") as! String
+                IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
+                IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
+                IVC.photo = selectedItem.valueForKey("photoPath") as! String
+
+            }
+
         
         }
     }
