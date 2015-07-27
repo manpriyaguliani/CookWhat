@@ -207,4 +207,22 @@ class AvailableIngredientsTableViewController: UITableViewController {
     }
     */
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+        if segue.identifier == "existingIngredient"
+        {
+            var selectedItem: NSManagedObject = listIngredientsDB[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
+            let IVC: AddIngredientsViewController = segue.destinationViewController as! AddIngredientsViewController
+            
+            IVC.name = selectedItem.valueForKey("name") as! String
+            IVC.quantity = selectedItem.valueForKey("quantity") as! String
+            IVC.unit = selectedItem.valueForKey("unit") as! String
+            
+            IVC.existingItem =  selectedItem
+        }
+        
+    }
+    
 }

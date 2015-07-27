@@ -27,10 +27,11 @@ class FavouriteRecipesTableViewController: UITableViewController {
         let fetchIngr = NSFetchRequest(entityName: "Ingredients")
         
         
-//        var predicate: NSPredicate = NSPredicate(format: "duration == %@", "20")
-//        freq.predicate = predicate
-//        
-//        WE CAN USE THIS FOR FETCHING FAVOURITE RECIPES DIRECTLY
+         //var predicate: NSPredicate = NSPredicate(format: "duration == %@", "5")
+        var predicate: NSPredicate = NSPredicate(format: "isFavourite == %@", "true")
+        
+        freq.predicate = predicate
+
         
         
         listRecipesDB =   context.executeFetchRequest(freq, error: nil)!
@@ -103,6 +104,37 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
         
+        var photo = data.valueForKey("photoPath") as! String
+        
+        println(photo)
+        let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDir: NSString = paths.objectAtIndex(0) as! String
+        let path: NSString = documentsDir.stringByAppendingString(photo)
+
+        
+        if photo.rangeOfString("file:///") != nil {
+            photo = photo.substringFromIndex(advance(photo.startIndex, 8))
+            cell.imageView?.image = UIImage(named: photo)
+        }
+        else{
+            cell.imageView?.image = UIImage(contentsOfFile: path as String)!
+            photo = path as String
+        }
+
+        
+        
+       // var photo: String = "cheese_wrap.jpg"
+        //cell.imageView?.image = UIImage(named: photo)
+        
+        
+        let xOffset: CGFloat = 10
+        let contentViewFrame = cell.contentView.frame
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: photo)
+        imageView.frame = CGRectMake(xOffset, CGFloat(5), CGFloat(35), CGFloat(35))
+        cell.contentView.addSubview(imageView)
+        
+        
       //  println(" ....")
       //  println(data.valueForKey("ingredients") as! NSSet)
         //println(ingr)
@@ -173,11 +205,12 @@ class FavouriteRecipesTableViewController: UITableViewController {
             
             IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
             
-
-            
+         
             IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
             IVC.photo = selectedItem.valueForKey("photoPath") as! String
-
+            
+            IVC.isFavouriteDB = selectedItem.valueForKey("isFavourite") as! String
+            IVC.existingItem =  selectedItem
         }
     }
 

@@ -87,7 +87,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ingredient2.quantity = "6"
         ingredient2.unit = ""
 
+        
+        var ingredient3 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient3.name = "Butter"
+        ingredient3.quantity = "1"
+        ingredient3.unit = "Cup"
+        
+        var ingredient4 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient4.name = "Eggs"
+        ingredient4.quantity = "6"
+        ingredient4.unit = ""
 
+        var ingredient5 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient5.name = "Salt"
+        ingredient5.quantity = "10"
+        ingredient5.unit = "Tsp"
         
         
         
@@ -139,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe1.duration = "20"
         let path : NSString = NSURL(fileURLWithPath: "dinner_rolls.jpg")!.absoluteString!
         Recipe1.photoPath = path as String
-
+        Recipe1.isFavourite = "true"
         
         Recipe1Ingredient1.name = "Butter"
         Recipe1Ingredient1.priority = "high"
@@ -167,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe2.method = " Cook the pasta according to the package directions; drain and return it to the pot.    Meanwhile, heat the butter in a large skillet over medium heat. Add the leeks, ½ teaspoon salt, and ¼ teaspoon pepper and cook, stirring occasionally, until the leeks have softened, 3 to 5 minutes.         Add the shrimp and lemon zest and cook, tossing frequently, until the shrimp  opaque throughout, 4 to 5 minutes more.         Add the cream and ½ teaspoon salt to the pasta the pot and cook over medium heat, stirring, until slightly thickened, 1 to 2 minutes. Add the shrimp mixture and the spinach and toss to combine."
         let path1 : NSString = NSURL(fileURLWithPath: "shrimp-leek-pasta_300.jpg")!.absoluteString!
         Recipe2.photoPath = path1 as String
-        
+        Recipe2.isFavourite = "false"
 
         
         Recipe2.duration = "20"
@@ -200,7 +217,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let path2 : NSString = NSURL(fileURLWithPath: "bean_sandwich.jpg")!.absoluteString!
         Recipe3.photoPath = path2 as String
 
-        
+        Recipe3.isFavourite = "true"
         Recipe3.duration = "15"
         
         Recipe3Ingredient1.name = "Eggplant"
@@ -238,7 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let path3 : NSString = NSURL(fileURLWithPath: "chicken_dumplings.jpg")!.absoluteString!
         Recipe4.photoPath = path3 as String
         
-        
+        Recipe4.isFavourite = "false"
         Recipe4.duration = "40"
         
         Recipe4Ingredient1.name = "Chicken"
@@ -275,7 +292,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let path4 : NSString = NSURL(fileURLWithPath: "green-smoothie-picture.jpg")!.absoluteString!
         Recipe5.photoPath = path4 as String
         
-        
+        Recipe5.isFavourite = "true"
         Recipe5.duration = "5"
         
         Recipe5Ingredient1.name = "Milk"
@@ -310,7 +327,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe6.method = "Spread the wrap with the cream cheese. Arrange the ham on top. Place the avocado slices in a straight line across the middle. Season with salt and pepper. Top with the carrot. Roll up the wrap tightly to enclose. Cut in half."
         let path5 : NSString = NSURL(fileURLWithPath: "cheese_wrap.jpg")!.absoluteString!
         Recipe6.photoPath = path5 as String
-                
+                Recipe6.isFavourite = "false"
         Recipe6.duration = "5"
         
         Recipe6Ingredient1.name = "Bread Wrap"
