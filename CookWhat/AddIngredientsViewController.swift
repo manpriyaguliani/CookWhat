@@ -35,14 +35,17 @@ class AddIngredientsViewController: UIViewController {
             txtQuantity.text = quantity
             stpQuantity.value = Double(quantity.toInt()!)
             ingredientUnit.text = unit
+            self.title = "Change Ingredient"
+
         }
         else
         {
         
-        ingredientName.text = ""
-        txtQuantity.text = ""
-        stpQuantity.value = 1
-        ingredientUnit.text = ""
+            ingredientName.text = ""
+            txtQuantity.text = ""
+            stpQuantity.value = 1
+            ingredientUnit.text = ""
+            self.title = "Add Ingredient"
         }
     }
     
@@ -59,12 +62,17 @@ class AddIngredientsViewController: UIViewController {
 //        ingredientUnit.text = ""
     }
     
-    
+    //stepper UI Control
     @IBAction func onValueChange(sender: UIStepper, forEvent event: UIEvent) {
         txtQuantity.text = Int(stpQuantity.value).description
         
     }
     
+    //to hide keyboard on screen
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+        
+    }
     
     @IBAction func saveTapped(sender: AnyObject) {
         
