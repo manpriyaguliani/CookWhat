@@ -12,7 +12,7 @@ class RecipeToSuggest{
     
     var time: Int = 0;
     var title: String = "";
-    
+    var photo: String = ""
 }
 
 class AvailableIngredients{
