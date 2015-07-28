@@ -122,6 +122,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
         // 5
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
+                self.doShowMenu = true
         }
         imagePickerActionSheet.addAction(cancelButton)
         
