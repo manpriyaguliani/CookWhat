@@ -21,6 +21,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var tblViewIngredients: UITableView!
     @IBOutlet weak var durationText: UILabel!
     
+    @IBOutlet weak var useRecipeBtn: UIButton!
     var listIngredientsDB: Array<AnyObject> = []
     
     var recipeIngredientList: [AvailableIngredients] = [AvailableIngredients]()
@@ -134,14 +135,27 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     @IBAction func updateIngredients(sender: AnyObject) {
         var i : Int = 0
         var allIngredientsAvailable : Int = 0
-        
+ 
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "AvailIngredients")
+        listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
+
+        useRecipeBtn.enabled = false
+
+
         while i < recipeIngredientList.count {
             println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
             for ing in listIngredientsDB {
-                var item = ing as! NSManagedObject
-                println(item.valueForKey("name") as! String)
-                println(item.valueForKey("quantity") as! String)
-                if recipeIngredientList[i].name == item.valueForKey("name") as! String {
+                var item: NSManagedObject! = ing as! NSManagedObject
+            //    println(item.valueForKey("name") as! String)
+            //    println(item.valueForKey("quantity") as! String)
+                
+                if(item.valueForKey("name") != nil)
+                {
+                    println(item.valueForKey("name"))
+                if recipeIngredientList[i].name == item.valueForKey("name") as! String
+                {
                     //                    var a: Double = Double((item.valueForKey("quantity") as! String).toInt()!)
                     //                    //var b: Double = Double(recipeIngredientList[i].quantity.toInt()!)
                     //                    var str = "0.5" //recipeIngredientList[i].quantity
@@ -162,18 +176,30 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
                     ing.setValue(remainingQuantity.description, forKey: "quantity")
                     
                     
-                    if((ing.valueForKey("quantity")as! String).toInt() == 0)
-                    {
-                        //Delete if ZERO
-                    }
+                  
                     
                 }
                 
+                if((item.valueForKey("quantity")as! String).toInt() == 0)
+                {
+                    //Delete if ZERO
+                    context.deleteObject(item as NSManagedObject)
+                    context.save(nil)
+                }
                 
+                context.save(nil)
+                }
             }
             i++
             
         }
+        
+        let alert = UIAlertView()
+        alert.title = "Recipe Used"
+        alert.message = "Some items have been updated in your Available Ingredients list."
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+        
     }
     
     

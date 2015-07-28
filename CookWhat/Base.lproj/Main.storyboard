@@ -796,11 +796,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hwc-EK-yA5">
-                                <rect key="frame" x="211" y="109" width="93" height="30"/>
+                                <rect key="frame" x="219" y="109" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Use Recipe">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Use Recipe"/>
                                 <connections>
                                     <action selector="updateIngredients:" destination="ARz-Kv-NJ2" eventType="touchUpInside" id="I7t-Et-GGo"/>
                                 </connections>
@@ -829,6 +827,7 @@
                         <outlet property="lblRecipeTitle" destination="yQ4-UK-1jJ" id="qZP-xz-knm"/>
                         <outlet property="tblViewIngredients" destination="tcd-Wm-jkx" id="nNg-pQ-fJP"/>
                         <outlet property="txtViewDirections" destination="7h7-HI-jOH" id="QZA-AG-c9W"/>
+                        <outlet property="useRecipeBtn" destination="Hwc-EK-yA5" id="ncb-LQ-8Xb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="107-0h-9ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
