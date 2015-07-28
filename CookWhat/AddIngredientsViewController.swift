@@ -43,7 +43,7 @@ class AddIngredientsViewController: UIViewController {
         
             ingredientName.text = ""
             txtQuantity.text = ""
-            stpQuantity.value = 1
+            stpQuantity.value = 0
             ingredientUnit.text = ""
             self.title = "Add Ingredient"
         }
