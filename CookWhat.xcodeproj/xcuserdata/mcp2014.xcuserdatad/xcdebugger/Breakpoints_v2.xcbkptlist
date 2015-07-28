@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookWhat/FavouriteRecipesTableViewController.swift"
-            timestampString = "459772493.370076"
+            timestampString = "459777609.006117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "FavouriteRecipesTableViewController"
             landmarkType = "3">
          </BreakpointContent>

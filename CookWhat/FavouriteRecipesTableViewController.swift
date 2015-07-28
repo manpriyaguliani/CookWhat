@@ -119,6 +119,10 @@ class FavouriteRecipesTableViewController: UITableViewController {
             photo = photo.substringFromIndex(advance(photo.startIndex, 8))
             cell.imageView?.image = UIImage(named: photo)
         }
+        else if photo.rangeOfString("/no-recipe-image.jpg") != nil
+        {
+            cell.imageView?.image = UIImage(named: "no-recipe-image.jpg")!
+        }
         else{
             cell.imageView?.image = UIImage(contentsOfFile: path as String)!
             photo = path as String
