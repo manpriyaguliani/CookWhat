@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblServings: UILabel!
     @IBOutlet weak var stpServings: UIStepper!
     
+    @IBOutlet weak var leftArrow: UIImageView!
     
     @IBOutlet weak var availableTimePicker: UIDatePicker!
     @IBOutlet weak var segmentExpertise: UISegmentedControl!
@@ -27,11 +28,32 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var servingsText: UITextField!
     
+    
+    
+    
+    
+    let images = [
+        UIImage(named: "thumb_arrow_1024.jpg")!,
+        UIImage(named: "thumb_arrow_1024.jpg")!,
+        UIImage(named: "thumb_arrow_1024.jpg"),
+        ]
+    var index = 0
+    let animationDuration: NSTimeInterval = 0.45
+    let switchingInterval: NSTimeInterval = 0.45
+
+    
+    
+    
+    
    // var existingItem: NSManagedObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.leftArrow1.alpha = 0
+        
+        leftArrow.image = images[index++]
+        animateImageView()
         
         
         if(lblServings != nil){
@@ -44,6 +66,41 @@ class ViewController: UIViewController {
     
     }
     
+    
+    
+    
+    func animateImageView() {
+        CATransaction.begin()
+        
+        CATransaction.setAnimationDuration(animationDuration)
+        CATransaction.setCompletionBlock {
+            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(self.switchingInterval * NSTimeInterval(NSEC_PER_SEC)))
+            dispatch_after(delay, dispatch_get_main_queue()) {
+                self.animateImageView()
+            }
+        }
+        
+        let transition = CATransition()
+        //transition.type = kCATransitionFade
+        
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+
+        leftArrow.layer.addAnimation(transition, forKey: kCATransition)
+        leftArrow.image = images[index]
+        
+        CATransaction.commit()
+        
+        index = index < images.count - 1 ? index + 1 : 0
+    }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        UIView.animateWithDuration(1.0, animations: { () -> Void in
+//             self.leftArrow1.alpha = 1.0 })
+//
+//        
+//    }
     
 
     override func didReceiveMemoryWarning() {
