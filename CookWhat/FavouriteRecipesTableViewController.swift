@@ -104,6 +104,9 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
         
+        println("photo path on favourite")
+        
+        println(data.valueForKey("photoPath") as! String)
         var photo = data.valueForKey("photoPath") as! String
         
         println(photo)

@@ -121,6 +121,10 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             photo = photo.substringFromIndex(advance(photo.startIndex, 8))
             image = UIImage(named: photo)!
         }
+            else if photo.rangeOfString("/no-recipe-image.jpg") != nil
+        {
+            image = UIImage(named: "no-recipe-image.jpg")!
+        }
         else{
             image = UIImage(contentsOfFile: path as String)!
         }

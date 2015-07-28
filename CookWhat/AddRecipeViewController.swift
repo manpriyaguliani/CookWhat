@@ -9,38 +9,31 @@
 import UIKit
 import CoreData
 
-class AddRecipeViewController: UIViewController, UITextFieldDelegate {
+class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
     @IBOutlet weak var recipeTitleText: UITextField!
     @IBOutlet weak var recipeServingText: UITextField!
     
     @IBOutlet weak var recipeDuration: UITextField!
     
-    @IBOutlet weak var recipeIngredient1: UITextField!
-    @IBOutlet weak var recipeIngredient2: UITextField!
     
-    @IBOutlet weak var quantity1: UITextField!
-    @IBOutlet weak var quantity2: UITextField!
+//    var recipeTitle: String = ""
+//    var recipeServing: String = ""
     
-    @IBOutlet weak var unit1: UITextField!
-    @IBOutlet weak var unit2: UITextField!
+    var photoPath : String! = "/no-recipe-image.jpg"
     
-    @IBOutlet weak var ingredientPriority1: UITextField!
-    @IBOutlet weak var ingredientPriority2: UITextField!
-    
-    @IBOutlet weak var recipeMethod: UITextView!
-    
-    var recipeTitle: String = ""
-    var recipeServing: String = ""
+   // let URL : NSString = NSURL(fileURLWithPath: "/no-recipe-image.jpg")!.absoluteString!
+   // photoPath = URL as String
     
     
+    @IBOutlet weak var photoPreview: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //recipeTitleText.text = ""
         
      //   recipeTitleText.delegate = self
-        quantity1.delegate = self
+        //quantity1.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -76,6 +69,87 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate {
         UIView.commitAnimations()
     }
     
+    @IBAction func removePhoto(sender: AnyObject) {
+        
+        self.photoPath = "/no-recipe-image.jpg"
+        self.photoPreview.image = UIImage(named: "no-recipe-image.jpg")
+        
+    }
+    
+    @IBAction func addPhoto(sender: AnyObject) {
+        let picker = UIImagePickerController()
+        picker.sourceType = .PhotoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+        
+        picker.delegate = self
+        picker.allowsEditing = false
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+   
+    
+    
+    //UIImagePickerControllerDelegate methods
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    {
+        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let newImage = scalePhoto(image, size: CGSize(width: 100, height: 100))
+        
+        self.photoPreview.image = newImage
+        
+        let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDir : String = paths.objectAtIndex(0) as! String
+        
+        var dateFormat = NSDateFormatter()
+        dateFormat.dateFormat = "dd-mm-yy-ss"
+        
+        let now : NSDate = NSDate(timeIntervalSinceNow: 0)
+        let theDate: NSString = dateFormat.stringFromDate(now)
+        
+        
+        //SET URL
+        self.photoPath = NSString(format: "/%@.png", theDate) as String
+        
+        
+        //Save FullScreenImage
+        let PathForPhoto = documentsDir.stringByAppendingString(self.photoPath)
+        
+        let pngData :NSData = UIImagePNGRepresentation(newImage)
+        pngData.writeToFile(PathForPhoto, atomically: true)
+        
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController)
+    {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    func scalePhoto(image : UIImage, size: CGSize) -> UIImage
+    {
+        let scale : CGFloat = max(size.width/image.size.width, size.height/image.size.height)
+        let width: CGFloat = image.size.width * scale
+        let height: CGFloat = image.size.height * scale
+        let imageRect: CGRect = CGRectMake((size.width-width)/2.0, (size.height-height)/2.0, width, height)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        image.drawInRect(imageRect)
+        
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
+    
+    
+    
     
     
     @IBAction func addIngredients(sender: AnyObject) {
@@ -84,70 +158,6 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //***** saving recipe
-    @IBAction func saveTapped(sender: AnyObject) {
-        
-        //Reference to AppDelegate
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        
-        //Reference to Context
-        let contxt:NSManagedObjectContext = appDel.managedObjectContext!
-        
-        let rec = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
-        let ingr = NSEntityDescription.entityForName("Ingredients" , inManagedObjectContext: contxt)
-        
-        
-        //Create instance of data model
-            var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
-            var newIngredient = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        var newIngredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
-        
-
-       // UIImage recipeImage = "sampleImage.jpg" as UIImage;
-        
-      //  NSData dataImage = UIImageJPEGRepresentation(recipeImage, 0.0);
-        
-        
-        
-            //map properties
-            
-            newRecipe.title = recipeTitleText.text
-            newRecipe.servings = recipeServingText.text
-            newRecipe.method = recipeMethod.text
-            newRecipe.duration = recipeDuration.text
-        
-           newIngredient.name = recipeIngredient1.text
-           newIngredient.priority = ingredientPriority1.text
-           newIngredient.quantity = quantity1.text
-           newIngredient.unit = unit1.text
-           newIngredient.recipe = newRecipe
-        
-        newIngredient2.name = "some ingredient"
-        newIngredient2.priority = "high"
-        newIngredient2.quantity = "10"
-        newIngredient2.unit = "ml"
-        newIngredient2.recipe = newRecipe
-        
-        
-       
-            println(newRecipe)
-            println(newIngredient)
-        println("..........")
-        println(newIngredient.recipe)
-        println("..........")
-        
-        
-        //save context
-        contxt.save(nil)
-        
-        
-        //navigate back to root Vc
-        self.navigationController?.popToRootViewControllerAnimated(true)
-
-        
-    }
-
     @IBAction func cancelTapped(sender: AnyObject) {
         
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -159,5 +169,21 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "recipeIngredientPage"
+        {
+           // var selectedItem: NSManagedObject = listRecipesDB[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
+            let IVC: AddIngredientsToRecipeViewController = segue.destinationViewController as! AddIngredientsToRecipeViewController
+            
+            IVC.recipeTitle =   recipeTitleText.text     //selectedItem.valueForKey("title") as! String
+            IVC.photoPath = photoPath
+            IVC.recipeDuration = recipeDuration.text
+            IVC.recipeServing = recipeServingText.text
+            
+ 
+        }
+
+    }
 
 }

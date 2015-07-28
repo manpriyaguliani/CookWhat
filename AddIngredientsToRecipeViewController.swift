@@ -10,10 +10,18 @@ import UIKit
 import CoreData
 
 
-class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSource, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSource{
 
+    var recipeTitle: String = ""
     
-    var photoPath : String!
+    var photoPath: String = ""
+    
+    var recipeDuration: String = ""
+    
+    var recipeServing: String = ""
+    
+    var recipeIngredientList: [AvailableIngredients] = [AvailableIngredients]()
+    
     
     @IBOutlet weak var ingredientAddedTable: UITableView!
     var list: [String] = []//["1","2","03"]
@@ -21,138 +29,22 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     
     @IBOutlet weak var ingreditentQuantity: UITextField!
         
-    @IBOutlet weak var photoPreview: UIImageView!
     
-    @IBAction func addPhoto(sender: AnyObject) {
-        let picker = UIImagePickerController()
-        picker.sourceType = .PhotoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
-        
-        picker.delegate = self
-        picker.allowsEditing = false
-        self.presentViewController(picker, animated: true, completion: nil)
-    }
+    @IBOutlet weak var ingredientUnit: UITextField!
     
-    @IBAction func saveData(sender: AnyObject) {
-        
-        //Reference to AppDelegate
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        
-        //Reference to Context
-        let contxt:NSManagedObjectContext = appDel.managedObjectContext!
-        
-        let rec = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
-        let ingr = NSEntityDescription.entityForName("Ingredients" , inManagedObjectContext: contxt)
-        
-        
-        //Create instance of data model
-        var newRecipe = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
- 
-        
-        
-        // UIImage recipeImage = "sampleImage.jpg" as UIImage;
-        
-        //  NSData dataImage = UIImageJPEGRepresentation(recipeImage, 0.0);
-        
-        
-        
-        //map properties
-        
-        newRecipe.title = "Recipe"
-        newRecipe.servings = "3"
-        newRecipe.method = "Some Method"
-        newRecipe.duration = "10"
-        newRecipe.isFavourite = "true"
-        
-        if(self.photoPath != nil)
-        {
-            newRecipe.photoPath = photoPath
-        }
-        else
-        {
-            let URL : NSString = NSURL(fileURLWithPath: "/no-recipe-image.jpg")!.absoluteString!
-          newRecipe.photoPath = URL as String
-        }
-        
-       
-        
-        
-        //save context
-        contxt.save(nil)
-        
-        
-        //navigate back to root Vc
-        self.navigationController?.popToRootViewControllerAnimated(true)
-        
-
-        
-        
-    }
+    @IBOutlet weak var addBtn: UIButton!
+   
     
     
-   //UIImagePickerControllerDelegate methods
-     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
-     {
-        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let newImage = scalePhoto(image, size: CGSize(width: 100, height: 100))
-        
-        self.photoPreview.image = newImage
-        
-        let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDir : String = paths.objectAtIndex(0) as! String
-        
-        var dateFormat = NSDateFormatter()
-        dateFormat.dateFormat = "dd-mm-yy-ss"
-        
-        let now : NSDate = NSDate(timeIntervalSinceNow: 0)
-        let theDate: NSString = dateFormat.stringFromDate(now)
-        
-        
-        //SET URL
-        self.photoPath = NSString(format: "/%@.png", theDate) as String
-        
-        
-        //Save FullScreenImage
-        let PathForPhoto = documentsDir.stringByAppendingString(self.photoPath)
-        
-        let pngData :NSData = UIImagePNGRepresentation(newImage)
-        pngData.writeToFile(PathForPhoto, atomically: true)
-        
-        
-        picker.dismissViewControllerAnimated(true, completion: nil)
-       
-    }
-    
-    
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController)
-    {
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
-    
-    func scalePhoto(image : UIImage, size: CGSize) -> UIImage
-    {
-        let scale : CGFloat = max(size.width/image.size.width, size.height/image.size.height)
-        let width: CGFloat = image.size.width * scale
-        let height: CGFloat = image.size.height * scale
-        let imageRect: CGRect = CGRectMake((size.width-width)/2.0, (size.height-height)/2.0, width, height)
-        
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        image.drawInRect(imageRect)
-        
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ingredientAddedTable.dataSource = self
+        //addBtn.respondsToSelector(<#aSelector: Selector#>)
+        println("recipe title.....")
+        println(photoPath)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -169,8 +61,34 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     @IBAction func onAddBtnClick(sender: AnyObject) {
         
         list.append(ingredientName.text)
+        
+        var avIng: AvailableIngredients = AvailableIngredients();
+        
+        
+        avIng.name = ingredientName.text
+        avIng.quantity = ingreditentQuantity.text
+        avIng.unit = ingredientUnit.text
+        recipeIngredientList.append(avIng)
+        avIng = AvailableIngredients();
+        
+        sender.resignFirstResponder()
+        
+        
         ingredientAddedTable.reloadData()
+        ingredientName.text = ""
+        ingreditentQuantity.text = ""
+        ingredientUnit.text = ""
+        
     }
+    
+    func textFieldShouldReturn(button: UIButton) -> Bool {
+        
+     //   textField.resignFirstResponder()
+        button.resignFirstResponder()
+        
+        return true
+    }
+    
     //Data Source function Override
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -178,18 +96,59 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return recipeIngredientList.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("textCell", forIndexPath: indexPath) as! UITableViewCell
+//        var cell = tableView.dequeueReusableCellWithIdentifier("textCell", forIndexPath: indexPath) as! UITableViewCell
+//        
+//        
+//        let row = indexPath.row
+//        cell.textLabel?.text = list[row]
+//        
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("textCell", forIndexPath: indexPath) as! UITableViewCell
         
         
-        let row = indexPath.row
-        cell.textLabel?.text = list[row]
+        var data: AvailableIngredients = recipeIngredientList[indexPath.row] as AvailableIngredients
+        
+        
+        
+        cell.textLabel?.text =  data.name  //(data.valueForKey("name") as! String)
+        
+        var quantity =  data.quantity  //data.valueForKey("quantity") as! String
+        
+        var unit =  data.unit
+        //data.valueForKey("unit") as! String
+        
+        cell.detailTextLabel?.text = "\(quantity) \(unit)"
+        
+
         
         return cell
+    }
+    
+    // Override to support editing the table view.
+     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            if let tv = tableView as UITableView?{
+            //    context.deleteObject(recipeIngredientList[indexPath.row])
+                recipeIngredientList.removeAtIndex(indexPath.row)
+                tv.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+        }
+        
+        var error: NSError? = nil
+        if !context.save(&error)
+        {
+            abort()
+        }
+        
+        
     }
     
     /*
@@ -201,5 +160,32 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "recipeMethodPage"
+        {
+            // var selectedItem: NSManagedObject = listRecipesDB[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
+            let IVC: AddMethodToRecipeController = segue.destinationViewController as! AddMethodToRecipeController
+            
+            IVC.recipeTitle =   recipeTitle     //selectedItem.valueForKey("title") as! String
+            IVC.photoPath = photoPath
+            IVC.recipeIngredientList = recipeIngredientList
+            
+            IVC.recipeDuration = recipeDuration
+            IVC.recipeServing = recipeServing
+            //            IVC.numberOfServings = selectedItem.valueForKey("servings") as! String
+            //            IVC.recipeDirection = selectedItem.valueForKey("method") as! String
+            //
+            //            IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
+            //
+            //
+            //            IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
+            //            IVC.photo = selectedItem.valueForKey("photoPath") as! String
+            //
+            //            IVC.isFavouriteDB = selectedItem.valueForKey("isFavourite") as! String
+            //            IVC.existingItem =  selectedItem
+        }
+        
+    }
 
 }
