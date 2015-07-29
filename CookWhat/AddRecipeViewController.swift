@@ -13,11 +13,10 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
 
     @IBOutlet weak var recipeTitleText: UITextField!
     @IBOutlet weak var recipeServingText: UITextField!
+    @IBOutlet weak var durationTimePicker: UIDatePicker!
+    @IBOutlet weak var servingsSteppper: UIStepper!
     
-    @IBOutlet weak var recipeDuration: UITextField!
-    
-    
-//    var recipeTitle: String = ""
+   var time: String = ""
 //    var recipeServing: String = ""
     
     var photoPath : String! = "/no-recipe-image.jpg"
@@ -30,11 +29,16 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //recipeTitleText.text = ""
+        recipeServingText.text = "1"
+        servingsSteppper.minimumValue = 1
         
-     //   recipeTitleText.delegate = self
-        //quantity1.delegate = self
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    @IBAction func onValueChangeServingsStepper(sender: AnyObject) {
+        
+        recipeServingText.text = Int(servingsSteppper.value).description
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -77,13 +81,7 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
     
     @IBAction func addPhoto(sender: AnyObject) {
-//        let picker = UIImagePickerController()
-//        picker.sourceType = .PhotoLibrary
-//        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
-//        
-//        picker.delegate = self
-//        picker.allowsEditing = false
-//        self.presentViewController(picker, animated: true, completion: nil)
+
         
         let imagePickerActionSheet = UIAlertController(title: "Click/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
@@ -125,7 +123,30 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
     }
     
-   
+    @IBAction func onValueChangeTimePicker(sender: UIDatePicker) {
+        calculateTime()
+    }
+    
+    func calculateTime(){
+        var timeFormatter = NSDateFormatter()
+        timeFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        if durationTimePicker != nil {
+            time = timeFormatter.stringFromDate(durationTimePicker.date)
+            
+            
+            var hours = time.subString(0,length: time.indexOf(":")).toInt()
+            
+            if time.indexOf("AM") != -1 && hours == 12 {
+                hours = 0
+            }
+            
+            var mins = time.subString(time.indexOf(":")+1,length: time.indexOf(" ") - (time.indexOf(":")+1)).toInt()
+            mins = mins! + (hours! * 60)
+            
+            time = mins!.description
+        }
+    }
+
     
     
     //UIImagePickerControllerDelegate methods
@@ -217,7 +238,8 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
             
             IVC.recipeTitle =   recipeTitleText.text     //selectedItem.valueForKey("title") as! String
             IVC.photoPath = photoPath
-            IVC.recipeDuration = recipeDuration.text
+            calculateTime()
+            IVC.recipeDuration = time
             IVC.recipeServing = recipeServingText.text
             
  

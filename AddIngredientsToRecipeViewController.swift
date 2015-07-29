@@ -22,6 +22,7 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     
     var recipeIngredientList: [AvailableIngredients] = [AvailableIngredients]()
     
+    @IBOutlet weak var quantityStepper: UIStepper!
     
     @IBOutlet weak var ingredientAddedTable: UITableView!
     var list: [String] = []//["1","2","03"]
@@ -41,11 +42,8 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         ingredientAddedTable.dataSource = self
-        //addBtn.respondsToSelector(<#aSelector: Selector#>)
-        println("recipe title.....")
-        println(photoPath)
-        
-        // Do any additional setup after loading the view.
+        ingreditentQuantity.text = "1"
+       quantityStepper.minimumValue = 1
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +56,12 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         self.view.endEditing(true)
         
     }
+    
+ 
+    @IBAction func onValueChangeQuantityStepper(sender: AnyObject) {
+        ingreditentQuantity.text = Int(quantityStepper.value).description
+    }
+    
     @IBAction func onAddBtnClick(sender: AnyObject) {
         
         list.append(ingredientName.text)
