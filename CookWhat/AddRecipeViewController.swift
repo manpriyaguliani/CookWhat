@@ -17,14 +17,10 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     @IBOutlet weak var servingsSteppper: UIStepper!
     
    var time: String = ""
-//    var recipeServing: String = ""
+
     
     var photoPath : String! = "/no-recipe-image.jpg"
-    
-   // let URL : NSString = NSURL(fileURLWithPath: "/no-recipe-image.jpg")!.absoluteString!
-   // photoPath = URL as String
-    
-    
+
     @IBOutlet weak var photoPreview: UIImageView!
     
     override func viewDidLoad() {
@@ -113,7 +109,7 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
-            //    self.doShowMenu = true
+
         }
         imagePickerActionSheet.addAction(cancelButton)
         
@@ -214,16 +210,8 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     
     @IBAction func addIngredients(sender: AnyObject) {
         
-       // var my:UITextField = UITextField(frame: CGRectMake(0, 0, 10, 10))
-    }
+      }
     
-    
-//    @IBAction func cancelTapped(sender: AnyObject) {
-//        
-//        self.navigationController?.popToRootViewControllerAnimated(true)
-//        
-//
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -233,10 +221,9 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "recipeIngredientPage"
         {
-           // var selectedItem: NSManagedObject = listRecipesDB[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
-            let IVC: AddIngredientsToRecipeViewController = segue.destinationViewController as! AddIngredientsToRecipeViewController
+              let IVC: AddIngredientsToRecipeViewController = segue.destinationViewController as! AddIngredientsToRecipeViewController
             
-            IVC.recipeTitle =   recipeTitleText.text     //selectedItem.valueForKey("title") as! String
+            IVC.recipeTitle =   recipeTitleText.text
             IVC.photoPath = photoPath
             calculateTime()
             IVC.recipeDuration = time

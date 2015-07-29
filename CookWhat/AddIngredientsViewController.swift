@@ -51,15 +51,10 @@ class AddIngredientsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
         isSavedLbl.hidden = true;
-//        ingredientName.text = ""
-//        txtQuantity.text = ""
-//        stpQuantity.value = 1
-//        ingredientUnit.text = ""
     }
     
     //stepper UI Control
@@ -110,12 +105,6 @@ class AddIngredientsViewController: UIViewController {
         
         //save context
         context.save(nil)
-        
-//        ingredientName.text = ""
-//        ingredientUnit.text = ""
-//        txtQuantity.text = ""
-//        stpQuantity.value = 0
-        
         isSavedLbl.text = "Ingredient Saved"
         isSavedLbl.hidden = false;
         //navigate back to root Vc

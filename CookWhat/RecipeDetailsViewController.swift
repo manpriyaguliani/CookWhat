@@ -43,7 +43,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         initializeControls()
          dummyData();
         tblViewIngredients.dataSource = self;
-     //    tblViewIngredients.reloadData()
+
     }
     
     override func viewDidAppear(didAppear: Bool) {
@@ -53,13 +53,12 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
   
         if isFavouriteDB == "true"
         {
-            favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)           // favouritesButton.imageView?.image = UIImage(named: "favStarUnFilled")!
+            favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)
         }
         else
         {
             favouritesButton.setBackgroundImage(UIImage(named: "favStarUnfilled")!, forState: UIControlState.Normal)
-            
-           // favouritesButton.imageView?.image = UIImage(named: "favStarFilled")!
+
         }
 
         
@@ -89,7 +88,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     }
     func initializeControls(){
      lblRecipeTitle.text = recipeTitle
-   //  lblNumberOfServings.text = numberOfServings
+ 
      txtViewDirections.text = recipeDirection
      
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -110,8 +109,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDir: NSString = paths.objectAtIndex(0) as! String
         let path: NSString = documentsDir.stringByAppendingString(photo)
-        
-//        var imageView = UIImageView(frame: CGRectMake(200, 70, 100, 100));
+
          var imageView = UIImageView(frame: CGRectMake(0, 0, 500, 500));
            var image : UIImage
         
@@ -152,25 +150,13 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
             for ing in listIngredientsDB {
                 var item: NSManagedObject! = ing as! NSManagedObject
-            //    println(item.valueForKey("name") as! String)
-            //    println(item.valueForKey("quantity") as! String)
+
                 
                 if(item.valueForKey("name") != nil)
                 {
                     println(item.valueForKey("name"))
                 if recipeIngredientList[i].name == item.valueForKey("name") as! String
                 {
-                    //                    var a: Double = Double((item.valueForKey("quantity") as! String).toInt()!)
-                    //                    //var b: Double = Double(recipeIngredientList[i].quantity.toInt()!)
-                    //                    var str = "0.5" //recipeIngredientList[i].quantity
-                    //                    var b: Double! = Double(str.toInt()!)
-                    //
-                    //                        println("recipeIngredientList[i].quantity")
-                    //                            println(recipeIngredientList[i].quantity)
-                    //                    var c: Double = a - b
-                    
-                    //NEED SUBTRACTION LOGIC HERE
-                    //UPDATION WORKS FINE
                     var remainingQuantity: Int
                     
                     var recipeQ = recipeIngredientList[i].quantity.toInt()!
@@ -211,8 +197,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+           }
    
 
     // MARK: - Table view data source
@@ -252,7 +237,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     }
     
     
-    //MG: Update DB  - done
+   
     @IBAction func onClickFavStar(sender: AnyObject) {
         
         //Reference to AppDelegate
@@ -296,50 +281,4 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
     }
     
     }
-    
-    // Override to support editing the table view.
-//     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == .Delete {
-//            // Delete the row from the data source
-//            //      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            let _indexPath = tableView.indexPathForSelectedRow();
-//            
-//            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-//            
-//            recipeIngredientList.removeAtIndex(indexPath.row)
-//            
-//            
-//            tableView.reloadData()
-//            
-//            
-//        } else if editingStyle == .Insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
-//    }
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

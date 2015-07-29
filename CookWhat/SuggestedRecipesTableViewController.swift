@@ -51,11 +51,8 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+           self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         recipeList.removeAll(keepCapacity: true)
         loadDataFromDB()
         loadAvailableIngredientsList()
@@ -71,7 +68,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
     
     func loadDataFromDB(){
@@ -213,8 +210,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         cell.textLabel?.text = recipeList[row].time.description + "mins"
         
         
-        var photo = recipeList[row].photo  //valueForKey("photoPath") as! String
-        
+        var photo = recipeList[row].photo
         println(photo)
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDir: NSString = paths.objectAtIndex(0) as! String
@@ -230,12 +226,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
             photo = path as String
         }
         
-        
-        
-        // var photo: String = "cheese_wrap.jpg"
-        //cell.imageView?.image = UIImage(named: photo)
-        
-        
+
         let xOffset: CGFloat = 10
         let contentViewFrame = cell.contentView.frame
         let imageView = UIImageView()
@@ -254,7 +245,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+
         return true
     }
     
@@ -264,7 +255,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-           // tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+
             let _indexPath = tableView.indexPathForSelectedRow();
             
             let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
@@ -273,27 +264,12 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
             tableView.reloadData()
 
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+
         }    
     }
     
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
+ 
    
     func getDBIndexforRecipe(index : Int) -> Int {
         

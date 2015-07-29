@@ -24,10 +24,14 @@ class FavouriteRecipesTableViewController: UITableViewController {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "Recipes")
+        let sorter = NSSortDescriptor(key: "title", ascending : true)
+        freq.sortDescriptors = [sorter]
+        
         let fetchIngr = NSFetchRequest(entityName: "Ingredients")
         
+        let sorter2 = NSSortDescriptor(key: "name", ascending : true)
+        fetchIngr.sortDescriptors = [sorter2]
         
-         //var predicate: NSPredicate = NSPredicate(format: "duration == %@", "5")
         var predicate: NSPredicate = NSPredicate(format: "isFavourite == %@", "true")
         
         freq.predicate = predicate
@@ -37,8 +41,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
         listRecipesDB =   context.executeFetchRequest(freq, error: nil)!
         listRecipeIngredientsDB =   context.executeFetchRequest(fetchIngr, error: nil)!
           
-      //  println(listRecipesDB)
-      //  println(listRecipeIngredientsDB)
+
         tableView.reloadData()
     
     }
@@ -49,20 +52,18 @@ class FavouriteRecipesTableViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
+
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+
         return listRecipesDB.count
     }
 
@@ -80,27 +81,12 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         var dataIngr: NSManagedObject = listRecipeIngredientsDB[indexPath.row] as! NSManagedObject
         
-      //  if let ip = indexPath as NSIndexPath? {
-       //     var data: NSManagedObject = listRecipesDB[ip.row] as! NSManagedObject
         
-          //  cell.textLabel?.text = (data.valueForKey("title") as! String)
-            
             var serv = data.valueForKey("servings") as! String
            
             var ingr = dataIngr.valueForKey("name") as! String
         
-           // cell.detailTextLabel?.text = "\(serv)" //items - \(info)"
-        //}
-        
-        
-        
-        
-        //let events = data.recipes.allObjects as [Recipes]
-        
-        
-        
-        
-        cell.detailTextLabel?.text = (data.valueForKey("title") as! String)
+            cell.detailTextLabel?.text = (data.valueForKey("title") as! String)
         
         cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
         
@@ -128,33 +114,19 @@ class FavouriteRecipesTableViewController: UITableViewController {
             photo = path as String
         }
 
-        
-        
-       // var photo: String = "cheese_wrap.jpg"
-        //cell.imageView?.image = UIImage(named: photo)
-        
-        
-        let xOffset: CGFloat = 10
+         let xOffset: CGFloat = 10
         let contentViewFrame = cell.contentView.frame
         let imageView = UIImageView()
         imageView.image = UIImage(named: photo)
         imageView.frame = CGRectMake(xOffset, CGFloat(5), CGFloat(35), CGFloat(35))
         cell.contentView.addSubview(imageView)
-        
-        
-      //  println(" ....")
-      //  println(data.valueForKey("ingredients") as! NSSet)
-        //println(ingr)
-      //  println(" ....")
-        //var info = data.valueForKey("info") as! String
-
-        return cell
+         return cell
     }
 
 
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+  
         return true
     }
 
@@ -182,22 +154,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
     }
 
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
+       
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

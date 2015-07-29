@@ -17,8 +17,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // textView.hidden = true
-        textView.text = ""
+         textView.text = ""
         doShowMenu = true
         showMenu()
     }
@@ -35,7 +34,6 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func showMenu(){
@@ -173,15 +171,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }
 
@@ -292,9 +282,9 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
                     {
                         if(item.name == ingredientName)
                         {
-                            //alreadyPresent = true
+                         
                             alreadyPresentIngredient = item as! NSManagedObject
-                            //oldQuantity = item.valueForKey("quantity") as! String
+                           
                         }
                     }
                     
