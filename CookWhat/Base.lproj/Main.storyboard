@@ -17,7 +17,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ol5-43-NTt">
-                                <rect key="frame" x="30" y="139" width="235" height="21"/>
+                                <rect key="frame" x="43" y="109" width="235" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="22"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <datePicker contentMode="scaleAspectFit" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="5" useCurrentDate="NO" id="kLa-iI-Ld6">
-                                <rect key="frame" x="45" y="160" width="231" height="178"/>
+                                <rect key="frame" x="45" y="136" width="231" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="455643263.85307097">
                                     <!--2015-06-10 15:34:23 +0000-->
@@ -848,8 +848,6 @@
                         <segue destination="z3Q-FD-i93" kind="relationship" relationship="viewControllers" id="b7q-wK-C7d"/>
                         <segue destination="FEy-34-dde" kind="relationship" relationship="viewControllers" id="TCj-Lo-A0M"/>
                         <segue destination="b82-XK-LRA" kind="relationship" relationship="viewControllers" id="pw8-xq-xb7"/>
-                        <segue destination="fsd-JM-OyO" kind="relationship" relationship="viewControllers" id="6ah-n2-9fB"/>
-                        <segue destination="djW-bn-rKn" kind="relationship" relationship="viewControllers" id="bdE-2f-QT6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzt-uv-bNl" userLabel="First Responder" sceneMemberID="firstResponder"/>

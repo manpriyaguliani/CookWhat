@@ -12,11 +12,24 @@ import CoreData
 // used for viewing recipes
 class ViewController: UIViewController {
 
+    //locals
     var recipeTitle: String = ""
     var recipeServings: String = ""
     var time: String = ""
     var servings: String = ""
+    let images = [
+        UIImage(named: "thumb_arrow_1024.jpg")!,
+        UIImage(named: "thumb_arrow_1024.jpg")!,
+        UIImage(named: "thumb_arrow_1024.jpg"),
+    ]
+    var index = 0
+    let animationDuration: NSTimeInterval = 0.45
+    let switchingInterval: NSTimeInterval = 0.45
     
+    
+    
+    
+    //fields outlets
     @IBOutlet weak var lblServings: UILabel!
     @IBOutlet weak var stpServings: UIStepper!
     
@@ -28,29 +41,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var servingsText: UITextField!
     
-    
-    
-    
-    
-    let images = [
-        UIImage(named: "thumb_arrow_1024.jpg")!,
-        UIImage(named: "thumb_arrow_1024.jpg")!,
-        UIImage(named: "thumb_arrow_1024.jpg"),
-        ]
-    var index = 0
-    let animationDuration: NSTimeInterval = 0.45
-    let switchingInterval: NSTimeInterval = 0.45
 
-    
-    
-    
-    
-   // var existingItem: NSManagedObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.leftArrow1.alpha = 0
         
         leftArrow.image = images[index++]
         animateImageView()
@@ -81,7 +76,6 @@ class ViewController: UIViewController {
         }
         
         let transition = CATransition()
-        //transition.type = kCATransitionFade
         
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromRight
@@ -94,18 +88,12 @@ class ViewController: UIViewController {
         index = index < images.count - 1 ? index + 1 : 0
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        UIView.animateWithDuration(1.0, animations: { () -> Void in
-//             self.leftArrow1.alpha = 1.0 })
-//
-//        
-//    }
+
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     @IBAction func onValueChange(sender: UIStepper, forEvent event: UIEvent) {

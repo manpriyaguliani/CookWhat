@@ -12,6 +12,7 @@ import CoreData
 
 class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSource{
 
+    //Locals
     var recipeTitle: String = ""
     
     var photoPath: String = ""
@@ -21,11 +22,14 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     var recipeServing: String = ""
     
     var recipeIngredientList: [AvailableIngredients] = [AvailableIngredients]()
+      var list: [String] = []
+    
+    //Field Outlets
     
     @IBOutlet weak var quantityStepper: UIStepper!
     
     @IBOutlet weak var ingredientAddedTable: UITableView!
-    var list: [String] = []//["1","2","03"]
+  
     @IBOutlet weak var ingredientName: UITextField!
     
     @IBOutlet weak var ingreditentQuantity: UITextField!
@@ -48,7 +52,7 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     //to hide keyboard on screen
@@ -58,10 +62,13 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     }
     
  
+    //Value on change event for quantity
     @IBAction func onValueChangeQuantityStepper(sender: AnyObject) {
         ingreditentQuantity.text = Int(quantityStepper.value).description
     }
     
+    
+    // On click event for Add
     @IBAction func onAddBtnClick(sender: AnyObject) {
         
         list.append(ingredientName.text)
@@ -87,7 +94,6 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     
     func textFieldShouldReturn(button: UIButton) -> Bool {
         
-     //   textField.resignFirstResponder()
         button.resignFirstResponder()
         
         return true
@@ -105,27 +111,18 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCellWithIdentifier("textCell", forIndexPath: indexPath) as! UITableViewCell
-//        
-//        
-//        let row = indexPath.row
-//        cell.textLabel?.text = list[row]
-//        
 
         let cell = tableView.dequeueReusableCellWithIdentifier("textCell", forIndexPath: indexPath) as! UITableViewCell
         
         
         var data: AvailableIngredients = recipeIngredientList[indexPath.row] as AvailableIngredients
         
+        cell.textLabel?.text =  data.name
         
-        
-        cell.textLabel?.text =  data.name  //(data.valueForKey("name") as! String)
-        
-        var quantity =  data.quantity  //data.valueForKey("quantity") as! String
+        var quantity =  data.quantity
         
         var unit =  data.unit
-        //data.valueForKey("unit") as! String
-        
+
         cell.detailTextLabel?.text = "\(quantity) \(unit)"
         
 
@@ -140,7 +137,7 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if let tv = tableView as UITableView?{
-            //    context.deleteObject(recipeIngredientList[indexPath.row])
+      
                 recipeIngredientList.removeAtIndex(indexPath.row)
                 tv.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             }
@@ -155,39 +152,19 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         
     }
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "recipeMethodPage"
         {
-            // var selectedItem: NSManagedObject = listRecipesDB[self.tableView.indexPathForSelectedRow()!.row] as! NSManagedObject
             let IVC: AddMethodToRecipeController = segue.destinationViewController as! AddMethodToRecipeController
             
-            IVC.recipeTitle =   recipeTitle     //selectedItem.valueForKey("title") as! String
+            IVC.recipeTitle =   recipeTitle
             IVC.photoPath = photoPath
             IVC.recipeIngredientList = recipeIngredientList
             
             IVC.recipeDuration = recipeDuration
             IVC.recipeServing = recipeServing
-            //            IVC.numberOfServings = selectedItem.valueForKey("servings") as! String
-            //            IVC.recipeDirection = selectedItem.valueForKey("method") as! String
-            //
-            //            IVC.recipeDuration = selectedItem.valueForKey("duration") as! String
-            //
-            //
-            //            IVC.recipeIngredients = selectedItem.valueForKey("ingredients") as! NSSet
-            //            IVC.photo = selectedItem.valueForKey("photoPath") as! String
-            //
-            //            IVC.isFavouriteDB = selectedItem.valueForKey("isFavourite") as! String
-            //            IVC.existingItem =  selectedItem
         }
         
     }

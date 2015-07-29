@@ -184,14 +184,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe2.method = " Cook the pasta according to the package directions; drain and return it to the pot.    Meanwhile, heat the butter in a large skillet over medium heat. Add the leeks, ½ teaspoon salt, and ¼ teaspoon pepper and cook, stirring occasionally, until the leeks have softened, 3 to 5 minutes.         Add the shrimp and lemon zest and cook, tossing frequently, until the shrimp  opaque throughout, 4 to 5 minutes more.         Add the cream and ½ teaspoon salt to the pasta the pot and cook over medium heat, stirring, until slightly thickened, 1 to 2 minutes. Add the shrimp mixture and the spinach and toss to combine."
         let path1 : NSString = NSURL(fileURLWithPath: "shrimp-leek-pasta_300.jpg")!.absoluteString!
         Recipe2.photoPath = path1 as String
-        Recipe2.isFavourite = "false"
+        Recipe2.isFavourite = "true"
 
         
         Recipe2.duration = "20"
         
         Recipe2Ingredient1.name = "Pasta"
         Recipe2Ingredient1.priority = "high"
-        Recipe2Ingredient1.quantity = "0.75"
+        Recipe2Ingredient1.quantity = "1"
         Recipe2Ingredient1.unit = "pound"
         Recipe2Ingredient1.recipe = Recipe2
         
@@ -228,7 +228,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe3Ingredient2.name = "Olive oil"
         Recipe3Ingredient2.priority = "high"
-        Recipe3Ingredient2.quantity = "0.5"
+        Recipe3Ingredient2.quantity = "1"
         Recipe3Ingredient2.unit = "Cup"
         Recipe3Ingredient2.recipe = Recipe3
         
@@ -255,7 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let path3 : NSString = NSURL(fileURLWithPath: "chicken_dumplings.jpg")!.absoluteString!
         Recipe4.photoPath = path3 as String
         
-        Recipe4.isFavourite = "false"
+        Recipe4.isFavourite = "true"
         Recipe4.duration = "40"
         
         Recipe4Ingredient1.name = "Chicken"
@@ -303,7 +303,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe5Ingredient2.name = "Avacado"
         Recipe5Ingredient2.priority = "high"
-        Recipe5Ingredient2.quantity = "0.5"
+        Recipe5Ingredient2.quantity = "1"
         Recipe5Ingredient2.unit = " "
         Recipe5Ingredient2.recipe = Recipe5
         
@@ -327,7 +327,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe6.method = "Spread the wrap with the cream cheese. Arrange the ham on top. Place the avocado slices in a straight line across the middle. Season with salt and pepper. Top with the carrot. Roll up the wrap tightly to enclose. Cut in half."
         let path5 : NSString = NSURL(fileURLWithPath: "cheese_wrap.jpg")!.absoluteString!
         Recipe6.photoPath = path5 as String
-                Recipe6.isFavourite = "false"
+                Recipe6.isFavourite = "true"
         Recipe6.duration = "5"
         
         Recipe6Ingredient1.name = "Bread Wrap"
@@ -350,7 +350,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe6Ingredient4.name = "Carrot"
         Recipe6Ingredient4.priority = "High"
-        Recipe6Ingredient4.quantity = "0.5"
+        Recipe6Ingredient4.quantity = "1"
         Recipe6Ingredient4.unit = "cup"
         Recipe6Ingredient4.recipe = Recipe6
         
