@@ -77,13 +77,52 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
     
     @IBAction func addPhoto(sender: AnyObject) {
-        let picker = UIImagePickerController()
-        picker.sourceType = .PhotoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+//        let picker = UIImagePickerController()
+//        picker.sourceType = .PhotoLibrary
+//        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+//        
+//        picker.delegate = self
+//        picker.allowsEditing = false
+//        self.presentViewController(picker, animated: true, completion: nil)
         
-        picker.delegate = self
-        picker.allowsEditing = false
-        self.presentViewController(picker, animated: true, completion: nil)
+        let imagePickerActionSheet = UIAlertController(title: "Click/Upload Photo",
+            message: nil, preferredStyle: .ActionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            let cameraButton = UIAlertAction(title: "Take Photo",
+                style: .Default) { (alert) -> Void in
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = .Camera
+                    self.presentViewController(imagePicker,
+                        animated: true,
+                        completion: nil)
+            }
+            imagePickerActionSheet.addAction(cameraButton)
+        }
+        
+        let libraryButton = UIAlertAction(title: "Choose Existing",
+            style: .Default) { (alert) -> Void in
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .PhotoLibrary
+                self.presentViewController(imagePicker,
+                    animated: true,
+                    completion: nil)
+        }
+        imagePickerActionSheet.addAction(libraryButton)
+        
+        
+        let cancelButton = UIAlertAction(title: "Cancel",
+            style: .Cancel) { (alert) -> Void in
+            //    self.doShowMenu = true
+        }
+        imagePickerActionSheet.addAction(cancelButton)
+        
+        
+        presentViewController(imagePickerActionSheet, animated: true,
+            completion: nil)
+        
     }
     
    
@@ -158,12 +197,12 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
     
     
-    @IBAction func cancelTapped(sender: AnyObject) {
-        
-        self.navigationController?.popToRootViewControllerAnimated(true)
-        
-
-    }
+//    @IBAction func cancelTapped(sender: AnyObject) {
+//        
+//        self.navigationController?.popToRootViewControllerAnimated(true)
+//        
+//
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

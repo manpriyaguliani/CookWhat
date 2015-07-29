@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookWhat/AddRecipeViewController.swift"
-            timestampString = "459775818.780203"
+            timestampString = "459865867.425602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345">
+            startingLineNumber = "384"
+            endingLineNumber = "384">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

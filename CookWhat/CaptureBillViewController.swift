@@ -44,7 +44,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
         
         
         // 2
-        let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
+        let imagePickerActionSheet = UIAlertController(title: "Click/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         
         // 3
@@ -76,6 +76,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
         // 5
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
+                self.doShowMenu = true
         }
         imagePickerActionSheet.addAction(cancelButton)
         
@@ -122,7 +123,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
         // 5
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
-                self.doShowMenu = true
+                
         }
         imagePickerActionSheet.addAction(cancelButton)
         

@@ -50,7 +50,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         super.viewDidAppear(didAppear)
         println(isFavouriteDB)
         
-        
+  
         if isFavouriteDB == "true"
         {
             favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)           // favouritesButton.imageView?.image = UIImage(named: "favStarUnFilled")!
@@ -70,7 +70,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         var avIng: AvailableIngredients = AvailableIngredients();
         
         let listOfIngredients = recipeIngredients.allObjects as! [Ingredients]
-        
+        recipeIngredientList.removeAll(keepCapacity: true)
         for item in listOfIngredients as NSArray
         {
             avIng.name = item.valueForKey("name") as! String
@@ -200,7 +200,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         let alert = UIAlertView()
         alert.title = "Recipe Used"
-        alert.message = "Some items have been updated in your Available Ingredients list."
+        alert.message = "Available Ingredients list has been updated."
         alert.addButtonWithTitle("Ok")
         alert.show()
         
