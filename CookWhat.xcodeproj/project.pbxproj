@@ -34,6 +34,9 @@
 		6E2D01FD1B691B3300275BEC /* apple-icon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2D01FC1B691B3300275BEC /* apple-icon-57x57.png */; };
 		6E2D02001B691E3000275BEC /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2D01FE1B691E3000275BEC /* Icon-Small@2x.png */; };
 		6E2D02011B691E3000275BEC /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2D01FF1B691E3000275BEC /* Icon-Small@3x.png */; };
+		6E2D02031B69222900275BEC /* rounded_corner_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2D02021B69222900275BEC /* rounded_corner_overlay.png */; };
+		6E2D02051B69264700275BEC /* carrot_pasta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2D02041B69264700275BEC /* carrot_pasta.jpg */; };
+		6E2D02071B69284C00275BEC /* hot_chocolate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2D02061B69284C00275BEC /* hot_chocolate.jpg */; };
 		6E530B171B60EBAD000CDFB4 /* Vegetarian Food-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E530B151B60EBAD000CDFB4 /* Vegetarian Food-50.png */; };
 		6EA3E8A01B67726200458EC5 /* thumb_arrow_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EA3E89F1B67726200458EC5 /* thumb_arrow_1024.jpg */; };
 		6EA3E8A61B6781E300458EC5 /* AddMethodToRecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA3E8A51B6781E300458EC5 /* AddMethodToRecipeController.swift */; };
@@ -95,6 +98,9 @@
 		6E2D01FC1B691B3300275BEC /* apple-icon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-icon-57x57.png"; sourceTree = "<group>"; };
 		6E2D01FE1B691E3000275BEC /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		6E2D01FF1B691E3000275BEC /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
+		6E2D02021B69222900275BEC /* rounded_corner_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded_corner_overlay.png; sourceTree = "<group>"; };
+		6E2D02041B69264700275BEC /* carrot_pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carrot_pasta.jpg; sourceTree = "<group>"; };
+		6E2D02061B69284C00275BEC /* hot_chocolate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hot_chocolate.jpg; sourceTree = "<group>"; };
 		6E530B151B60EBAD000CDFB4 /* Vegetarian Food-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vegetarian Food-50.png"; sourceTree = "<group>"; };
 		6EA3E89F1B67726200458EC5 /* thumb_arrow_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_arrow_1024.jpg; sourceTree = "<group>"; };
 		6EA3E8A51B6781E300458EC5 /* AddMethodToRecipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMethodToRecipeController.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 			children = (
 				6E2D01FE1B691E3000275BEC /* Icon-Small@2x.png */,
 				6E2D01FF1B691E3000275BEC /* Icon-Small@3x.png */,
+				6E2D02021B69222900275BEC /* rounded_corner_overlay.png */,
 				6EA3E8A71B67A41D00458EC5 /* chef-hiding-behind-a-clock.jpg */,
 				6EA3E89F1B67726200458EC5 /* thumb_arrow_1024.jpg */,
 				6EE22CC31B629E2B0096EA36 /* cheese_wrap.jpg */,
@@ -195,7 +202,9 @@
 				6EE22CC11B629A980096EA36 /* chicken_dumplings.jpg */,
 				6EE22CBB1B62963D0096EA36 /* bean_sandwich.jpg */,
 				6EE22CBC1B62963D0096EA36 /* dinner_rolls.jpg */,
+				6E2D02061B69284C00275BEC /* hot_chocolate.jpg */,
 				6EE22CBD1B62963D0096EA36 /* shrimp-leek-pasta_300.jpg */,
+				6E2D02041B69264700275BEC /* carrot_pasta.jpg */,
 				6EE22CB91B625CC50096EA36 /* no-recipe-image.jpg */,
 				6E0D70E31B61032700B2812A /* Literature-50.png */,
 				6E0D70D11B60F21B00B2812A /* Purchase Order-50.png */,
@@ -314,6 +323,7 @@
 				6E530B171B60EBAD000CDFB4 /* Vegetarian Food-50.png in Resources */,
 				6EE22CBF1B62963D0096EA36 /* dinner_rolls.jpg in Resources */,
 				6EE22CBE1B62963D0096EA36 /* bean_sandwich.jpg in Resources */,
+				6E2D02071B69284C00275BEC /* hot_chocolate.jpg in Resources */,
 				6E2D01FD1B691B3300275BEC /* apple-icon-57x57.png in Resources */,
 				2685029F1B456C9C006D628B /* tessdata in Resources */,
 				6EE22CC51B629E2B0096EA36 /* cheese_wrap.jpg in Resources */,
@@ -326,9 +336,11 @@
 				6EA3E8A01B67726200458EC5 /* thumb_arrow_1024.jpg in Resources */,
 				264F2D861B288F9100BD476F /* Images.xcassets in Resources */,
 				6EE22CC61B629E2B0096EA36 /* green-smoothie-picture.jpg in Resources */,
+				6E2D02051B69264700275BEC /* carrot_pasta.jpg in Resources */,
 				6EE22CBA1B625CC50096EA36 /* no-recipe-image.jpg in Resources */,
 				6E0D70D01B60F10100B2812A /* Ingredients-50.png in Resources */,
 				6EA3E8A81B67A41D00458EC5 /* chef-hiding-behind-a-clock.jpg in Resources */,
+				6E2D02031B69222900275BEC /* rounded_corner_overlay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

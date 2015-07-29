@@ -17,16 +17,8 @@ class AvailableIngredientsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-       //  self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
-        
-        
-       
-      //  dummyData()
+    
         tableView.reloadData()
         
         
@@ -34,19 +26,7 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
     func dummyData(){
         var avIng: AvailableIngredients = AvailableIngredients();
-//        avIng.title = "Egg"
-//        avIng.quantity = "10"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Potato"
-//        avIng.quantity = "1"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
-//        avIng = AvailableIngredients();
-//        avIng.title = "Rice"
-//        avIng.quantity = "4"
-//        avIng.unit = "kg"
-//        ingredientList.append(avIng)
+
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
@@ -56,15 +36,10 @@ class AvailableIngredientsTableViewController: UITableViewController {
         tableView.reloadData()
         for item in listIngredientsDB
         {
-//            avIng.title = item.name
-//            avIng.quantity = item.quantity
-//            avIng.unit = item.unit
-//            ingredientList.append(avIng)
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
@@ -75,7 +50,7 @@ class AvailableIngredientsTableViewController: UITableViewController {
         listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
         println(listIngredientsDB.count)
         
-        
+        //listIngredientsDB = listIngredientsDB.sorted( ($0 as! AvailableIngredients).name < ($1 as! AvailableIngredients).name)
         
         tableView.reloadData()
         

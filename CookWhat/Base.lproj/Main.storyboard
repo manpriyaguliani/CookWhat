@@ -483,9 +483,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hTB-Uz-lwE">
-                                <rect key="frame" x="219" y="181" width="101" height="30"/>
+                                <rect key="frame" x="232" y="166" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" title="Add" backgroundImage="rounded_corner_overlay.png"/>
                                 <connections>
                                     <action selector="onAddBtnClick:" destination="mSx-4D-zna" eventType="touchUpInside" id="lfg-dT-puC"/>
                                 </connections>
@@ -526,13 +526,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="fO2-18-UR6">
-                                <rect key="frame" x="97" y="121" width="50" height="30"/>
+                                <rect key="frame" x="97" y="121" width="66" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="LbS-PZ-qGi">
-                                <rect key="frame" x="97" y="159" width="97" height="30"/>
+                                <rect key="frame" x="97" y="159" width="66" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -566,7 +566,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="beP-Sx-x3R">
-                                <rect key="frame" x="147" y="122" width="94" height="29"/>
+                                <rect key="frame" x="163" y="122" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="onValueChangeQuantityStepper:" destination="mSx-4D-zna" eventType="valueChanged" id="OUG-mi-IgH"/>
@@ -771,9 +771,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hwc-EK-yA5">
-                                <rect key="frame" x="219" y="109" width="79" height="30"/>
+                                <rect key="frame" x="217" y="115" width="91" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Use Recipe"/>
+                                <state key="normal" title="Use Recipe" backgroundImage="rounded_corner_overlay.png"/>
                                 <connections>
                                     <action selector="updateIngredients:" destination="ARz-Kv-NJ2" eventType="touchUpInside" id="I7t-Et-GGo"/>
                                 </connections>
@@ -1003,6 +1003,7 @@
         <image name="no-recipe-image.jpg" width="270" height="270"/>
         <image name="pizza" width="1680" height="1050"/>
         <image name="recipe" width="29" height="29"/>
+        <image name="rounded_corner_overlay.png" width="126" height="96"/>
         <image name="thumb_arrow_1024.jpg" width="633" height="655"/>
         <image name="timer" width="512" height="512"/>
     </resources>

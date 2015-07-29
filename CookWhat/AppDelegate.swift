@@ -78,8 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var ingredient1 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
         
         ingredient1.name = "Milk"
-        ingredient1.quantity = "1"
-        ingredient1.unit = "litre"
+        ingredient1.quantity = "2"
+        ingredient1.unit = "Litre"
         
         var ingredient2 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
         
@@ -105,6 +105,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ingredient5.name = "Salt"
         ingredient5.quantity = "10"
         ingredient5.unit = "Tsp"
+        
+        var ingredient6 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient6.name = "Pasta"
+        ingredient6.quantity = "1000"
+        ingredient6.unit = "g"
+        
+        var ingredient7 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient7.name = "Chocolate"
+        ingredient7.quantity = "10"
+        ingredient7.unit = ""
+        
+        var ingredient8 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient8.name = "Sugar"
+        ingredient8.quantity = "1000"
+        ingredient8.unit = "g"
+        
+        var ingredient9 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient9.name = "Potato"
+        ingredient9.quantity = "10"
+        ingredient9.unit = ""
+        
+        
+        var ingredient10 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient10.name = "Carrot"
+        ingredient10.quantity = "5"
+        ingredient10.unit = " "
+        
+        var ingredient11 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient11.name = "Honey"
+        ingredient11.quantity = "5"
+        ingredient11.unit = "Tsp"
+        
+        var ingredient12 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient12.name = "Avocado"
+        ingredient12.quantity = "5"
+        ingredient12.unit = " "
+        
+        var ingredient13 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient13.name = "Banana"
+        ingredient13.quantity = "6"
+        ingredient13.unit = " "
         
         
         
@@ -143,6 +192,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var Recipe6Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         var Recipe6Ingredient4 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         
+        var Recipe7 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe7Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe7Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe7Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        
+        var Recipe8 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe8Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe8Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe8Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+     
+        
+        
         
         
         
@@ -161,7 +222,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe1Ingredient1.name = "Butter"
         Recipe1Ingredient1.priority = "high"
         Recipe1Ingredient1.quantity = "1"
-        Recipe1Ingredient1.unit = "cup"
+        Recipe1Ingredient1.unit = "Cup"
         Recipe1Ingredient1.recipe = Recipe1
         
         Recipe1Ingredient2.name = "Eggs"
@@ -173,7 +234,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe1Ingredient3.name = "Salt"
         Recipe1Ingredient3.priority = "medium"
         Recipe1Ingredient3.quantity = "1"
-        Recipe1Ingredient3.unit = "tsp"
+        Recipe1Ingredient3.unit = "Tsp"
         Recipe1Ingredient3.recipe = Recipe1
         
         
@@ -192,13 +253,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe2Ingredient1.name = "Pasta"
         Recipe2Ingredient1.priority = "high"
         Recipe2Ingredient1.quantity = "1"
-        Recipe2Ingredient1.unit = "pound"
+        Recipe2Ingredient1.unit = "Pound"
         Recipe2Ingredient1.recipe = Recipe2
         
         Recipe2Ingredient2.name = "Spinach"
         Recipe2Ingredient2.priority = "high"
         Recipe2Ingredient2.quantity = "10"
-        Recipe2Ingredient2.unit = "ounces"
+        Recipe2Ingredient2.unit = "Ounce"
         Recipe2Ingredient2.recipe = Recipe2
         
         Recipe2Ingredient3.name = "Lemon"
@@ -235,13 +296,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe3Ingredient3.name = "Foccacia"
         Recipe3Ingredient3.priority = "high"
         Recipe3Ingredient3.quantity = "8"
-        Recipe3Ingredient3.unit = "slices"
+        Recipe3Ingredient3.unit = "Slice"
         Recipe3Ingredient3.recipe = Recipe3
         
         Recipe3Ingredient4.name = "Tahini"
         Recipe3Ingredient4.priority = "medium"
         Recipe3Ingredient4.quantity = "1"
-        Recipe3Ingredient4.unit = "tbsp"
+        Recipe3Ingredient4.unit = "Tbsp"
         Recipe3Ingredient4.recipe = Recipe3
         
      
@@ -261,7 +322,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe4Ingredient1.name = "Chicken"
         Recipe4Ingredient1.priority = "high"
         Recipe4Ingredient1.quantity = "3"
-        Recipe4Ingredient1.unit = "cups"
+        Recipe4Ingredient1.unit = "Cup"
         Recipe4Ingredient1.recipe = Recipe4
         
         Recipe4Ingredient2.name = "Biscuits"
@@ -298,10 +359,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe5Ingredient1.name = "Milk"
         Recipe5Ingredient1.priority = "high"
         Recipe5Ingredient1.quantity = "1"
-        Recipe5Ingredient1.unit = "cup"
+        Recipe5Ingredient1.unit = "Cup"
         Recipe5Ingredient1.recipe = Recipe5
         
-        Recipe5Ingredient2.name = "Avacado"
+        Recipe5Ingredient2.name = "Avocado"
         Recipe5Ingredient2.priority = "high"
         Recipe5Ingredient2.quantity = "1"
         Recipe5Ingredient2.unit = " "
@@ -316,7 +377,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe5Ingredient4.name = "Honey"
         Recipe5Ingredient4.priority = "medium"
         Recipe5Ingredient4.quantity = "2"
-        Recipe5Ingredient4.unit = "tsp"
+        Recipe5Ingredient4.unit = "Tsp"
         Recipe5Ingredient4.recipe = Recipe5
         
         
@@ -339,20 +400,82 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe6Ingredient2.name = "Cheese"
         Recipe6Ingredient2.priority = "high"
         Recipe6Ingredient2.quantity = "1"
-        Recipe6Ingredient2.unit = "tbsp"
+        Recipe6Ingredient2.unit = "Tbsp"
         Recipe6Ingredient2.recipe = Recipe6
         
         Recipe6Ingredient3.name = "Ham"
         Recipe6Ingredient3.priority = "High"
-        Recipe6Ingredient3.quantity = "30"
-        Recipe6Ingredient3.unit = "g"
+        Recipe6Ingredient3.quantity = "1"
+        Recipe6Ingredient3.unit = "Kg"
         Recipe6Ingredient3.recipe = Recipe6
         
         Recipe6Ingredient4.name = "Carrot"
         Recipe6Ingredient4.priority = "High"
         Recipe6Ingredient4.quantity = "1"
-        Recipe6Ingredient4.unit = "cup"
+        Recipe6Ingredient4.unit = " "
         Recipe6Ingredient4.recipe = Recipe6
+        
+        
+        //Potato, carrots and Pasta
+        
+        Recipe7.title = "Potato, carrots and Pasta"
+        Recipe7.servings = "2"
+        Recipe7.method = "Boil all vegetables and pasta separately. Mix both, add salt and pepper to taste. You are good to go."
+        let path6 : NSString = NSURL(fileURLWithPath: "carrot_pasta.jpg")!.absoluteString!
+        Recipe7.photoPath = path6 as String
+        Recipe7.isFavourite = "true"
+        Recipe7.duration = "10"
+        
+        Recipe7Ingredient1.name = "Potato"
+        Recipe7Ingredient1.priority = "high"
+        Recipe7Ingredient1.quantity = "2"
+        Recipe7Ingredient1.unit = " "
+        Recipe7Ingredient1.recipe = Recipe7
+        
+        Recipe7Ingredient2.name = "Carrot"
+        Recipe7Ingredient2.priority = "high"
+        Recipe7Ingredient2.quantity = "2"
+        Recipe7Ingredient2.unit = " "
+        Recipe7Ingredient2.recipe = Recipe7
+        
+        Recipe7Ingredient3.name = "Pasta"
+        Recipe7Ingredient3.priority = "High"
+        Recipe7Ingredient3.quantity = "100"
+        Recipe7Ingredient3.unit = "g"
+        Recipe7Ingredient3.recipe = Recipe7
+        
+        
+        //Hot Chocolate
+        
+        Recipe8.title = "Hot Chocolate"
+        Recipe8.servings = "1"
+        Recipe8.method = "Melt chocolate in a pan. Slowly add milk while stirring. Add sugar when boiled. Pour in a glass."
+        let path7 : NSString = NSURL(fileURLWithPath: "hot_chocolate.jpg")!.absoluteString!
+        Recipe8.photoPath = path7 as String
+        Recipe8.isFavourite = "true"
+        Recipe8.duration = "8"
+        
+        Recipe8Ingredient1.name = "Milk"
+        Recipe8Ingredient1.priority = "high"
+        Recipe8Ingredient1.quantity = "1"
+        Recipe8Ingredient1.unit = "Cup"
+        Recipe8Ingredient1.recipe = Recipe8
+        
+        Recipe8Ingredient2.name = "Chocolate"
+        Recipe8Ingredient2.priority = "high"
+        Recipe8Ingredient2.quantity = "2"
+        Recipe8Ingredient2.unit = " "
+        Recipe8Ingredient2.recipe = Recipe8
+        
+        Recipe8Ingredient3.name = "Sugar"
+        Recipe8Ingredient3.priority = "Medium"
+        Recipe8Ingredient3.quantity = "1"
+        Recipe8Ingredient3.unit = "Tsp"
+        Recipe8Ingredient3.recipe = Recipe8
+        
+        
+        
+        
         
         
         

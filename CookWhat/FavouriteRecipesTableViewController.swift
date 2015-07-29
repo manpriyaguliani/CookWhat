@@ -36,7 +36,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         listRecipesDB =   context.executeFetchRequest(freq, error: nil)!
         listRecipeIngredientsDB =   context.executeFetchRequest(fetchIngr, error: nil)!
-        
+          
       //  println(listRecipesDB)
       //  println(listRecipeIngredientsDB)
         tableView.reloadData()
