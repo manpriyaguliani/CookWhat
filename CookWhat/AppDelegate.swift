@@ -234,7 +234,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe1.duration = "20"
         let path : NSString = NSURL(fileURLWithPath: "dinner_rolls.jpg")!.absoluteString!
         Recipe1.photoPath = path as String
-        Recipe1.isFavourite = "true"
+        Recipe1.isFavourite = "false"
         
         Recipe1Ingredient1.name = "Butter"
         Recipe1Ingredient1.priority = "high"
@@ -513,7 +513,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe9Ingredient2.unit = " "
         Recipe9Ingredient2.recipe = Recipe9
         
-                 
+        
         //save context
         contxt.save(nil)
         
