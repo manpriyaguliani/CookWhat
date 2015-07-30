@@ -87,8 +87,9 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         
         ingredientAddedTable.reloadData()
         ingredientName.text = ""
-        ingreditentQuantity.text = ""
+        ingreditentQuantity.text = "1"
         ingredientUnit.text = ""
+        quantityStepper.value = quantityStepper.minimumValue 
         
     }
     

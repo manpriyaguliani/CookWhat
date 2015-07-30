@@ -81,6 +81,19 @@ class AddIngredientsViewController: UIViewController {
         let ingredient = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: context)
         
         
+        var listIngredientsDB: Array<AnyObject> = []
+        
+        let readIngredients = NSFetchRequest(entityName: "AvailIngredients")
+        listIngredientsDB =   context.executeFetchRequest(readIngredients, error: nil)!
+        println(listIngredientsDB.count)
+        
+        
+        
+        var alreadyPresent : Bool = false
+        var alreadyPresentIngredient: NSManagedObject!
+        
+        
+        
         //check if ingredient exists
         
         if (existingItem != nil){
@@ -90,17 +103,61 @@ class AddIngredientsViewController: UIViewController {
         }
         else {
         
+            
+            
+            for item in listIngredientsDB
+            {
+                if(item.name == ingredientName.text)
+                {
+                    
+                    alreadyPresentIngredient = item as! NSManagedObject
+                    
+                }
+            }
+            
+            
+            if (alreadyPresentIngredient != nil)
+            {
+                //update existing ingredient
+                alreadyPresentIngredient.setValue(ingredientName.text, forKey: "name")
+                alreadyPresentIngredient.setValue(alreadyPresentIngredient.valueForKey("unit"), forKey: "unit")
+                
+                var newValue = txtQuantity.text.toInt()
+                var oldValue = (alreadyPresentIngredient.valueForKey("quantity") as! String).toInt()
+                
+                
+                var finalValue = newValue! + oldValue!
+                
+                alreadyPresentIngredient.setValue(String(finalValue), forKey: "quantity")
+                alreadyPresentIngredient = nil
+            }
+            else
+            {
+                // Add new ingredient in DB
+                //Create instance of data model
+                var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
+                
+                
+                //map properties
+                newIngredient.name = ingredientName.text
+                newIngredient.quantity = txtQuantity.text
+                newIngredient.unit = ingredientUnit.text
+                
+                println(newIngredient)
+            }
+            
+            
         
-        //Create instance of data model
-        var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
-        
-        
-        //map properties
-        newIngredient.name = ingredientName.text
-        newIngredient.quantity = txtQuantity.text
-        newIngredient.unit = ingredientUnit.text
-        
-        println(newIngredient)
+//        //Create instance of data model
+//        var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
+//        
+//        
+//        //map properties
+//        newIngredient.name = ingredientName.text
+//        newIngredient.quantity = txtQuantity.text
+//        newIngredient.unit = ingredientUnit.text
+//        
+//        println(newIngredient)
         }
         
         //save context

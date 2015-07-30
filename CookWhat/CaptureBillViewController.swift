@@ -297,13 +297,10 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
                         
                         var newValue = quantity.description.toInt()
                         var oldValue = (alreadyPresentIngredient.valueForKey("quantity") as! String).toInt()
-                        
-                        
-                        println(newValue)
-                        println(oldValue)
+                 
                         
                         var finalValue = newValue! + oldValue!
-                        println(finalValue)
+                   
                         alreadyPresentIngredient.setValue(String(finalValue), forKey: "quantity")
                         alreadyPresentIngredient = nil
                     }
