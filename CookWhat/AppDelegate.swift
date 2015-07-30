@@ -155,6 +155,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ingredient13.quantity = "6"
         ingredient13.unit = " "
         
+        var ingredient14 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient14.name = "Chilli"
+        ingredient14.quantity = "10"
+        ingredient14.unit = " "
+        
+        var ingredient15 = AvailIngredients(entity:ingredients!, insertIntoManagedObjectContext: contxt)
+        
+        ingredient15.name = "Oil"
+        ingredient15.quantity = "20"
+        ingredient15.unit = "Tbsp"
+        
         
         
         //pre-loaded data for recipe and ingredient table
@@ -213,7 +225,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe1.title = "Easy Dinner Rolls"
         Recipe1.servings = "2"
-        Recipe1.method = "Combine water and yeast in lg bowl; let stand for 5 minutes.        With wooden spoon, stir  butter, sugar, eggs and salt.         Add flour, 1 cup at a time and beat  much  you can.      (you will probably be able to use all the flour) Cover and refrigerate  at least 2 hours, or up to 3 days.         Grease a 13x9 baking pan.         Turn dough out onto floured surface.         Divide into 24 equal pieces.         Roll each piece into a smooth round ball.         Place  rows  prepared pan.         Cover and  rise  1 hour; until doubled."
+        Recipe1.method = "Combine water and yeast in lg bowl; let stand for 5 minutes. With wooden spoon, stir  butter, sugar, eggs and salt. Add flour, 1 cup at a time and beat  much  you can.      (you will probably be able to use all the flour) Cover and refrigerate  at least 2 hours, or up to 3 days. Grease a 13x9 baking pan. Turn dough out onto floured surface. Divide into 24 equal pieces. Roll each piece into a smooth round ball. Place  rows  prepared pan.         Cover and  rise  1 hour; until doubled."
         Recipe1.duration = "20"
         let path : NSString = NSURL(fileURLWithPath: "dinner_rolls.jpg")!.absoluteString!
         Recipe1.photoPath = path as String
@@ -240,9 +252,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Shrimp, Leek, and Spinach Pasta
         
-        Recipe2.title = "Shrimp, Leek, and Spinach Pasta"
+        Recipe2.title = "Shrimp, Leek and Spinach Pasta"
         Recipe2.servings = "4"
-        Recipe2.method = " Cook the pasta according to the package directions; drain and return it to the pot.    Meanwhile, heat the butter in a large skillet over medium heat. Add the leeks, ½ teaspoon salt, and ¼ teaspoon pepper and cook, stirring occasionally, until the leeks have softened, 3 to 5 minutes.         Add the shrimp and lemon zest and cook, tossing frequently, until the shrimp  opaque throughout, 4 to 5 minutes more.         Add the cream and ½ teaspoon salt to the pasta the pot and cook over medium heat, stirring, until slightly thickened, 1 to 2 minutes. Add the shrimp mixture and the spinach and toss to combine."
+        Recipe2.method = " Cook the pasta according to the package directions; drain and return it to the pot. Meanwhile, heat the butter in a large skillet over medium heat. Add the leeks, ½ teaspoon salt, and ¼ teaspoon pepper and cook, stirring occasionally, until the leeks have softened, 3 to 5 minutes. Add the shrimp and lemon zest and cook, tossing frequently, until the shrimp  opaque throughout, 4 to 5 minutes more. Add the cream and ½ teaspoon salt to the pasta the pot and cook over medium heat, stirring, until slightly thickened, 1 to 2 minutes. Add the shrimp mixture and the spinach and toss to combine."
         let path1 : NSString = NSURL(fileURLWithPath: "shrimp-leek-pasta_300.jpg")!.absoluteString!
         Recipe2.photoPath = path1 as String
         Recipe2.isFavourite = "true"
@@ -312,7 +324,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Recipe4.title = "Easy Chicken and Dumplings"
         Recipe4.servings = "4"
-        Recipe4.method = "In 4- to 5-quart Dutch oven, heat broth, chicken, soup and poultry seasoning to boiling over medium-high heat; reduce heat to low. Cover; simmer 5 minutes, stirring occasionally. Increase heat to medium-high; return to a low boil.        On lightly floured surface, roll or pat each biscuit to 1/8-inch thickness; cut into 1/2-inch-wide strips         Drop strips, one at a time, into boiling chicken mixture.Add carrots and celery. Reduce heat to low Cover; simmer 15 to 20 minutes, stirring occasionally to prevent dumplings from sticking."
+        Recipe4.method = "In 4 to 5-quart Dutch oven, heat broth, chicken, soup and poultry seasoning to boiling over medium-high heat; reduce heat to low. Cover; simmer 5 minutes, stirring occasionally. Increase heat to medium-high; return to a low boil. On lightly floured surface, roll or pat each biscuit to 1/8-inch thickness; cut into 1/2-inch-wide strips         Drop strips, one at a time, into boiling chicken mixture.Add carrots and celery. Reduce heat to low Cover; simmer 15 to 20 minutes, stirring occasionally to prevent dumplings from sticking."
         let path3 : NSString = NSURL(fileURLWithPath: "chicken_dumplings.jpg")!.absoluteString!
         Recipe4.photoPath = path3 as String
         
@@ -347,7 +359,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Mint Green Smoothie
         
-        Recipe5.title = "Mint Green Smoothie"
+        Recipe5.title = "Green Smoothie"
         Recipe5.servings = "1"
         Recipe5.method = "Place all the ingredients into a blender and blend until smooth and combined. Pour into glasses and serve."
         let path4 : NSString = NSURL(fileURLWithPath: "green-smoothie-picture.jpg")!.absoluteString!
@@ -418,7 +430,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Potato, carrots and Pasta
         
-        Recipe7.title = "Potato, carrots and Pasta"
+        Recipe7.title = "Potato and carrots Pasta"
         Recipe7.servings = "2"
         Recipe7.method = "Boil all vegetables and pasta separately. Mix both, add salt and pepper to taste. You are good to go."
         let path6 : NSString = NSURL(fileURLWithPath: "carrot_pasta.jpg")!.absoluteString!
