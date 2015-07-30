@@ -214,6 +214,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var Recipe8Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
         var Recipe8Ingredient3 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
      
+        var Recipe9 = Recipes(entity:rec!, insertIntoManagedObjectContext: contxt)
+        var Recipe9Ingredient1 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+        var Recipe9Ingredient2 = Ingredients(entity:ingr!, insertIntoManagedObjectContext: contxt)
+      
+        
         
         
         
@@ -486,11 +491,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Recipe8Ingredient3.recipe = Recipe8
         
         
+        //Ketchup rice
         
+        Recipe9.title = "Ketchup rice"
+        Recipe9.servings = "1"
+        Recipe9.method = "Boil rice with spices. Mix some ketchup. Serve hot"
+        let path8 : NSString = NSURL(fileURLWithPath: "ketchup_rice.jpg")!.absoluteString!
+        Recipe9.photoPath = path8 as String
+        Recipe9.isFavourite = "true"
+        Recipe9.duration = "15"
         
+        Recipe9Ingredient1.name = "Ketchup"
+        Recipe9Ingredient1.priority = "high"
+        Recipe9Ingredient1.quantity = "1"
+        Recipe9Ingredient1.unit = ""
+        Recipe9Ingredient1.recipe = Recipe9
         
+        Recipe9Ingredient2.name = "Rice"
+        Recipe9Ingredient2.priority = "high"
+        Recipe9Ingredient2.quantity = "1"
+        Recipe9Ingredient2.unit = " "
+        Recipe9Ingredient2.recipe = Recipe9
         
-        
+                 
         //save context
         contxt.save(nil)
         
