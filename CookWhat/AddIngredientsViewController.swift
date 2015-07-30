@@ -143,27 +143,26 @@ class AddIngredientsViewController: UIViewController {
                 newIngredient.quantity = txtQuantity.text
                 newIngredient.unit = ingredientUnit.text
                 
-                println(newIngredient)
             }
             
-            
-        
-//        //Create instance of data model
-//        var newIngredient = AvailIngredients(entity:ingredient!, insertIntoManagedObjectContext: context)
-//        
-//        
-//        //map properties
-//        newIngredient.name = ingredientName.text
-//        newIngredient.quantity = txtQuantity.text
-//        newIngredient.unit = ingredientUnit.text
-//        
-//        println(newIngredient)
+
         }
         
         //save context
         context.save(nil)
+        
+        
         isSavedLbl.text = "Ingredient Saved"
         isSavedLbl.hidden = false;
+        
+        
+        let alert = UIAlertView()
+        alert.title = "Ingredient Added"
+        alert.message = "Ingredient added to list."
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+        
+        
         //navigate back to root Vc
         self.navigationController?.popToRootViewControllerAnimated(true)
         

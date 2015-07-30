@@ -51,14 +51,8 @@ class AvailableIngredientsTableViewController: UITableViewController {
         let sorter = NSSortDescriptor(key: "name", ascending : true)
         freq.sortDescriptors = [sorter]
         
-        
         listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
-        println(listIngredientsDB.count)
-        
-
-     
-        
-        
+       
         tableView.reloadData()
         
     }

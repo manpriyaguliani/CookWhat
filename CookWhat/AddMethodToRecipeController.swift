@@ -76,6 +76,13 @@ class AddMethodToRecipeController: UIViewController {
             contxt.save(nil)
  
         }
+        
+        let alert = UIAlertView()
+        alert.title = "Recipe Added"
+        alert.message = "Recipe added to your favourite recipes."
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+        
         //navigate back to root Vc
         self.navigationController?.popToRootViewControllerAnimated(true)
         
