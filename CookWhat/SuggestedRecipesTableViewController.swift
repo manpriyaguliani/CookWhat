@@ -8,24 +8,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-//SADLY ENOUGH
-
 //Limitations: You cannot necessarily translate “arbitrary” SQL queries into predicates or fetch requests. There is no way, for example, to convert a SQL statement such as
 //SELECT t1.name, V1, V2
 //FROM table1 t1 JOIN (SELECT t2.name AS V1, count(*) AS V2
 //FROM table2 t2 GROUP BY t2.name as V) on t1.name = V.V1
 //into a fetch request. You must fetch the objects of interest, then either perform a calculation directly using the results, or use an array operator.
-
-
 
 
 import UIKit
@@ -51,7 +38,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-           self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         recipeList.removeAll(keepCapacity: true)
         loadDataFromDB()
@@ -63,7 +50,6 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,20 +59,19 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
     
     func loadDataFromDB(){
     
-    
+    //load list of recipes and their corresponding ingredients
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context:NSManagedObjectContext = appDel.managedObjectContext!
     let freq = NSFetchRequest(entityName: "Recipes")
     let fetchIngr = NSFetchRequest(entityName: "Ingredients")
     recipeListDB =  context.executeFetchRequest(freq, error: nil)!
     myIngrList =   context.executeFetchRequest(fetchIngr, error: nil)!
-    
-
+  
     }
     
     func loadAvailableIngredientsList(){
     
-        
+        // load available ingredients from db
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "AvailIngredients")
@@ -94,6 +79,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         
     }
     
+    //load corresponding ingredients of recipes
     func loadRecipeIngredients(dbRecipeIngredients : NSSet){
         var avIng: AvailableIngredients = AvailableIngredients();
         
@@ -117,11 +103,8 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         var i : Int = 0
      
         while i < recipeIngredientList.count {
-              println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
             for ing in listIngredientsDB {
                 var item = ing as! NSManagedObject
-              println(item.valueForKey("name") as! String)
-                println(item.valueForKey("quantity") as! String)
                 if recipeIngredientList[i].name == item.valueForKey("name") as! String {
                     if  recipeIngredientList[i].quantity.toInt() > (item.valueForKey("quantity") as! String).toInt() {
                         return false
@@ -131,7 +114,6 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
                         break
                     }
                 }
-               
                 
             }
             i++
@@ -139,16 +121,12 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         var count = recipeIngredientList.count
         if allIngredientsAvailable == recipeIngredientList.count {
             return true
-            
            
         }
         else {
             return false
         }
     }
-    
-    
-       
     
     
     func filterDBList(){
@@ -162,11 +140,10 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
             var dbRecipeDuration: Int = (recipeDBObj.valueForKey("duration") as! String).toInt()!
             var dbRecipeIngredients = recipeDBObj.valueForKey("ingredients") as! NSSet
             if  dbRecipeDuration <= duration.toInt() {
-                println(recipeDBObj.valueForKey("title") as! String)
                 loadRecipeIngredients(dbRecipeIngredients) //Loaded in Recipe Ingredient List
                 loadAvailableIngredientsList()
                 
-                //if match then..
+                
                 if areAllIngredientsAvailable() {
                     recipeListObj = RecipeToSuggest()
                     recipeListObj.title = recipeDBObj.valueForKey("title") as! String
@@ -211,12 +188,11 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         
         
         var photo = recipeList[row].photo
-        println(photo)
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDir: NSString = paths.objectAtIndex(0) as! String
         let path: NSString = documentsDir.stringByAppendingString(photo)
         
-        
+        //load image depending on preloaded data and uploaded image
         if photo.rangeOfString("file:///") != nil {
             photo = photo.substringFromIndex(advance(photo.startIndex, 8))
             cell.imageView?.image = UIImage(named: photo)
@@ -233,11 +209,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         imageView.image = UIImage(named: photo)
         imageView.frame = CGRectMake(xOffset, CGFloat(5), CGFloat(35), CGFloat(35))
         cell.contentView.addSubview(imageView)
-        
-
-        
-        
-        
+      
         return cell
     }
     
@@ -268,10 +240,7 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         }    
     }
     
-
- 
-   
-    func getDBIndexforRecipe(index : Int) -> Int {
+     func getDBIndexforRecipe(index : Int) -> Int {
         
         var i: Int = 0
         
@@ -287,9 +256,8 @@ class SuggestedRecipesTableViewController: UITableViewController, UITableViewDat
         return -1
     }
 
-    
+    //send data of selected recipe forward to next controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
         
         if segue.identifier == "suggestedRecipeDetail"
         {

@@ -33,8 +33,6 @@ class AddMethodToRecipeController: UIViewController {
       
     }
     
-
-    
     //***** saving recipe
     @IBAction func saveTapped(sender: AnyObject) {
         

@@ -41,12 +41,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var servingsText: UITextField!
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //animation of arrow
         leftArrow.image = images[index++]
         animateImageView()
         
@@ -61,9 +60,7 @@ class ViewController: UIViewController {
     
     }
     
-    
-    
-    
+    //animate arrow
     func animateImageView() {
         CATransaction.begin()
         
@@ -126,7 +123,7 @@ class ViewController: UIViewController {
         }
     }
 
-    
+    //forward data to Suggested Recipes Controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "suggestedRecipeList"

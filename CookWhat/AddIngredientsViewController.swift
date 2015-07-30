@@ -30,6 +30,7 @@ class AddIngredientsViewController: UIViewController {
         super.viewDidLoad()
         isSavedLbl.hidden = true;
         
+        //check for existing ingredient
         if (existingItem != nil){
             ingredientName.text = name
             txtQuantity.text = quantity
@@ -81,20 +82,14 @@ class AddIngredientsViewController: UIViewController {
         let ingredient = NSEntityDescription.entityForName("AvailIngredients" , inManagedObjectContext: context)
         
         
-        var listIngredientsDB: Array<AnyObject> = []
-        
-        let readIngredients = NSFetchRequest(entityName: "AvailIngredients")
-        listIngredientsDB =   context.executeFetchRequest(readIngredients, error: nil)!
-        println(listIngredientsDB.count)
-        
-        
-        
         var alreadyPresent : Bool = false
         var alreadyPresentIngredient: NSManagedObject!
+        var listIngredientsDB: Array<AnyObject> = []
+        let readIngredients = NSFetchRequest(entityName: "AvailIngredients")
+        listIngredientsDB =   context.executeFetchRequest(readIngredients, error: nil)!
+     
         
-        
-        
-        //check if ingredient exists
+        //check if the item to be edited already exists
         
         if (existingItem != nil){
             existingItem.setValue(ingredientName.text, forKey: "name")
@@ -104,7 +99,7 @@ class AddIngredientsViewController: UIViewController {
         else {
         
             
-            
+            //check if ingredient to be added is present in list
             for item in listIngredientsDB
             {
                 if(item.name == ingredientName.text)

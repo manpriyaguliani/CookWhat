@@ -23,7 +23,12 @@ class FavouriteRecipesTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
+       
+        //load list of recipes and their corresponding ingredients
+
         let freq = NSFetchRequest(entityName: "Recipes")
+        
+        //sort
         let sorter = NSSortDescriptor(key: "title", ascending : true)
         freq.sortDescriptors = [sorter]
         
@@ -36,20 +41,14 @@ class FavouriteRecipesTableViewController: UITableViewController {
         
         freq.predicate = predicate
 
-        
-        
         listRecipesDB =   context.executeFetchRequest(freq, error: nil)!
         listRecipeIngredientsDB =   context.executeFetchRequest(fetchIngr, error: nil)!
-          
-
+        
         tableView.reloadData()
     
     }
 
-    
-    
-    
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
@@ -89,13 +88,10 @@ class FavouriteRecipesTableViewController: UITableViewController {
             cell.detailTextLabel?.text = (data.valueForKey("title") as! String)
         
         cell.textLabel?.text = data.valueForKey("duration") as! String + "min"
-        
-        println("photo path on favourite")
-        
-        println(data.valueForKey("photoPath") as! String)
+  
+        //image values depending on preloaded data or new recipe
         var photo = data.valueForKey("photoPath") as! String
-        
-        println(photo)
+    
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDir: NSString = paths.objectAtIndex(0) as! String
         let path: NSString = documentsDir.stringByAppendingString(photo)
@@ -114,7 +110,8 @@ class FavouriteRecipesTableViewController: UITableViewController {
             photo = path as String
         }
 
-         let xOffset: CGFloat = 10
+        //set image view dynamically
+        let xOffset: CGFloat = 10
         let contentViewFrame = cell.contentView.frame
         let imageView = UIImageView()
         imageView.image = UIImage(named: photo)
@@ -126,7 +123,6 @@ class FavouriteRecipesTableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-  
         return true
     }
 
@@ -153,10 +149,7 @@ class FavouriteRecipesTableViewController: UITableViewController {
    
     }
 
-
-       
-    // MARK: - Navigation
-
+    //forward data to next controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
        if segue.identifier == "recipeDetail"
         {

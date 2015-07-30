@@ -41,16 +41,15 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         super.viewDidLoad()
 
         initializeControls()
-         dummyData();
+        ingredientData();
         tblViewIngredients.dataSource = self;
 
     }
     
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
-        println(isFavouriteDB)
         
-  
+        //check if recipe is favourite or not
         if isFavouriteDB == "true"
         {
             favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)
@@ -60,12 +59,11 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             favouritesButton.setBackgroundImage(UIImage(named: "favStarUnfilled")!, forState: UIControlState.Normal)
 
         }
-
-        
         tblViewIngredients.reloadData()
     }
 
-    func dummyData(){
+    //fetch data of ingredients from db
+    func ingredientData(){
         var avIng: AvailableIngredients = AvailableIngredients();
         
         let listOfIngredients = recipeIngredients.allObjects as! [Ingredients]
@@ -77,34 +75,22 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
             avIng.unit = item.valueForKey("unit") as! String
             recipeIngredientList.append(avIng)
             avIng = AvailableIngredients();
-            println(item.valueForKey("name"))
-            println(item.valueForKey("quantity"))
-            println(item.valueForKey("unit"))
-
-            
-        }
-        
-
+     }
     }
+    
     func initializeControls(){
      lblRecipeTitle.text = recipeTitle
  
      txtViewDirections.text = recipeDirection
      
+        //fetch data of recipes
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "AvailIngredients")
         listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
 
-        
-        
-        
-        
-        
-        
-        
         var mins: String = "Minutes"
-     durationText.text = recipeDuration +  "\(mins)"
+        durationText.text = recipeDuration +  "\(mins)"
         
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDir: NSString = paths.objectAtIndex(0) as! String
@@ -113,8 +99,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
          var imageView = UIImageView(frame: CGRectMake(0, 0, 500, 500));
            var image : UIImage
         
-        println(photo)
-        
+        //load image depending on preloaded data or uploaded image
         if photo.rangeOfString("file:///") != nil {
             photo = photo.substringFromIndex(advance(photo.startIndex, 8))
             image = UIImage(named: photo)!
@@ -131,9 +116,9 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         self.view.addSubview(imageView);
         
-        
     }
     
+    //deduct ingredients from list
     @IBAction func updateIngredients(sender: AnyObject) {
         var i : Int = 0
         var allIngredientsAvailable : Int = 0
@@ -147,14 +132,12 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
 
 
         while i < recipeIngredientList.count {
-            println(recipeIngredientList[i].name + recipeIngredientList[i].quantity)
             for ing in listIngredientsDB {
                 var item: NSManagedObject! = ing as! NSManagedObject
 
                 
                 if(item.valueForKey("name") != nil)
                 {
-                    println(item.valueForKey("name"))
                 if recipeIngredientList[i].name == item.valueForKey("name") as! String
                 {
                     var remainingQuantity: Int
@@ -164,10 +147,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
                     remainingQuantity = (item.valueForKey("Quantity") as! String).toInt()! - recipeQ
                     
                     ing.setValue(remainingQuantity.description, forKey: "quantity")
-                    
-                    
-                  
-                    
+                   
                 }
                 
                 if((item.valueForKey("quantity")as! String).toInt() == 0 || (item.valueForKey("quantity")as! String).toInt() < 0)
@@ -191,9 +171,6 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         alert.show()
         
     }
-    
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -219,7 +196,6 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         // Configure the cell...
         let row = indexPath.row
-        
         
         cell.textLabel?.text = recipeIngredientList[row].quantity + " " + recipeIngredientList[row].unit
         
@@ -250,24 +226,21 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
         
         let en = NSEntityDescription.entityForName("Recipes" , inManagedObjectContext: contxt)
         
-        
+        //check if recipe is favourite or not
         if isFavourite {
             isFavourite = false
             favouritesButton.setBackgroundImage(UIImage(named: "favStarUnfilled")!, forState: UIControlState.Normal)
-            
             
             if (existingItem != nil){
                 existingItem.setValue("false", forKey: "isFavourite")
               
             }
-          
             
         }
         else
         {
             isFavourite = true
             favouritesButton.setBackgroundImage(UIImage(named: "favStarFilled")!, forState: UIControlState.Normal)
-            
             
             if (existingItem != nil){
                 existingItem.setValue("true", forKey: "isFavourite")

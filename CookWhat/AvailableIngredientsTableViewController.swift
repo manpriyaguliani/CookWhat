@@ -24,30 +24,22 @@ class AvailableIngredientsTableViewController: UITableViewController {
         
     }
 
-    func dummyData(){
-        var avIng: AvailableIngredients = AvailableIngredients();
-
-        
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let freq = NSFetchRequest(entityName: "AvailIngredients")
-        listIngredientsDB =   context.executeFetchRequest(freq, error: nil)!
-        println(listIngredientsDB.count)
-        tableView.reloadData()
-        for item in listIngredientsDB
-        {
-        }
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
+        
+        // load available ingredients from db
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "AvailIngredients")
         
+        //sort data
         let sorter = NSSortDescriptor(key: "name", ascending : true)
         freq.sortDescriptors = [sorter]
         
@@ -75,8 +67,6 @@ class AvailableIngredientsTableViewController: UITableViewController {
 
         
         var data: NSManagedObject = listIngredientsDB[indexPath.row] as! NSManagedObject
-        
-      
         
         cell.textLabel?.text = (data.valueForKey("name") as! String)
         
@@ -116,12 +106,10 @@ class AvailableIngredientsTableViewController: UITableViewController {
         {
             abort()
         }
-
-
         
     }
 
-     
+    //send data of available ingredient to edit ingredient page
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         

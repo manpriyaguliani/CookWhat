@@ -22,8 +22,6 @@ class AvailableIngredients{
     var unit: String = ""
 }
 
-
-
 extension String
 {
     var length: Int {

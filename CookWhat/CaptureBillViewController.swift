@@ -11,9 +11,13 @@ import CoreData
 
 class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate  {
 
+    //Locals
+    var activityIndicator:UIActivityIndicatorView!
     var doShowMenu: Bool = true
+    
+    
     @IBOutlet weak var textView: UITextView!
-     var activityIndicator:UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
     override func viewDidAppear(didAppear: Bool) {
         super.viewDidAppear(didAppear)
         
+        //Menu Reload Screen Reload
         if doShowMenu {
             doShowMenu = false
             showMenu()
@@ -37,15 +42,14 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
     }
     
     func showMenu(){
-        // 1
+      
         view.endEditing(true)
         
-        
-        // 2
+        // Click/Upload Photo Menu
         let imagePickerActionSheet = UIAlertController(title: "Click/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         
-        // 3
+        // Take Photo Option
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraButton = UIAlertAction(title: "Take Photo",
                 style: .Default) { (alert) -> Void in
@@ -59,7 +63,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
             imagePickerActionSheet.addAction(cameraButton)
         }
         
-        // 4
+        // Choose Existing Option
         let libraryButton = UIAlertAction(title: "Choose Existing",
             style: .Default) { (alert) -> Void in
                 let imagePicker = UIImagePickerController()
@@ -71,28 +75,27 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
         }
         imagePickerActionSheet.addAction(libraryButton)
         
-        // 5
+        // Cancel Option
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
                 self.doShowMenu = true
         }
         imagePickerActionSheet.addAction(cancelButton)
-        
-        // 6
+
         presentViewController(imagePickerActionSheet, animated: true,
             completion: nil)
     }
     
     @IBAction func takePhoto(sender: AnyObject) {
-        // 1
+        
         view.endEditing(true)
         
         
-        // 2
+        // Snap/Upload Photo Menu
         let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         
-        // 3
+        // Take Photo Option
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraButton = UIAlertAction(title: "Take Photo",
                 style: .Default) { (alert) -> Void in
@@ -106,7 +109,7 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
             imagePickerActionSheet.addAction(cameraButton)
         }
         
-        // 4
+        // Choose Existing Option
         let libraryButton = UIAlertAction(title: "Choose Existing",
             style: .Default) { (alert) -> Void in
                 let imagePicker = UIImagePickerController()
@@ -118,20 +121,19 @@ class CaptureBillViewController: UIViewController, UITextViewDelegate, UINavigat
         }
         imagePickerActionSheet.addAction(libraryButton)
         
-        // 5
+        // Cancel Option
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
                 
         }
         imagePickerActionSheet.addAction(cancelButton)
-        
-        // 6
+
         presentViewController(imagePickerActionSheet, animated: true,
             completion: nil)
     }
     
     
-
+    //Method to scale image for OCR
     func scaleImage(image: UIImage, maxDimension: CGFloat) -> UIImage {
         
         var scaledSize = CGSize(width: maxDimension, height: maxDimension)
@@ -239,9 +241,6 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
 
         let readIngredients = NSFetchRequest(entityName: "AvailIngredients")
         listIngredientsDB =   context.executeFetchRequest(readIngredients, error: nil)!
-        println(listIngredientsDB.count)
-        
-        
         
         var alreadyPresent : Bool = false
         var alreadyPresentIngredient: NSManagedObject!
@@ -264,7 +263,6 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
                 space = bill.indexOf(" ")
                 num = bill.subString(0, length: space).toInt()
                 quantity = num!
-                println(num)
                 i = space
             }
             else{
@@ -316,7 +314,6 @@ extension CaptureBillViewController: UIImagePickerControllerDelegate {
                     newIngredient.quantity = quantity.description
                     newIngredient.unit = ""
                     
-                    println(newIngredient)
                     }
                     
                     //Post DB Insertion

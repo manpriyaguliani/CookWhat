@@ -62,7 +62,7 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }   
     
 
-//move text field up when keyboard shows up
+    //move text field up when keyboard shows up
     func textFieldDidBeginEditing(textField: UITextField) {
         animateViewMoving(true, moveValue: 100)
     }
@@ -80,6 +80,7 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         UIView.commitAnimations()
     }
     
+    //delete photo
     @IBAction func removePhoto(sender: AnyObject) {
         
         self.photoPath = "/no-recipe-image.jpg"
@@ -96,12 +97,14 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
     }
     
+    //upload photo
     @IBAction func addPhoto(sender: AnyObject) {
 
         removeFlag = true
         let imagePickerActionSheet = UIAlertController(title: "Click/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         
+        //to take photo from camera
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraButton = UIAlertAction(title: "Take Photo",
                 style: .Default) { (alert) -> Void in
@@ -115,6 +118,7 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
             imagePickerActionSheet.addAction(cameraButton)
         }
         
+        //pick existing photo from gallery
         let libraryButton = UIAlertAction(title: "Choose Existing",
             style: .Default) { (alert) -> Void in
                 let imagePicker = UIImagePickerController()
@@ -126,13 +130,12 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         }
         imagePickerActionSheet.addAction(libraryButton)
         
-        
+        //cancel image picking option
         let cancelButton = UIAlertAction(title: "Cancel",
             style: .Cancel) { (alert) -> Void in
 
         }
         imagePickerActionSheet.addAction(cancelButton)
-        
         
         presentViewController(imagePickerActionSheet, animated: true,
             completion: nil)
@@ -206,7 +209,7 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
     
     
-    
+    //setting size of image
     func scalePhoto(image : UIImage, size: CGSize) -> UIImage
     {
         let scale : CGFloat = max(size.width/image.size.width, size.height/image.size.height)
@@ -224,20 +227,11 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
 
     
-    
-    
-    
-    
-    @IBAction func addIngredients(sender: AnyObject) {
-        
-      }
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    
+    //send recipe attributes forward to next controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "recipeIngredientPage"
         {

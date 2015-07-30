@@ -84,7 +84,7 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         
         sender.resignFirstResponder()
         
-        
+        //refresh fields after adding one ingredient
         ingredientAddedTable.reloadData()
         ingredientName.text = ""
         ingreditentQuantity.text = "1"
@@ -110,7 +110,7 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
         return recipeIngredientList.count
     }
     
-    
+    //load data in table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("textCell", forIndexPath: indexPath) as! UITableViewCell
@@ -126,7 +126,6 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
 
         cell.detailTextLabel?.text = "\(quantity) \(unit)"
         
-
         
         return cell
     }
@@ -150,11 +149,10 @@ class AddIngredientsToRecipeViewController: UIViewController, UITableViewDataSou
             abort()
         }
         
-        
     }
     
 
-    
+    //send data to add method page
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "recipeMethodPage"
         {
