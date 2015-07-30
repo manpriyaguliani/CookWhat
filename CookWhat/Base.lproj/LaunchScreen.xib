@@ -11,19 +11,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Cook What" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="224" width="281" height="58"/>
+                    <rect key="frame" x="20" y="291" width="281" height="58"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="36"/>
                     <color key="textColor" red="0.15294118225574493" green="0.36862745881080627" blue="0.56862747669219971" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cook time" translatesAutoresizingMaskIntoConstraints="NO" id="kVc-l3-s20">
-                    <rect key="frame" x="33" y="99" width="240" height="128"/>
+                    <rect key="frame" x="20" y="130" width="281" height="166"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="kVc-l3-s20" secondAttribute="bottom" constant="-3" id="OHM-G8-uUF"/>
-                <constraint firstAttribute="centerX" secondItem="kVc-l3-s20" secondAttribute="centerX" constant="7" id="xPV-Q0-9Bi"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="kVc-l3-s20" secondAttribute="bottom" constant="-5" id="fwL-OQ-zX4"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

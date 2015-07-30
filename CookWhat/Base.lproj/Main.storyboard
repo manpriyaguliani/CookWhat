@@ -394,16 +394,16 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CBk-x3-lWd">
-                                <rect key="frame" x="18" y="203" width="66" height="21"/>
+                                <rect key="frame" x="18" y="209" width="66" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nLd-2q-hP0">
-                                <rect key="frame" x="182" y="396" width="103" height="30"/>
+                                <rect key="frame" x="182" y="372" width="116" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Remove Image">
+                                <state key="normal" title="Remove Image" backgroundImage="rounded_corner_overlay.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -412,7 +412,7 @@
                                 </connections>
                             </button>
                             <datePicker opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="5" useCurrentDate="NO" id="9in-9a-A7M">
-                                <rect key="frame" x="92" y="140" width="213" height="53"/>
+                                <rect key="frame" x="92" y="146" width="213" height="53"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="459868045.80621397">
                                     <!--2015-07-29 13:07:25 +0000-->
@@ -430,20 +430,20 @@
                                 </connections>
                             </stepper>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-recipe-image.jpg" id="bgh-ab-P5Q">
-                                <rect key="frame" x="88" y="289" width="145" height="107"/>
+                                <rect key="frame" x="17" y="300" width="157" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(in minutes)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Ar-hZ-z1j">
-                                <rect key="frame" x="19" y="215" width="65" height="21"/>
+                                <rect key="frame" x="19" y="221" width="65" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gud-tX-OpD">
-                                <rect key="frame" x="42" y="396" width="80" height="30"/>
+                                <rect key="frame" x="182" y="325" width="116" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add image">
+                                <state key="normal" title="Add image" backgroundImage="rounded_corner_overlay.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -467,6 +467,7 @@
                         <outlet property="photoPreview" destination="bgh-ab-P5Q" id="Trf-Sd-GrX"/>
                         <outlet property="recipeServingText" destination="CLz-Q0-M3U" id="R0O-0S-T9X"/>
                         <outlet property="recipeTitleText" destination="ruf-8h-3bl" id="K91-U1-Wi7"/>
+                        <outlet property="removeButton" destination="nLd-2q-hP0" id="exA-Vs-dHy"/>
                         <outlet property="servingsSteppper" destination="L2f-v9-8yh" id="0jg-lY-Ajo"/>
                     </connections>
                 </viewController>
@@ -483,9 +484,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hTB-Uz-lwE">
-                                <rect key="frame" x="232" y="166" width="60" height="21"/>
+                                <rect key="frame" x="175" y="177" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add" backgroundImage="rounded_corner_overlay.png"/>
+                                <state key="normal" title="Add Ingredient" backgroundImage="rounded_corner_overlay.png"/>
                                 <connections>
                                     <action selector="onAddBtnClick:" destination="mSx-4D-zna" eventType="touchUpInside" id="lfg-dT-puC"/>
                                 </connections>
@@ -989,6 +990,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hfb-7r-eE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2754" y="-1264"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0mS-tJ-XrO">
+            <objects>
+                <viewController id="aOT-r7-2iB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zpC-LQ-Hwp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mP-r6-DTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

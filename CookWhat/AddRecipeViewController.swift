@@ -15,9 +15,10 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
     @IBOutlet weak var recipeServingText: UITextField!
     @IBOutlet weak var durationTimePicker: UIDatePicker!
     @IBOutlet weak var servingsSteppper: UIStepper!
+    @IBOutlet weak var removeButton: UIButton!
     
-   var time: String = ""
-
+    var time: String = ""
+    var removeFlag = false
     
     var photoPath : String! = "/no-recipe-image.jpg"
 
@@ -27,8 +28,18 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         super.viewDidLoad()
         recipeServingText.text = "1"
         servingsSteppper.minimumValue = 1
+       
         
-        
+    }
+    override func viewDidAppear(animated: Bool) {
+        if(removeFlag == false)
+        {
+            removeButton.enabled = false
+        }
+        else
+        {
+            removeButton.enabled = true
+        }
     }
     
     
@@ -73,12 +84,21 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
         self.photoPath = "/no-recipe-image.jpg"
         self.photoPreview.image = UIImage(named: "no-recipe-image.jpg")
+        removeFlag = false
+        if(removeFlag == false)
+        {
+            removeButton.enabled = false
+        }
+        else
+        {
+            removeButton.enabled = true
+        }
         
     }
     
     @IBAction func addPhoto(sender: AnyObject) {
 
-        
+        removeFlag = true
         let imagePickerActionSheet = UIAlertController(title: "Click/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         

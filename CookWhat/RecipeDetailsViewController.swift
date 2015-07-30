@@ -170,7 +170,7 @@ class RecipeDetailsViewController: UIViewController,UITableViewDataSource {
                     
                 }
                 
-                if((item.valueForKey("quantity")as! String).toInt() == 0)
+                if((item.valueForKey("quantity")as! String).toInt() == 0 || (item.valueForKey("quantity")as! String).toInt() < 0)
                 {
                     //Delete if ZERO
                     context.deleteObject(item as NSManagedObject)
